@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <docinfo>
+        <macros>
+        \DeclareMathOperator{\RE}{Re}
+          \DeclareMathOperator{\IM}{Im}
+          \DeclareMathOperator{\ess}{ess}
+          \DeclareMathOperator{\intr}{int}
+          \DeclareMathOperator{\dist}{dist}
+          \DeclareMathOperator{\dom}{dom}
+          \DeclareMathOperator{\diag}{diag}
+          \DeclareMathOperator{\span}{span}
+          \DeclareMathOperator{\null}{null}
+          \DeclareMathOperator{\rank}{rank}
+          \DeclareMathOperator{\col}{col}
+          \DeclareMathOperator{\cl}{cl}
+          \DeclareMathOperator{\row}{row}
+          \DeclareMathOperator{\proj}{proj}
+          \DeclareMathOperator{\ball}{ball}
+          \DeclareMathOperator\re{\mathrm {Re~}}
+          \DeclareMathOperator\im{\mathrm {Im~}}
+          %\newcommand\half{\tfrac 12}
+          \newcommand\dd{\mathrm d}
+          \newcommand{\eps}{\varepsilon}
+          \newcommand{\To}{\longrightarrow}
+          \newcommand{\hilbert}{\mathcal{H}}
+          \newcommand{\s}{\mathcal{S}_2}
+          \newcommand{\A}{\mathcal{A}}
+          \newcommand\h{\mathcal{H}}
+          \newcommand{\J}{\mathcal{J}}
+          \newcommand{\M}{\mathcal{M}}
+          \newcommand{\F}{\mathbb{F}}
+          \newcommand{\K}{\mathcal{K}}
+          \newcommand{\N}{\mathcal{N}}
+          \newcommand{\T}{\mathbb{T}}
+          \newcommand{\W}{\mathcal{W}}
+          \newcommand{\X}{\mathcal{X}}
+          \newcommand{\Y}{\mathcal{Y}}
+          \newcommand{\D}{\mathbb{D}}
+          \newcommand{\C}{\mathbb{C}}
+          \newcommand{\BOP}{\mathbf{B}}
+          \newcommand{\Z}{\mathbb{Z}}
+          \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+          \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+          \newcommand{\pick}{\mathcal{P}_2}
+          \newcommand{\schur}{\mathcal{S}_2}
+          \newcommand{\R}{\mathbb{R}}
+          \newcommand{\Complex}{\mathbb{C}}
+          \newcommand{\Field}{\mathbb{F}}
+          \newcommand{\RPlus}{\Real^{+}}
+          \newcommand{\Polar}{\mathcal{P}_{\s}}
+          \newcommand{\Poly}{\mathcal{P}(E)}
+          \newcommand{\EssD}{\mathcal{D}}
+          \newcommand{\Lop}{\mathcal{L}}
+          \newcommand{\cc}[1]{\overline{#1}}
+          \newcommand{\abs}[1]{\left\vert#1\right\vert}
+          \newcommand{\set}[1]{\left\{#1\right\}}
+          \newcommand{\seq}[1]{\left\lt#1\right>}
+          \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+          \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+          \newcommand{\tr}{\operatorname{tr}}
+          \newcommand{\ran}[1]{\operatorname{ran}#1}
+          \newcommand{\nt}{\stackrel{\mathrm {nt}}{\to}}
+          \newcommand{\pnt}{\xrightarrow{pnt}}
+          \newcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+          \newcommand{\ad}{^\ast}
+          \newcommand{\inv}{^{-1}}
+          \newcommand{\adinv}{^{\ast -1}}
+          \newcommand{\invad}{^{-1 \ast}}
+          \newcommand\Pick{\mathcal P}
+          \newcommand\Ha{\mathbb{H}}
+          \newcommand{\HH}{\Ha\times\Ha}
+          \newcommand\Htau{\mathbb{H}(\tau)}
+          \newcommand{\vp}{\varphi}
+          \newcommand{\ph}{\varphi}
+          \newcommand\al{\alpha}
+          \newcommand\ga{\gamma}
+          \newcommand\de{\delta}
+          \newcommand\ep{\varepsilon}
+          \newcommand\la{\lambda}
+          \newcommand\up{\upsilon}
+          \newcommand\si{\sigma}
+          \newcommand\beq{\begin{equation}}
+          \newcommand\ds{\displaystyle}
+          \newcommand\eeq{\end{equation}}
+          \newcommand\df{\stackrel{\rm def}{=}}
+          \newcommand\ii{\mathrm i}
+          \newcommand\net[1]{\langle #1 \rangle}
+          \newcommand{\vectwo}[2]
+          {
+             \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+          }
+          \newcommand{\vecthree}[3]
+          {
+             \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+          }
+          \newcommand\blue{\color{blue}}
+          \newcommand\black{\color{black}}
+          \newcommand\red{\color{red}}
+          %\newcommand\red{\color{black}}
+          \newcommand\nn{\nonumber}
+          \newcommand\bbm{\begin{bmatrix}}
+          \newcommand\ebm{\end{bmatrix}}
+          \newcommand\bpm{\begin{pmatrix}}
+          \newcommand\epm{\end{pmatrix}}
+          \numberwithin{equation}{section}
+          \newcommand\nin{\noindent}
+          \newcommand{\nCr}[2]{\,_{#1}C_{#2}} % nCr
+          \newcommand{\vec}[1]{{\bf #1}}
+          \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
+          \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
+          \newcommand{\hz}{\,\mathrm{Hz}}
+        </macros>
+    </docinfo>
+
+<book xml:id="linanal">
+    <title>Notes on functional analysis</title>
+    <frontmatter>
+
+        <titlepage>
+            <author>
+              <personname>Ryan Tully-Doyle</personname>
+              <institution>Cal Poly, SLO</institution>
+            </author>
+            <date><today /></date>
+        </titlepage>
+    </frontmatter>
+
+
+    <chapter><title>The spectral theorem for compact operators</title>
+
+        <section> <title>The spectral theorem in finite dimensions</title>
+        <p> The point of these notes is to generalize one of the most useful theorems in undergraduate linear algebra to a very general setting. Along the way, we'll look at some very modern developments in analysis and the study of spaces of functions.</p>
+        <p> Recall that a complex <m>n \times n</m> matrix <m>A</m> is called <term>normal</term> if <m>A A\ad = A\ad A</m> where <m>\ast</m> represents the conjugate transpose. The spectral theorem for normal matrices says that <m>A</m> can be <term>diagonalized</term> as
+        <me>
+            A = U D U\ad
+        </me>
+        where <m>D</m> is a diagonal matrix of eigenvalues of <m>A</m> and <m>U</m> is a unitary matrix of associated eigenvectors. </p>
+
+        <p>The big idea of diagonalization is that operators (maps represented by square matrices) can be understood by looking at their action on <term>invariant subspaces</term>, which are spaces that a matrix leaves <q>pointing in the same direction</q>. This is a major simplification in the understanding of (normal) linear maps - every normal linear map is (up to a change of basis) scalar multiplication on orthogonal spaces.</p>
+
+        <p>A slightly more sophisticated way of presenting this idea is to use <term>projection operators</term>.</p>
+
+        <definition xml:id="def-finite-proj">
+            <p>Let <m>\hilbert</m> be a finite dimensional Hilbert space, and <m>V \subset \hilbert</m> a linear subspace. Let <m>\{v_1, \ldots, v_k\}</m> be an orthonormal basis for <m>V</m>. The <term>projection operator of <m>\hilbert</m> onto <m>V</m></term>, denoted <m>P_V</m>, is given by
+            <me>
+                P_V h = \sum_{i=1}^k \ip{h}{v_i} v_i \in V
+            </me>
+        </p></definition>
+
+        <p>With this language, diagonalization becomes the decomposition of operators into sums of projections. That is, given an operator <m>A</m> on a (complex) finite dimensional Hilbert space <m>\hilbert</m>, denote by <m>(\la_i, E_i)</m> the <m>i</m>th eigenvalue and corresponding eigenspace. Recall that each eigenspace is <m>E_i = \ker(A - \la_i)</m>. A normal matrix will always have <m>\hilbert = \bigoplus_{i=1}^k E_i</m> and we can write
+        <men xml:id="eq-finite-spec">
+            A = \sum_{i=1}^k \la_i P_{i}.
+        </men>
+        where <m>P_i</m> is the projection operator onto <m>\ker(A - \la_i)</m>.</p>
+
+        <p>A special case is that of hermitian matrices (that is, matrices that have the property that <m>A = A\ad</m>), in which case the eigenvalues of <m>A</m> are real.</p>
+    </section>
+
+    <section><title>Compact operators</title>
+        <p>The object of study in this section is essentially the most direct generalization of matrices to infinite dimensions, for reasons that will become apparent.</p>
+
+        <definition xml:id="def-compactop">
+            <p>Suppose <m>\hilbert</m> is a Hilbert space. A linear map <m>T: \hilbert \to \hilbert</m> is <term>compact</term> if the image of the unit ball in <m>\hilbert</m> under <m>T</m>, denoted <m>T(\ball \hilbert)</m>, has compact closure in <m>\hilbert</m>.  </p>
+        </definition>
+
+        <p>Denote by <m>\BOP_0(\hilbert, \K)</m> the set of compact operators from <m>\hilbert</m> to <m>\K</m>, and <m>\BOP_0(\hilbert) = \BOP_0(\hilbert, \hilbert)</m>.</p>
+
+        <proposition xml:id="prop-compopbounded">
+            <p><m>\BOP_0(\hilbert,\K) \subset \BOP(\hilbert, \K)</m>.</p>
+        </proposition>
+        <proof>
+            <p>Let <m>T \in \BOP_0(\hilbert, \K)</m>. Since <m>T(\ball \hilbert)</m> is compact, there must exist a constant <m>C</m> so that <m>T(\ball \hilbert) \subset B_\K(C) = \{k \in \K : \norm{k} \leq C\}</m>. But then <m>\norm{T} \leq C</m>, and so <m>T \in \BH</m>.</p>
+        </proof>
+
+        <proposition xml:id="prop-comp">
+            <p><m>\BOP_0(\hilbert, \K)</m> is a linear space.</p>.
+        </proposition>
+
+        <proposition xml:id = "prop-convcomp">
+            <p>If <m>T_n</m> is a sequence in <m>\BOP_0(\hilbert, \K)</m> and <m>T</m> is an operator in <m>\BOP(\hilbert, \K)</m> such that <m>\norm{T_n - T} \to 0</m>, then <m>T</m> is compact.</p>
+        </proposition>
+
+        <proposition xml:id="prop-compprod">
+            <p>If <m>A \in \BOP(\hilbert)</m>, <m>B \in \BOP(\K)</m>, and <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>TA</m> and <m>BT</m> are compact.</p>
+        </proposition>
+
+        <p>A special family of compact operators is even more restricted by the size of their ranges. Say that an operator is of <term>finite rank</term>, if <m>\ran T</m> is finite dimensional (that is, the closed linear span of a finite set of vectors). Let <m>\BOP_{00}(\hilbert, \K)</m> be the set of continuous finite rank operators. It is straightfoward that <m>\BOP_{00}</m> is a linear space and that <m>\BOP_{00} \subset \BOP_0</m>. It turns out to be the case that compact operators are (norm) limits of operators of finite rank.</p>
+
+        <theorem xml:id="thm-compapprox">
+            <p>Let <m>T \in \BOP(\hilbert, \K)</m>. The following are equivalent.
+            <ol>
+                <li> <m>T</m> is compact.</li>
+                <li> <m>T\ad</m> is compact.</li>
+                <li> There is a sequence <m>T_n</m> of operators of finite rank such that <m>\norm{T_n - T} \to 0</m>.</li>
+            </ol>
+            </p>
+        </theorem>
+
+        <proof><p>First, note that <m>(3) \Rightarrow (1)</m> follows from <xref ref="prop-convcomp"/>.</p>
+        <p>We will show that <m>(1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)</m>.</p>
+
+        <p><m>(1) \Rightarrow (3)</m>: We use the fact that since <m>T</m> is compact, the closure of <m>T(\ball \hilbert)</m> contains a countable dense subset (one can construct this set using the fact that the image of the ball under <m>T</m> is totally bounded). Then <m>\mathcal L = \cl \ran T</m> is a separable subspace of <m>\K</m>. Let <m>\{e_j\}</m> be a basis for <m>\mathcal L</m>, and let <m>P_n</m> be the projection of <m>\K</m> onto the closed linear span of the first <m>n</m> basis vectors; that is, <m>P_n</m> is the projection onto <m>\vee\{e_j: 1 \leq j \leq n\}</m>. Now set <m>T_n = P_n T</m>. Each <m>T_n</m> is a finite rank operator.</p>
+
+        <p>We will show that <m>\norm{T_n - T} \to 0</m> by establishing a uniform bound on <m>\norm{T_n h - T h}</m> for <m>\norm{h}\leq 1</m>. Choose <m>\eps > 0</m>. By compactness, we can find a finite collection of vectors <m>h_1, \ldots, h_m</m> so that 
+        <me>
+            T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
+        </me>
+        For <m>h \in \ball \hilbert</m>, choose <m>h_j</m> so that <m>\norm{Th - Th_j} \leq \eps/3</m>. Then for any <m>n \in \N</m>,
+        <md>
+            <mrow>\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
+            <mrow>\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
+            <mrow>\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}</mrow>
+            <mrow>\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.</mrow>
+        </md>
+        Now, we show that we can find <m>n_0</m> so that <m>\norm{T_n h_j  - T h_j} \leq \eps/3</m>. Certainly <m>Th_j \in \mathcal{L}</m>, and so can be expanded as <m>Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k</m>. On the other hand, 
+        <me>T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k</me>
+        Together, this gives
+        <m>\norm{T_n h_j - T h_j} \to 0</m>, and so the desired <m>n_0</m> exists. Since <m>h</m> was an arbitrary vector with <m>\norm{h} \leq 1</m>, this bound is uniform, and so in the operator norm we have <m>\norm{T_n - T} \to 0</m>.
+          </p>
+
+        <p><m>3 \Rightarrow 2:</m> Suppose that <m>T_n</m> is a sequence in <m>\BOP_{00}(\hilbert, \K)</m> with <m>\norm{T_n - T} \to 0</m>. Then <m>\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0</m>. But <m>T_n\ad</m> is also in <m>\BOP_{00}(\hilbert, \K)</m> (Exercise). Since <m>3 \Rightarrow 1</m>, <m>T\ad</m> is compact.</p>
+
+        <p><m>2 \Rightarrow 1</m>: (Exercise)</p>
+
+        </proof>
+
+        <p>We used an important convergence theorem about finite rank projections in the proof above, so we record the following corollary of the proof.</p>
+
+        <proposition xml:id="prop-finrankzero">
+            <p>If <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>\cl \ran T</m> is separable. If <m>\{e_j\}</m> is a basis for <m>\cl \ran T</m> and <m>P_n</m> is the projection of <m>\K</m> onto <m>\vee\{e_j:1 \leq j\leq n\}</m>, then
+            <me>
+                \norm{P_n T - T} \to 0.
+            </me></p>
+        </proposition>
+
+        <p>This allows a method for constructing compact operators, at least in separable Hilbert spaces, in a manner suggestive of finite dimensional eigenvalues.</p>
+
+        <proposition>
+            <p>Let <m>\hilbert</m> be a separable Hilbert space with basis <m>\{e_j\}</m>. Let <m>\{\alpha_n\}</m> be a sequence in <m>\mathbb{F}</m> with <m>M = \sup_n\{\abs{\alpha_n}\} \lt \infty</m>. Define an operator <m>A</m> on the basis <m>\{e_j\}</m>by <m>A e_j = \alpha_j e_j</m> for all <m>j</m>. Then <m>A</m> extends by linearity to a bounded operator on <m>\hilbert</m> with <m>\norm{A} = M</m>. The operator <m>A</m> is compact if and only if <m>\alpha_n \to 0</m>.
+            </p>
+        </proposition>
+
+        <p>We are now ready to make explicit the apparent connection to eigenvalues of matrices acting on finite dimensional spaces.</p>
+
+        <definition xml:id="def-eigenthings">
+            <p>Suppose that <m>A \in \BH</m>. A scalar <m>\alpha \in \mathbb{F}</m> is called an <term>eigenvalue</term> of <m>A</m> if <m>\ker(A - \alpha) \neq \{0\}</m>. A nonzero vector <m>h</m> in <m>\ker(A - \alpha)</m> is called an <term>eigenvector</term> of <m>A</m>. We recover the usual relationship <m>Ah = \alpha h</m> for such a pair. Let <m>\sigma_p(A)</m> denote the set of eigenvalues of <m>A</m>. 
+            </p>
+        </definition>
+
+        <aside>
+            <p>The <m>p</m> in the notation <m>\sigma_p(A)</m> refers to the <term>point spectrum</term> of more general operators, which we'll talk about later.</p>
+        </aside>
+
+        <p>Unlike linear operators on finite dimensional spaces, compact operators need not possesses eigenvalues. The prototypical example is the <term>Volterra operator</term>.</p>
+
+        <proposition xml:id="prop-volterra">
+            <p>Let <m>\hilbert = L^2[0,1]</m>. For <m>t \in [0,1]</m>, let <m>V:L^2 \to L^2</m> be the operator
+            <me>
+                V(f)(x) = \int_0^x f(y) \, dy.
+            </me>
+            The operator <m>V</m> is compact. However, <m>V</m> has no eigenvalues.
+            </p>
+        </proposition>
+
+        <p>The whole thrust of our conversation is diagonalization of operators in terms of eigen-like structures, and here we've identified a compact operator that cannot be. It's worth asking why. Note that <m>V\ad(f)(x) = \int_x^1 f(y) \, dy</m>; that is, <m>V</m> isn't self-adjoint (in fact, <m>V</m> is also not normal). Keep that in mind as we proceed.</p>
+
+        <p>If, however, a compact operator <emph>does</emph> have an eigenvalue, nice things happen.</p>
+
+        <proposition xml:id="prop-finiteeig">
+            <p>If <m>T \in \BOP_0(\hilbert)</m> and <m>\la \in \sigma_p(T)</m> with <m>\la \neq 0</m>, then the eigenspace <m>\ker(T - \la)</m> is finite-dimensional.</p>
+        </proposition>
+        <proof>
+            <p>Proceed by contradiction. Suppose that <m>\ker(T - \alpha)</m> is infinite-dimensional and so contains an infinite orthonormal sequence. Because <m>T</m> is compact, <m>Te_n</m> has a convergent subsequence <m>T_{e_{n_k}}</m>. Then as a sequence, <m>\{T e_{n_k}\}</m> is Cauchy. But for any <m>n_k \neq n_j</m>, 
+            <me>
+                \norm{T e_{n_k} - T e_{n_j}}^2 = \norm{\la e_{n_k} - \la e_{n_j}}^2 = 2\abs{\la}^2 > 0.
+            </me>
+            This contradicts the Cauchyness of <m>\{T e_{n_k}\}</m>. We conclude that <m>\ker(T - \alpha)</m> is finite-dimensional.</p>
+        </proof>
+
+        <proposition xml:id="prop-compinf">
+            <p>If <m>T \in \BOP_0(\hilbert)</m>, <m>\la \neq 0</m>, and <m>\inf\{\norm{(T - \la)h}: \norm{h}=1\}=0</m> then <m>\la \in \sigma_p(T)</m>.
+            </p>
+        </proposition>
+        <proof>
+            <p>The hypotheses imply that there exists a sequence of unit vectors <m>h_n</m> so that <m>\norm{(T - \la)h_n} \to 0</m>. By compactness, this sequence has a subsequence <m>h_{n_k}</m> and a vector <m>f</m> so that <m>\norm{Th_{n_k} - f}\to 0</m>. Combining these two facts, we can use an algebra trick to get
+            <md>
+                <mrow>h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})</mrow>
+                <mrow>\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] </mrow>
+                <mrow>\amp\to \la\inv[0 + f] = \la\inv f.</mrow>
+            </md>
+            Since the <m>h_n</m> are unit vectors, so is any limit point of the sequence, and so <m>1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}</m>, and so <m>\norm{f} \neq 0</m>. Furthermore, <m>T h_{n_k} \to \la\inv Tf</m>. Since we also have <m>T h_{n_k} \to f</m>, it must be that <m>f = \la\inv T f</m>, or rather that <m>T f = \la f</m>. That is, <m>f\neq 0</m>, <m>f \in \ker(T - \la)</m>, which gives that <m>\la \in \sigma_p(T)</m>.
+        </p></proof>
+    </section>
+
+    <section><title>The spectral theorem for compact self-adjoint operators</title>
+    <introduction>        
+        <p>Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in <xref ref="eq-finite-spec"/>. </p>
+
+            <theorem xml:id="thm-specsacomp">
+                <p>Let <m>T</m> be a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>. Then <m>T</m> has only countable distinct eigenvalues. Enumerating the eigenvalues as <m>\{\la_1, \la_2, \ldots\}</m>, let <m>P_n</m> denote the projection of <m>\hilbert</m> onto <m>\ker(T - \la_n)</m>. Then <m>P_nP_m = P_m P_n = 0</m> when <m>n \neq m</m>, each <m>\la_n</m> is real, and
+                <me>
+                    T = \sum_{n=1}^\infty \la_n P_n,
+                </me>
+                where the sum converges in the norm of <m>\BH</m>.</p>
+            </theorem>
+    </introduction>
+
+    <subsection><title>Proof of the spectral theorem for compact self-adjoint operators</title>
+        <proposition xml:id="prop-normal-reducing">
+            <p>If <m>A</m> is a normal operator and <m>\la \in \mathbb{F}</m>, then <m>\ker(A - \la) = \ker(A - \la)\ad</m> and <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.
+            </p>
+        </proposition>
+        <proof>
+            <p>Since <m>A</m> is normal, it is easy to see that so must be <m>A - \la</m>. By <xref provisional="prop-normaladnorm"/>, we have that <m>\norm{(A - \la)h} = \norm{(A - \la)\ad h}</m> for all <m>h</m>. But then <m>h \in \ker(A - \ad)</m> if and only if <m>h \in \ker(A - \la)\ad</m>.</p>
+            <p>If <m>h \in \ker(A - \la)</m>, then <m>Ah = \la h \in \ker(A - \la)</m> and <m>A\ad h = \cc\la h \in \ker(A - \la)</m>. We conclude that <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.</p>
+        </proof>
+
+        <p>The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.</p>
+
+        <proposition xml:id="prop-ortho-eigenspace">
+            <p>If <m>A</m> is a normal operator and <m>\la, \mu</m> are distinct eigenvalues of <m>A</m> then <m>\ker(A - \la)\perp \ker(A - \mu)</m>.</p>
+        </proposition>
+        <proof>
+           <p> Let <m>h \in \ker(A - \la)</m> and <m>g \in \ker(A - \mu)</m>. By <xref ref="prop-normal-reducing"/>, we have that <m>A\ad g = \cc\mu g</m>. Then
+                       <md>
+                           <mrow>\la\ip{h}{g} \amp=\ip{A h}{g}</mrow>
+                           <mrow>\amp= \ip{h}{A\ad g}</mrow>
+                           <mrow>\amp= \ip{h}{\cc\mu g}</mrow>
+                           <mrow>\amp= \mu\ip{h}{g}.</mrow>
+                       </md>
+                       Thus, <m>(\la - \mu)\ip{h}{g} = 0</m>. Since <m>\la, \mu</m> are distinct, we must have <m>h\perp g</m> and thus that <m>\ker(A - \la) \perp \ker(A - \mu)</m>.</p>
+       </proof>
+
+       <p>As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.</p>
+
+       <proposition xml:id="prop-eigreal">
+        <p>If <m>A = A\ad</m> and <m>\la \in \sigma_p(A)</m> then <m>\la</m> is a real number.
+        </p>
+        </proposition>
+        <proof>
+            <p>If <m>A h = \la h</m> then <m>A h = A \ad h = \cc{\la}h</m> by <xref ref="prop-normal-reducing"/>. Equating the two expression for <m>Ah</m>, we get
+            <me>
+                (\la - \cc\la)h = 0.
+            </me>
+            Choosing a non-zero <m>h</m> requires that <m>\la - \cc\la = 0</m>, or <m>\la = \cc\la</m>.
+        </p></proof>
+
+        <p>The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.</p>
+
+        <lemma xml:id="lemma-compsa-norm-eig">
+            <p>If <m>T</m> is a compact self-adjoint operator, then <m>\norm{T}</m> or <m>-\norm{T}</m> is an eigenvalue of <m>T</m>.
+        </p></lemma>
+        <proof>
+            <p>If <m>T</m> is the zero operator, then we're done. If <m>T \neq 0</m>, there exists a sequence of unit vectors <m>h_n</m> so that
+                <me>
+                    \abs{\ip{T h_n}{h_n}} \to \norm{T}.
+                </me>
+                A limit point argument produces a subsequence <m>h_n</m> so that
+                <me>
+                    \ip{T h_n}{h_n} \to \la
+                </me>
+                where <m>\abs{\la} = \norm{T}</m>.</p>
+
+                <p>Since <m>\abs{\la} = \norm{T}</m>, we get
+                <md>
+                    <mrow>0 \amp \leq \norm{(T - \la)h_n}^2</mrow>
+                     <mrow>\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2</mrow>
+                     <mrow>\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.</mrow>
+                </md>
+                But <m>\ip{Th_n}{h_n} \to \la</m>, so the computation above implies that <m>\norm{(T - \la)h_n} \to 0</m>. Applying <xref ref="prop-compinf"/>, we conclude that <m>\la \in \sigma_p(T)</m>.</p>
+        </proof>
+
+        <p>We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use <xref ref="lemma-compsa-norm-eig"/> to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.</p>
+
+        <proof><title>Proof of <xref ref="thm-specsacomp"/>.</title>
+            <p>Suppose that <m>T</m> is a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>.</p>
+
+            <p>By <xref ref="prop-eigreal"/> and <xref ref="lemma-compsa-norm-eig"/>, there exists a real number <m>\la_1</m> in <m>\sigma_p(T)</m> with <m>\abs{\la_1} = \norm{T}</m>. Let <m>E_1 = \ker(T - \la_1)</m> and <m>P_1:\hilbert \to E_1</m> be the projection onto <m>E_1</m>. Denote by <m>\hilbert_2</m> the orthogonal complement of <m>E_1</m> in <m>\hilbert</m>. By <xref ref="prop-normal-reducing"/>, <m>E_1</m> reduces <m>T</m>, and so <m>\hilbert_2</m> reduces <m>T</m>. Then define <m>T_2</m> to be the restriction of <m>T</m> to <m>\hilbert_2</m>; that is <m>T_2 = T\vert_{\hilbert_2} = T P_1</m>. Using block operator representation of <m>T</m> on <m>\hilbert = E_1 \oplus \hilbert_2</m>, it is easy to see that <m>T_2</m> is a compact self-adjoint operator on <m>\hilbert_2</m>. </p>
+        </proof>
+
+
+    </subsection>
+
+    </section>
+
+    </chapter>
+    <chapter><title>Topology</title>
+
+
+
+        <section><title>Topological catch-all</title>
+
+            <definition xml:id="def-top"><title>Separation axioms</title>
+                <p>
+                    <ul>
+                        <li>A topological space <m>\X</m> is <m>T_1</m> if whenever <m>x \neq y</m>, there exists an open set containing <m>y</m> but not <m>x</m>.</li>
+                        <li>A topological space <m>\X</m> is called <term>Hausdorff</term> if it is <m>T_2</m>; that is, if <m>x \neq y</m> then there are disjoint open sets <m>U, V</m> with <m>x \in U, y \in V</m>.</li>
+                        <li>A topological space <m>\X</m> is called <term>normal</term> if it is <m>T_4</m>; that is, <m>\X</m> is <m>T_1</m> and for any disjoint closed sets <m>A, B</m> in <m>\X</m>, there are disjoint open sets <m>U, V</m> with <m>A \subset U</m> and <m>B \subset V</m>.</li>
+                    </ul>
+                </p>
+            </definition>
+            <definition xml:id="def-bigpile"><title>Continuous functions</title>
+                <p>Suppose that <m>\X, \Y</m> are topological spaces.
+                    <ul>
+                        <li>A function is called <term>continuous</term> if <m>f\inv(V)</m> is open for every open set <m>V \subset \X</m>.</li>
+                        <li>A function is called <term>continuous at <m>x</m></term> if <m>f\inv(V)</m> is open for every neighborhood <m>V</m> of <m>x</m>.</li>
+                        <li>A bijective function <m>f:\X \to \Y</m> is called a <term>homeomorphism</term> if <m>f, f\inv</m> are continuous.</li>
+                    </ul>
+                </p>
+            </definition>
+
+            <p>We'll use the notation <m>C(\X, \Y)</m> to designate the family of continuous functions <m>f: \X \to \Y</m>.</p>
+
+            <p>We'll need a couple of extension theorems. They have names, so you know they must be important.</p>
+
+            <theorem xml:id="thm-uryshon"><title>Uryshon's Lemma</title>
+                <p>Let <m>X</m> be a normal space. If <m>A, B</m> are disjoint closed sets in <m>X</m>, then there exists <m>f \in C(X, [0,1])</m> such that <m>f = 0</m> on <m>A</m> and <m>f = 1</m> on <m>>B</m>.
+                </p>
+            </theorem>
+
+            <theorem xml:id="thm-tietze">
+                <p>Let <m>X</m> be a normal space. If <m>A</m> is a closed subset of <m>\X</m> and <m>f \in C(A, [a,b])</m>, there exists a continuous extension <m>F \in C(X, [a,b])</m> so that the restriction <m>F\vert_A</m> is <m>f</m>.</p>
+            </theorem>
+        </section>
+
+
+
+
+        <section><title>Nets</title>
+            <p>In general topological spaces, we usually can't get away with thinking about sequences. Instead, we'll capture convergence in topological spaces with nets. A sequence is a function <m>x: \mathbb{N} \to \mathcal{X}</m> that maps the natural numbers into a space <m>\mathcal{X}</m>. We want to think of nets as functions that map more general index sets into a space. We need to retain a notion of forward progress to address convergence, which we get with the notion of directed sets. </p>
+            <definition>
+                <p>A <term>directed set</term> is a set <m>A</m> with a binary relation <m>\preceq</m> with the properties that 
+                <ol>
+                    <li> (self-relation): <m>\alpha \preceq \alpha</m> for all <m>\alpha \in \mathcal{A}</m>;</li>
+                    <li> (transitivity): if <m>\alpha \preceq \beta</m> and <m>\beta \preceq  \gamma</m> then <m>\alpha \preceq \gamma</m>;</li>
+                    <li> (upper bounds): for any <m>\alpha, \beta \in \mathcal{A}</m>, there exists <m>\gamma \in \mathcal{A}</m> such that <m>\alpha \preceq \gamma</m> and <m>\beta \preceq \gamma</m>.</li>
+                </ol></p>
+            </definition>
+            <p> Not every pair of elements in a directed set relate (unlike a totally ordered set), but we do have the upper bound property that will allow us to define convergence. </p>
+            <definition>
+                <p>A <term>net</term> in <m>\mathcal{X}</m> is a function <m>x</m> from a directed set <m>\mathcal{A}</m> into a space <m>\mathcal{X}</m>. We usually write <m>x(\alpha) = x_\alpha</m> and write the net as <m>\langle x_\alpha \rangle_{\alpha \in \mathcal A} = \langle x_\alpha \rangle</m>.</p>
+            </definition>
+
+
+            <definition xml:id="def-eventually">
+                <p>Now let <m>\mathcal{X}</m> be a topological space and <m>E \subset \mathcal{X}</m>. 
+                <ul>
+                    <li>A net <m>\net{x_\alpha}</m> is <term>eventually</term> in <m>E</m> if there exists <m>\alpha_0 \in \mathcal{A}</m> such <m>x_\alpha \in \mathcal{A}</m> for all <m>\alpha \succeq \alpha_0</m>.</li>
+                    <li> A net <m>\net{x_\alpha}</m> is <term>frequently</term> in <m>E</m> if for every <m>\alpha \in \mathcal{A}</m> there exists <m>\beta \succeq \alpha</m> such that <m>x_\beta \in E</m>.</li>
+                    <li> A point <m>x \in \mathcal{X}</m> is a <term>limit</term> of <m>\net{x_\alpha}</m> if for every neighborhood <m>U</m> of <m>x</m>, <m>\net{x_\alpha}</m> is eventually in <m>U</m>. In this case, we say that <m>x_\alpha</m> <term>converges</term> to <m>x</m> and we write <m>x_\alpha \to x</m>. </li>
+                    <li>A point <m>x \in E</m> is a <term>cluster point</term> of <m>\net{x_\alpha}</m> if for every neighborhood <m>U</m> if <m>x</m>, <m>\net{x_\alpha}</m> is frequently in <m>E</m>.</li>
+                </ul></p>
+            </definition>
+
+            <p>Now, we'll show that nets have many of the desirable properties that sequences do.</p>
+
+            <proposition xml:id="prop-net1">
+                <p>If <m>\mathcal X</m> is a topological space, <m>E \subset \mathcal{X}</m>, and <m>x \in \mathcal X</m>, then <m>x</m> is an accumulation point of <m>E</m> if and only if there exists a net in <m>E\backslash\{x\}</m> that converges to <m>x</m>. Likewise, <m>x \in \cc{E}</m> if and only if there is a net in <m>E</m> that converges to <m>x</m>.</p>
+            </proposition>
+
+            <proof>
+                <p>If <m>x</m> is a limit point of <m>E</m>, then let <m>\N</m> be the set of neighborhoods of <m>x</m>, directed by reverse inclusion. For each <m>U \in \N</m>, choose an element <m>x_U \in (U\backslash\{x\})\cap E</m>. Then by definition, <m>x_U \to x</m>.</p>
+                <p>On the other hand, if <m>x_\alpha</m> is a net in <m>E\backslash\{x\}</m> and <m>x_\alpha \to x</m>, then for any neighborhood <m>U \in \N</m>, the punctured set <m>U\backslash\{x\}</m> contains some point in <m>x_\alpha</m>. Thus, <m>x</m> is a limit point of <m>E</m>.</p>
+                <p>The second statement follows from the definition and the observation that the closure of a set contains its limit points.</p>
+            </proof>
+
+            <p>We also get a net definition of continuity akin to the typical sequence definition.</p>
+
+            <proposition xml:id="prop-netcont">
+                <p>Let <m>\mathcal X, \mathcal Y</m> be topological spaces and <m>f: \mathcal X \to \mathcal Y</m>. The function <m>f</m> is continuous at <m>x \in \mathcal X</m> if and only if for every net <m>\net{x_\alpha}</m> converging to <m>x</m>, the net <m>\net{f(x_\alpha)}</m> converges to <m>f(x)</m>.</p>
+            </proposition>
+
+            <proof>
+                <p>Suppose that <m>f</m> is continuous at <m>x</m>. Then for a neighborhood <m>V</m> of <m>f(x)</m>, <m>f\inv(V)</m> is a neighborhood of <m>x</m>. Now suppose that a net <m>x_\alpha</m> converges to <m>x</m>. By definition, <m>x_\alpha</m> must eventually be in <m>f\inv(V)</m>, which implies that <m>\net{f(x_\alpha)}</m> is eventually in <m>V</m>. But this means that <m>f(x_\alpha) \to f(x)</m>, as the choice of <m>V</m> was arbitrary.</p>
+            </proof>
+
+            <p>Finally, we'll state a net version of the theorem for sequences that states that sequential cluster points have convergent subsequences - be careful with this one, because a subnet it isn't quite the direct analogy that it appears to be.</p>
+
+            <aside><title>Subnets</title>
+            <p>There are at least three non-equivalent definitions of subnet. Despite the complications, the idea is generally the same - to recover as many theorems involving convergent sequences as possible. To see more explanation, see <url href="https://en.wikipedia.org/wiki/Subnet_(mathematics)">the article on subnets</url> on Wikipedia.
+            </p>
+            </aside>
+
+            <definition xml:id="def-subnet">
+                <p>A <term>subnet</term> of a net <m>\net{x_\alpha}_{\alpha \in \mathcal A}</m> is a net <m>\net{y_\beta}_{\beta \in \mathcal B}</m> and a map <m>\beta \mapsto \alpha_\beta</m> from <m>\mathcal B \to \mathcal A</m> such that the following hold:
+                <ul>
+                    <li> For every <m>\alpha_0 \in \mathcal A</m> there exists <m>\beta_0 \in \mathcal B</m> such that <m>\alpha_\beta \succeq \alpha_0</m> whenever <m>\beta \succeq \beta_0</m>.</li>
+                    <li><m>y_\beta = x_{\alpha_\beta}</m></li>
+                </ul> </p>
+            </definition>
+
+            <p>If <m>\net{x_\alpha}</m> converges to a point <m>x</m>, then so too must any subnet <m>\net{x_{\alpha_\beta}}</m></p>
+
+            <proposition xml:id="prop-subnet-cluster">
+                <p>If <m>\net{x_\alpha}</m> is a net in <m>\mathcal X</m> then <m>x</m> is a cluster point of <m>x_\alpha</m> if and only if there is a subnet of <m>x_\alpha</m> converging to <m>x</m>.
+                </p>
+            </proposition>
+
+            <proof> <p>Suppose that <m>\net{x_\alpha}</m> has a subnet <m>\net{y_\beta} = \net{x_{\alpha_\beta}}</m> converging to <m>x</m>. Let <m>U</m> be a neighborhood of <m>x</m>. Now choose <m>\beta_1</m> so that <m>y_{\beta} \in U</m> whenever <m>{\beta} \succeq \beta_1</m> (which we can do by convergence). For a given <m>\alpha</m>, choose <m>\beta_2</m> so that <m>\alpha_{\beta} \succeq \alpha</m> for <m>\beta \succeq \beta_2</m> (which we can do by the definition of a subnet). Since <m>\mathcal B</m> is a directed set, choose <m>\beta \in \mathcal B</m> so that <m>\beta \succeq \beta_1</m> and <m>\beta \succeq \beta_2</m>. Then <m>\alpha_\beta \succeq \alpha</m> and <m>x_{\alpha_\beta} = y_\beta \in U</m>. That is, <m>x_{\alpha}</m> is frequently in <m>U</m>, and so <m>x</m> is a cluster point of <m>\net{x_\alpha}</m>.</p>
+
+            <p>In the other direction, if <m>x</m> is a cluster point of <m>\net{x_\alpha}</m>, the idea will be to use the neighborhoods at <m>x</m> as the index. Let <m>\mathcal N</m> be the neighborhoods of <m>x</m>. Construct the product of directed sets <m>\mathcal N \times \mathcal A</m> with the relation <m>(U, \alpha) \preceq (U_1, \alpha_1)</m> when <m>U \supset U_1</m> and <m>\alpha \preceq \alpha_1</m>. Then using the upper bound property, for each <m>(U, \beta) \in \mathcal N \times \mathcal A</m>, we can choose <m>\alpha_{(U, \beta)}</m> such that <m>\alpha_{(U, \beta)} \succeq \beta</m> and <m>x_{\alpha_{(U, \beta)}} \in U</m>. If <m>{(U', \beta')} \succeq (U, \beta)</m>, we have <me>\alpha_{{(U', \beta')}} \succeq {\beta'} \succeq \beta</me> and <me> x_{\alpha_{{(U', \beta')}}} \in {U'} \subset U</me>. Thus <m>\net{x_{\alpha_{{(U, \beta)}}}}</m> is a subnet of <m>\net{x_\alpha}</m> that converges to <m>x</m>.</p>
+            </proof>
+        </section>
+
+        <section><title>Compact spaces</title>
+        <p>Now we'll take a look at how compactness and related results generalize to topological spaces.</p>
+
+        <definition xml:id="def-compact">
+            <p>Let <m>\X</m> be a topological space.
+            <ul> 
+                <li><m>\X</m> is <term>compact</term> if every open cover of <m>\X</m> has a finite subcover. That is, given a collection of open sets so that <m>\X = \bigcup_{\alpha \in \mathcal A} U_\alpha</m>, there is a finite subset <m>\mathcal B</m> of <m>\mathcal A</m> so that <m>X = \bigcup_{\alpha \in \mathcal B} U_\alpha</m>. </li>
+                <li>A subset <m>Y</m> of a topological space is <term>compact</term> if it is compact in the relative topology. That is, <m>Y \subset \X</m> is compact if and only if for every collection of open sets in <m>\X</m> with <m>Y \subset \bigcup_{\alpha \in \mathcal A}</m>, there is a finite subset <m>\mathcal B</m> of <m>\mathcal A</m> so that <m>Y \subset \bigcup_{\alpha \in \mathcal B} U_\alpha</m>.</li>
+                <li>A set <m>Y \subset \X</m> is called <term>precompact</term> if its closure is compact.</li>
+            </ul>
+            </p>
+        </definition>
+
+        <p>One useful characterization of compactness is in terms of closed sets. A family of sets <m>\{F_\alpha\}_{\alpha \in \mathcal A}</m> has the <term>finite intersection property</term> if <m>\bigcap_{\alpha \in \mathcal B} \neq \emptyset</m> for any finite subset <m>\mathcal B</m> of <m>\mathcal A</m>.</p>
+
+        <proposition xml:id="prop-fip">
+            <p>A topological space is compact if and only if <m>\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset</m> for every family of sets <m>\{F_\alpha\}_{\alpha \in \A}</m> with the finite intersection property. </p>
+        </proposition>
+        <proof>
+            <p>Suppose a family of closed sets <m>\{F_\alpha\}</m> is given. Let <m>\{U_\alpha\}</m> be the family of open sets given by <m>U_\alpha = (F_\alpha)^c</m>. By construction, <m>\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset</m> if and only if <m>\bigcup_{\alpha \in \A} U_\alpha \neq \X</m>. Also, <m>\{F_\alpha\}</m> has the finite intersection property if and only if no finite subfamily of <m>\{U_\alpha\}</m> covers <m>\X</m>.</p>
+        </proof>
+        </section>
+    </chapter>
+
+    <chapter><title>Locally convex spaces</title>
+        <introduction><p>The move from basic to advanced functional analysis in part comes from generalizing the sorts of spaces that we can work on. The appropriate setting for working in weak topologies in Banach spaces is that of <em>locally convex spaces</em>, which are topological generalizations of Banach spaces.</p></introduction>
+        <section><title>Locally convex spaces</title>
+        <p>We being by introducting a special class of vector spaces that are well-suited for analysis. Since we typically want to consider questions of convergence and continuity, we require our vector spaces to come equipped with a topological structure.</p>
+        <definition xml:id="def-tvs">
+            <p>A topological vector space (TVS) is a vector space <m>\mathcal{X}</m> over a field <m>\mathbb{F}</m> and a topology <m>\mathcal{T}</m> so that
+            <ol>
+                <li>addition is continuous - that is, the map <m>(x, y)\mapsto x + y</m> is continuous.</li>
+                <li>scalar multiplication is continuous - that is, the map <m>(\alpha, x)\mapsto \alpha x</m> is continuous.</li>
+            </ol>
+            </p>
+        </definition>
+
+        Topological vector spaces include normed spaces (and thus inner product spaces). The other big feature of Euclidean space that we'd like to lift into the general setting is the notion of convexity.
+
+        <definition xml:id="def-lcs">
+            <p>A locally convex space (LCS) is a TVS with the property that there is a base of the topology consisting of convex sets</p>
+        </definition>
+
+         One way to create such spaces is by way of seminorms (norm-like functions that may send non-zero vectors to 0).
+
+        <definition xml:id="def-seminorm">
+            <p>A seminorm is a real-valued function <m>p:\mathcal{X} \to \R</m> satisfying the following properties:
+            <ol>
+                <li>Triangle inequality: <me>\forall x, y \in \mathcal{X}, p(x + y) \leq p(x) + p(y)</me></li>
+                <li>Homogeneity: <me> \forall \alpha \in \mathbb{F}, x \in \mathcal{X}, p(\alpha x) = \abs{\alpha}p(x)</me></li>
+                <li>Non-negativity: <me>p(x) \geq 0 \,\,\,\forall x \in \mathcal{X}</me></li>
+            </ol>
+            </p>
+        </definition>
+
+
+        <p>The basic idea is to use the <q>balls</q> defined by the seminorms to generate the topology.</p>
+
+        <theorem xml:id="thm-semiballs">
+            <p></p>
+        </theorem>
+
+
+
+
+
+        </section>
+
+
+    </chapter>
+
+
+
+</book>
+
+</pretext>

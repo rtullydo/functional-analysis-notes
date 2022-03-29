@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math"><article class="hiddenproof"><p>First, note that <span class="process-math">\((3) \Rightarrow (1)\)</span> follows from <a href="" class="xref" data-knowl="./knowl/prop-convcomp.html" title="Proposition 1.2.4">Proposition 1.2.4</a>.</p>
+<p>We will show that <span class="process-math">\((1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)\text{.}\)</span></p>
+<p><span class="process-math">\((1) \Rightarrow (3)\text{:}\)</span> We use the fact that since <span class="process-math">\(T\)</span> is compact, the closure of <span class="process-math">\(T(\ball \hilbert)\)</span> contains a countable dense subset (one can construct this set using the fact that the image of the ball under <span class="process-math">\(T\)</span> is totally bounded). Then <span class="process-math">\(\mathcal L = \cl \ran T\)</span> is a separable subspace of <span class="process-math">\(\K\text{.}\)</span> Let <span class="process-math">\(\{e_j\}\)</span> be a basis for <span class="process-math">\(\mathcal L\text{,}\)</span> and let <span class="process-math">\(P_n\)</span> be the projection of <span class="process-math">\(\K\)</span> onto the closed linear span of the first <span class="process-math">\(n\)</span> basis vectors; that is, <span class="process-math">\(P_n\)</span> is the projection onto <span class="process-math">\(\vee\{e_j: 1 \leq j \leq n\}\text{.}\)</span> Now set <span class="process-math">\(T_n = P_n T\text{.}\)</span> Each <span class="process-math">\(T_n\)</span> is a finite rank operator.</p>
+<p>We will show that <span class="process-math">\(\norm{T_n - T} \to 0\)</span> by establishing a uniform bound on <span class="process-math">\(\norm{T_n h - T h}\)</span> for <span class="process-math">\(\norm{h}\leq 1\text{.}\)</span> Choose <span class="process-math">\(\eps &gt; 0\text{.}\)</span> By compactness, we can find a finite collection of vectors <span class="process-math">\(h_1, \ldots, h_m\)</span> so that</p>
+<div class="displaymath process-math">
+\begin{equation*}
+T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
+\end{equation*}
+</div>
+<p class="continuation">For <span class="process-math">\(h \in \ball \hilbert\text{,}\)</span> choose <span class="process-math">\(h_j\)</span> so that <span class="process-math">\(\norm{Th - Th_j} \leq \eps/3\text{.}\)</span> Then for any <span class="process-math">\(n \in \N\text{,}\)</span></p>
+<div class="displaymath process-math">
+\begin{align*}
+\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}\\
+\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.
+\end{align*}
+</div>
+<p class="continuation">Now, we show that we can find <span class="process-math">\(n_0\)</span> so that <span class="process-math">\(\norm{T_n h_j  - T h_j} \leq \eps/3\text{.}\)</span> Certainly <span class="process-math">\(Th_j \in \mathcal{L}\text{,}\)</span> and so can be expanded as <span class="process-math">\(Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k\text{.}\)</span> On the other hand,</p>
+<div class="displaymath process-math">
+\begin{equation*}
+T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k
+\end{equation*}
+</div>
+<p class="continuation">Together, this gives <span class="process-math">\(\norm{T_n h_j - T h_j} \to 0\text{,}\)</span> and so the desired <span class="process-math">\(n_0\)</span> exists. Since <span class="process-math">\(h\)</span> was an arbitrary vector with <span class="process-math">\(\norm{h} \leq 1\text{,}\)</span> this bound is uniform, and so in the operator norm we have <span class="process-math">\(\norm{T_n - T} \to 0\text{.}\)</span></p>
+<p><span class="process-math">\(3 \Rightarrow 2:\)</span> Suppose that <span class="process-math">\(T_n\)</span> is a sequence in <span class="process-math">\(\BOP_{00}(\hilbert, \K)\)</span> with <span class="process-math">\(\norm{T_n - T} \to 0\text{.}\)</span> Then <span class="process-math">\(\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0\text{.}\)</span> But <span class="process-math">\(T_n\ad\)</span> is also in <span class="process-math">\(\BOP_{00}(\hilbert, \K)\)</span> (Exercise). Since <span class="process-math">\(3 \Rightarrow 1\text{,}\)</span> <span class="process-math">\(T\ad\)</span> is compact.</p>
+<p><span class="process-math">\(2 \Rightarrow 1\text{:}\)</span> (Exercise)</p></article></body>
+</html>

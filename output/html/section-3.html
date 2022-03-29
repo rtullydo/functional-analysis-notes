@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The spectral theorem for compact self-adjoint operators</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Notes on functional analysis">
+<meta property="book:author" content="Ryan Tully-Doyle">
+<script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.13/pretext.js"></script><script>miniversion=0.674</script><script src="https://pretextbook.org/js/0.13/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/colors_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.4/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-book ignore-math has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\DeclareMathOperator{\RE}{Re}
+  \DeclareMathOperator{\IM}{Im}
+  \DeclareMathOperator{\ess}{ess}
+  \DeclareMathOperator{\intr}{int}
+  \DeclareMathOperator{\dist}{dist}
+  \DeclareMathOperator{\dom}{dom}
+  \DeclareMathOperator{\diag}{diag}
+  \DeclareMathOperator{\span}{span}
+  \DeclareMathOperator{\null}{null}
+  \DeclareMathOperator{\rank}{rank}
+  \DeclareMathOperator{\col}{col}
+  \DeclareMathOperator{\cl}{cl}
+  \DeclareMathOperator{\row}{row}
+  \DeclareMathOperator{\proj}{proj}
+  \DeclareMathOperator{\ball}{ball}
+  \DeclareMathOperator\re{\mathrm {Re~}}
+  \DeclareMathOperator\im{\mathrm {Im~}}
+  
+  \newcommand\dd{\mathrm d}
+  \newcommand{\eps}{\varepsilon}
+  \newcommand{\To}{\longrightarrow}
+  \newcommand{\hilbert}{\mathcal{H}}
+  \newcommand{\s}{\mathcal{S}_2}
+  \newcommand{\A}{\mathcal{A}}
+  \newcommand\h{\mathcal{H}}
+  \newcommand{\J}{\mathcal{J}}
+  \newcommand{\M}{\mathcal{M}}
+  \newcommand{\F}{\mathbb{F}}
+  \newcommand{\K}{\mathcal{K}}
+  \newcommand{\N}{\mathcal{N}}
+  \newcommand{\T}{\mathbb{T}}
+  \newcommand{\W}{\mathcal{W}}
+  \newcommand{\X}{\mathcal{X}}
+  \newcommand{\Y}{\mathcal{Y}}
+  \newcommand{\D}{\mathbb{D}}
+  \newcommand{\C}{\mathbb{C}}
+  \newcommand{\BOP}{\mathbf{B}}
+  \newcommand{\Z}{\mathbb{Z}}
+  \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+  \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+  \newcommand{\pick}{\mathcal{P}_2}
+  \newcommand{\schur}{\mathcal{S}_2}
+  \newcommand{\R}{\mathbb{R}}
+  \newcommand{\Complex}{\mathbb{C}}
+  \newcommand{\Field}{\mathbb{F}}
+  \newcommand{\RPlus}{\Real^{+}}
+  \newcommand{\Polar}{\mathcal{P}_{\s}}
+  \newcommand{\Poly}{\mathcal{P}(E)}
+  \newcommand{\EssD}{\mathcal{D}}
+  \newcommand{\Lop}{\mathcal{L}}
+  \newcommand{\cc}[1]{\overline{#1}}
+  \newcommand{\abs}[1]{\left\vert#1\right\vert}
+  \newcommand{\set}[1]{\left\{#1\right\}}
+  \newcommand{\seq}[1]{\left\lt#1\right&gt;}
+  \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+  \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+  \newcommand{\tr}{\operatorname{tr}}
+  \newcommand{\ran}[1]{\operatorname{ran}#1}
+  \newcommand{\nt}{\stackrel{\mathrm {nt}}{\to}}
+  \newcommand{\pnt}{\xrightarrow{pnt}}
+  \newcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+  \newcommand{\ad}{^\ast}
+  \newcommand{\inv}{^{-1}}
+  \newcommand{\adinv}{^{\ast -1}}
+  \newcommand{\invad}{^{-1 \ast}}
+  \newcommand\Pick{\mathcal P}
+  \newcommand\Ha{\mathbb{H}}
+  \newcommand{\HH}{\Ha\times\Ha}
+  \newcommand\Htau{\mathbb{H}(\tau)}
+  \newcommand{\vp}{\varphi}
+  \newcommand{\ph}{\varphi}
+  \newcommand\al{\alpha}
+  \newcommand\ga{\gamma}
+  \newcommand\de{\delta}
+  \newcommand\ep{\varepsilon}
+  \newcommand\la{\lambda}
+  \newcommand\up{\upsilon}
+  \newcommand\si{\sigma}
+  \newcommand\beq{\begin{equation}}
+  \newcommand\ds{\displaystyle}
+  \newcommand\eeq{\end{equation}}
+  \newcommand\df{\stackrel{\rm def}{=}}
+  \newcommand\ii{\mathrm i}
+  \newcommand\net[1]{\langle #1 \rangle}
+  \newcommand{\vectwo}[2]
+  {
+     \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+  }
+  \newcommand{\vecthree}[3]
+  {
+     \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+  }
+  \newcommand\blue{\color{blue}}
+  \newcommand\black{\color{black}}
+  \newcommand\red{\color{red}}
+  
+  \newcommand\nn{\nonumber}
+  \newcommand\bbm{\begin{bmatrix}}
+  \newcommand\ebm{\end{bmatrix}}
+  \newcommand\bpm{\begin{pmatrix}}
+  \newcommand\epm{\end{pmatrix}}
+  \numberwithin{equation}{section}
+  \newcommand\nin{\noindent}
+  \newcommand{\nCr}[2]{\,_{#1}C_{#2}} 
+  \newcommand{\vec}[1]{{\bf #1}}
+  \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
+  \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
+  \newcommand{\hz}{\,\mathrm{Hz}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</span></div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="linanal.html"><span class="title">Notes on functional analysis</span></a></h1>
+<p class="byline">Ryan Tully-Doyle</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chapter-2.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chapter-2.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1" class="internal"><span class="title">Front Matter</span></a></li>
+<li class="link">
+<a href="chapter-1.html" data-scroll="chapter-1" class="internal"><span class="codenumber">1</span> <span class="title">The spectral theorem for compact operators</span></a><ul>
+<li><a href="section-1.html" data-scroll="section-1" class="internal">The spectral theorem in finite dimensions</a></li>
+<li><a href="section-2.html" data-scroll="section-2" class="internal">Compact operators</a></li>
+<li><a href="section-3.html" data-scroll="section-3" class="active">The spectral theorem for compact self-adjoint operators</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter-2.html" data-scroll="chapter-2" class="internal"><span class="codenumber">2</span> <span class="title">Topology</span></a><ul>
+<li><a href="section-4.html" data-scroll="section-4" class="internal">Topological catch-all</a></li>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Nets</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Compact spaces</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-7.html" data-scroll="section-7" class="internal">Locally convex spaces</a></li></ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="section" id="section-3"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">1.3</span> <span class="title">The spectral theorem for compact self-adjoint operators</span>
+</h2>
+<section class="introduction" id="introduction-1"><p id="p-39">Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in <a href="" class="xref" data-knowl="./knowl/eq-finite-spec.html" title="Equation 1.1.1">(1.1.1)</a>.</p>
+<article class="theorem theorem-like" id="thm-specsacomp"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span>
+</h3>
+<p id="p-40">Let <span class="process-math">\(T\)</span> be a compact self-adjoint operator on a Hilbert space <span class="process-math">\(\hilbert\text{.}\)</span> Then <span class="process-math">\(T\)</span> has only countable distinct eigenvalues. Enumerating the eigenvalues as <span class="process-math">\(\{\la_1, \la_2, \ldots\}\text{,}\)</span> let <span class="process-math">\(P_n\)</span> denote the projection of <span class="process-math">\(\hilbert\)</span> onto <span class="process-math">\(\ker(T - \la_n)\text{.}\)</span> Then <span class="process-math">\(P_nP_m = P_m P_n = 0\)</span> when <span class="process-math">\(n \neq m\text{,}\)</span> each <span class="process-math">\(\la_n\)</span> is real, and</p>
+<div class="displaymath process-math">
+\begin{equation*}
+T = \sum_{n=1}^\infty \la_n P_n,
+\end{equation*}
+</div>
+<p class="continuation">where the sum converges in the norm of <span class="process-math">\(\BH\text{.}\)</span></p></article></section><section class="subsection" id="subsection-1"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.3.1</span> <span class="title">Proof of the spectral theorem for compact self-adjoint operators</span>
+</h3>
+<article class="proposition theorem-like" id="prop-normal-reducing"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span>
+</h4>
+<p id="p-41">If <span class="process-math">\(A\)</span> is a normal operator and <span class="process-math">\(\la \in \mathbb{F}\text{,}\)</span> then <span class="process-math">\(\ker(A - \la) = \ker(A - \la)\ad\)</span> and <span class="process-math">\(\ker(A - \la)\)</span> is a reducing subspace for <span class="process-math">\(A\text{.}\)</span></p></article><article class="hiddenproof" id="proof-5"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-5"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-5"><article class="hiddenproof"><p id="p-42">Since <span class="process-math">\(A\)</span> is normal, it is easy to see that so must be <span class="process-math">\(A - \la\text{.}\)</span> By <code class="code-inline tex2jax_ignore">[provisional cross-reference: prop-normaladnorm]</code>, we have that <span class="process-math">\(\norm{(A - \la)h} = \norm{(A - \la)\ad h}\)</span> for all <span class="process-math">\(h\text{.}\)</span> But then <span class="process-math">\(h \in \ker(A - \ad)\)</span> if and only if <span class="process-math">\(h \in \ker(A - \la)\ad\text{.}\)</span></p>
+<p id="p-43">If <span class="process-math">\(h \in \ker(A - \la)\text{,}\)</span> then <span class="process-math">\(Ah = \la h \in \ker(A - \la)\)</span> and <span class="process-math">\(A\ad h = \cc\la h \in \ker(A - \la)\text{.}\)</span> We conclude that <span class="process-math">\(\ker(A - \la)\)</span> is a reducing subspace for <span class="process-math">\(A\text{.}\)</span></p></article></div>
+<p id="p-44">The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.</p>
+<article class="proposition theorem-like" id="prop-ortho-eigenspace"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="period">.</span>
+</h4>
+<p id="p-45">If <span class="process-math">\(A\)</span> is a normal operator and <span class="process-math">\(\la, \mu\)</span> are distinct eigenvalues of <span class="process-math">\(A\)</span> then <span class="process-math">\(\ker(A - \la)\perp \ker(A - \mu)\text{.}\)</span></p></article><article class="hiddenproof" id="proof-6"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-6"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-6"><article class="hiddenproof"><p id="p-46">Let <span class="process-math">\(h \in \ker(A - \la)\)</span> and <span class="process-math">\(g \in \ker(A - \mu)\text{.}\)</span> By <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>, we have that <span class="process-math">\(A\ad g = \cc\mu g\text{.}\)</span> Then</p>
+<div class="displaymath process-math">
+\begin{align*}
+\la\ip{h}{g} \amp=\ip{A h}{g}\\
+\amp= \ip{h}{A\ad g}\\
+\amp= \ip{h}{\cc\mu g}\\
+\amp= \mu\ip{h}{g}.
+\end{align*}
+</div>
+<p class="continuation">Thus, <span class="process-math">\((\la - \mu)\ip{h}{g} = 0\text{.}\)</span> Since <span class="process-math">\(\la, \mu\)</span> are distinct, we must have <span class="process-math">\(h\perp g\)</span> and thus that <span class="process-math">\(\ker(A - \la) \perp \ker(A - \mu)\text{.}\)</span></p></article></div>
+<p id="p-47">As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.</p>
+<article class="proposition theorem-like" id="prop-eigreal"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
+</h4>
+<p id="p-48">If <span class="process-math">\(A = A\ad\)</span> and <span class="process-math">\(\la \in \sigma_p(A)\)</span> then <span class="process-math">\(\la\)</span> is a real number.</p></article><article class="hiddenproof" id="proof-7"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-7"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-7"><article class="hiddenproof"><p id="p-49">If <span class="process-math">\(A h = \la h\)</span> then <span class="process-math">\(A h = A \ad h = \cc{\la}h\)</span> by <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>. Equating the two expression for <span class="process-math">\(Ah\text{,}\)</span> we get</p>
+<div class="displaymath process-math">
+\begin{equation*}
+(\la - \cc\la)h = 0.
+\end{equation*}
+</div>
+<p class="continuation">Choosing a non-zero <span class="process-math">\(h\)</span> requires that <span class="process-math">\(\la - \cc\la = 0\text{,}\)</span> or <span class="process-math">\(\la = \cc\la\text{.}\)</span></p></article></div>
+<p id="p-50">The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.</p>
+<article class="lemma theorem-like" id="lemma-compsa-norm-eig"><h4 class="heading">
+<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
+</h4>
+<p id="p-51">If <span class="process-math">\(T\)</span> is a compact self-adjoint operator, then <span class="process-math">\(\norm{T}\)</span> or <span class="process-math">\(-\norm{T}\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span></p></article><article class="hiddenproof" id="proof-8"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-8"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-8"><article class="hiddenproof"><p id="p-52">If <span class="process-math">\(T\)</span> is the zero operator, then we're done. If <span class="process-math">\(T \neq 0\text{,}\)</span> there exists a sequence of unit vectors <span class="process-math">\(h_n\)</span> so that</p>
+<div class="displaymath process-math">
+\begin{equation*}
+\abs{\ip{T h_n}{h_n}} \to \norm{T}.
+\end{equation*}
+</div>
+<p class="continuation">A limit point argument produces a subsequence <span class="process-math">\(h_n\)</span> so that</p>
+<div class="displaymath process-math">
+\begin{equation*}
+\ip{T h_n}{h_n} \to \la
+\end{equation*}
+</div>
+<p class="continuation">where <span class="process-math">\(\abs{\la} = \norm{T}\text{.}\)</span></p>
+<p id="p-53">Since <span class="process-math">\(\abs{\la} = \norm{T}\text{,}\)</span> we get</p>
+<div class="displaymath process-math">
+\begin{align*}
+0 \amp \leq \norm{(T - \la)h_n}^2\\
+\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2\\
+\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.
+\end{align*}
+</div>
+<p class="continuation">But <span class="process-math">\(\ip{Th_n}{h_n} \to \la\text{,}\)</span> so the computation above implies that <span class="process-math">\(\norm{(T - \la)h_n} \to 0\text{.}\)</span> Applying <a href="" class="xref" data-knowl="./knowl/prop-compinf.html" title="Proposition 1.2.12">Proposition 1.2.12</a>, we conclude that <span class="process-math">\(\la \in \sigma_p(T)\text{.}\)</span></p></article></div>
+<p id="p-54">We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use <a href="" class="xref" data-knowl="./knowl/lemma-compsa-norm-eig.html" title="Lemma 1.3.5">Lemma 1.3.5</a> to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.</p>
+<article class="hiddenproof" id="proof-9"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-9"><h4 class="heading"><span class="title">Proof of Theorem 1.3.1..</span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-9"><article class="hiddenproof"><p id="p-55">Suppose that <span class="process-math">\(T\)</span> is a compact self-adjoint operator on a Hilbert space <span class="process-math">\(\hilbert\text{.}\)</span></p>
+<p id="p-56">By <a href="" class="xref" data-knowl="./knowl/prop-eigreal.html" title="Proposition 1.3.4">Proposition 1.3.4</a> and <a href="" class="xref" data-knowl="./knowl/lemma-compsa-norm-eig.html" title="Lemma 1.3.5">Lemma 1.3.5</a>, there exists a real number <span class="process-math">\(\la_1\)</span> in <span class="process-math">\(\sigma_p(T)\)</span> with <span class="process-math">\(\abs{\la_1} = \norm{T}\text{.}\)</span> Let <span class="process-math">\(E_1 = \ker(T - \la_1)\)</span> and <span class="process-math">\(P_1:\hilbert \to E_1\)</span> be the projection onto <span class="process-math">\(E_1\text{.}\)</span> Denote by <span class="process-math">\(\hilbert_2\)</span> the orthogonal complement of <span class="process-math">\(E_1\)</span> in <span class="process-math">\(\hilbert\text{.}\)</span> By <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>, <span class="process-math">\(E_1\)</span> reduces <span class="process-math">\(T\text{,}\)</span> and so <span class="process-math">\(\hilbert_2\)</span> reduces <span class="process-math">\(T\text{.}\)</span> Then define <span class="process-math">\(T_2\)</span> to be the restriction of <span class="process-math">\(T\)</span> to <span class="process-math">\(\hilbert_2\text{;}\)</span> that is <span class="process-math">\(T_2 = T_{\hilbert_2}\text{.}\)</span></p></article></div></section></section></div></main>
+</div>
+</body>
+</html>

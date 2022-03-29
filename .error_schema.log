@@ -1,0 +1,6 @@
+/home/rtullydo/Dropbox/funct/source/main.ptx:136:0:ERROR:RELAXNGV:RELAXNG_ERR_NOELEM: Expecting an element nbsp, got nothing
+/home/rtullydo/Dropbox/funct/source/main.ptx:136:0:ERROR:RELAXNGV:RELAXNG_ERR_ELEMNAME: Expecting element blockquote, got p
+/home/rtullydo/Dropbox/funct/source/main.ptx:136:0:ERROR:RELAXNGV:RELAXNG_ERR_ELEMWRONG: Did not expect element p there
+/home/rtullydo/Dropbox/funct/source/main.ptx:136:0:ERROR:RELAXNGV:RELAXNG_ERR_ELEMNAME: Expecting element sidebyside, got p
+/home/rtullydo/Dropbox/funct/source/main.ptx:136:0:ERROR:RELAXNGV:RELAXNG_ERR_EXTRACONTENT: Element section has extra content: p
+/home/rtullydo/Dropbox/funct/source/main.ptx:118:0:ERROR:RELAXNGV:RELAXNG_ERR_CONTENTVALID: Element book failed to validate content

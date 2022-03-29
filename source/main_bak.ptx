@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <docinfo>
+        <macros>
+        \DeclareMathOperator{\RE}{Re}
+          \DeclareMathOperator{\IM}{Im}
+          \DeclareMathOperator{\ess}{ess}
+          \DeclareMathOperator{\intr}{int}
+          \DeclareMathOperator{\dist}{dist}
+          \DeclareMathOperator{\dom}{dom}
+          \DeclareMathOperator{\diag}{diag}
+          \DeclareMathOperator{\span}{span}
+          \DeclareMathOperator{\null}{null}
+          \DeclareMathOperator{\rank}{rank}
+          \DeclareMathOperator{\col}{col}
+          \DeclareMathOperator{\row}{row}
+          \DeclareMathOperator{\proj}{proj}
+          \DeclareMathOperator\re{\mathrm {Re~}}
+          \DeclareMathOperator\im{\mathrm {Im~}}
+          %\newcommand\half{\tfrac 12}
+          \newcommand\dd{\mathrm d}
+          \newcommand{\eps}{\varepsilon}
+          \newcommand{\To}{\longrightarrow}
+          \newcommand{\hilbert}{\mathcal{H}}
+          \newcommand{\s}{\mathcal{S}_2}
+          \newcommand{\A}{\mathcal{A}}
+          \newcommand\h{\mathcal{H}}
+          \newcommand{\J}{\mathcal{J}}
+          \newcommand{\M}{\mathcal{M}}
+          \newcommand{\F}{\mathbb{F}}
+          \newcommand{\N}{\mathcal{N}}
+          \newcommand{\T}{\mathbb{T}}
+          \newcommand{\W}{\mathcal{W}}
+          \newcommand{\X}{\mathcal{X}}
+          \newcommand{\Y}{\mathcal{Y}}
+          \newcommand{\D}{\mathbb{D}}
+          \newcommand{\C}{\mathbb{C}}
+          \newcommand{\BOP}{\mathbf{B}}
+          \newcommand{\Z}{\mathbb{Z}}
+          \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+          \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+          \newcommand{\pick}{\mathcal{P}_2}
+          \newcommand{\schur}{\mathcal{S}_2}
+          \newcommand{\R}{\mathbb{R}}
+          \newcommand{\Complex}{\mathbb{C}}
+          \newcommand{\Field}{\mathbb{F}}
+          \newcommand{\RPlus}{\Real^{+}}
+          \newcommand{\Polar}{\mathcal{P}_{\s}}
+          \newcommand{\Poly}{\mathcal{P}(E)}
+          \newcommand{\EssD}{\mathcal{D}}
+          \newcommand{\Lop}{\mathcal{L}}
+          \newcommand{\cc}[1]{\overline{#1}}
+          \newcommand{\abs}[1]{\left\vert#1\right\vert}
+          \newcommand{\set}[1]{\left\{#1\right\}}
+          \newcommand{\seq}[1]{\left\lt#1\right>}
+          \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+          \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+          \newcommand{\tr}{\operatorname{tr}}
+          \newcommand{\ran}[1]{\operatorname{ran}#1}
+          \newcommand{\nt}{\stackrel{\mathrm {nt}}{\to}}
+          \newcommand{\pnt}{\xrightarrow{pnt}}
+          \newcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+          \newcommand{\ad}{^\ast}
+          \newcommand{\inv}{^{-1}}
+          \newcommand{\adinv}{^{\ast -1}}
+          \newcommand{\invad}{^{-1 \ast}}
+          \newcommand\Pick{\mathcal P}
+          \newcommand\Ha{\mathbb{H}}
+          \newcommand{\HH}{\Ha\times\Ha}
+          \newcommand\Htau{\mathbb{H}(\tau)}
+          \newcommand{\vp}{\varphi}
+          \newcommand{\ph}{\varphi}
+          \newcommand\al{\alpha}
+          \newcommand\ga{\gamma}
+          \newcommand\de{\delta}
+          \newcommand\ep{\varepsilon}
+          \newcommand\la{\lambda}
+          \newcommand\up{\upsilon}
+          \newcommand\si{\sigma}
+          \newcommand\beq{\begin{equation}}
+          \newcommand\ds{\displaystyle}
+          \newcommand\eeq{\end{equation}}
+          \newcommand\df{\stackrel{\rm def}{=}}
+          \newcommand\ii{\mathrm i}
+          \newcommand\net[1]{\langle #1 \rangle}
+          \newcommand{\vectwo}[2]
+          {
+             \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+          }
+          \newcommand{\vecthree}[3]
+          {
+             \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+          }
+          \newcommand\blue{\color{blue}}
+          \newcommand\black{\color{black}}
+          \newcommand\red{\color{red}}
+          %\newcommand\red{\color{black}}
+          \newcommand\nn{\nonumber}
+          \newcommand\bbm{\begin{bmatrix}}
+          \newcommand\ebm{\end{bmatrix}}
+          \newcommand\bpm{\begin{pmatrix}}
+          \newcommand\epm{\end{pmatrix}}
+          \numberwithin{equation}{section}
+          \newcommand\nin{\noindent}
+          \newcommand{\nCr}[2]{\,_{#1}C_{#2}} % nCr
+          \newcommand{\vec}[1]{{\bf #1}}
+          \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
+          \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
+          \newcommand{\hz}{\,\mathrm{Hz}}
+        </macros>
+    </docinfo>
+
+<book xml:id="linanal">
+    <title>Notes on functional analysis</title>
+    <frontmatter>
+
+        <titlepage>
+            <author>
+              <personname>Ryan Tully-Doyle</personname>
+              <institution>Cal Poly, SLO</institution>
+            </author>
+            <date><today /></date>
+        </titlepage>
+    </frontmatter>
+
+    <chapter><title>Topology</title>
+
+        <section><title>Topological catch-all</title>
+
+            <definition xml:id="def-top"><title>Separation axioms</title>
+                <p>
+                    <ul>
+                        <li>A topological space <m>\X</m> is <m>T_1</m> if whenever <m>x \neq y</m>, there exists an open set containing <m>y</m> but not <m>x</m>.</li>
+                        <li>A topological space <m>\X</m> is called <term>Hausdorff</term> if it is <m>T_2</m>; that is, if <m>x \neq y</m> then there are disjoint open sets <m>U, V</m> with <m>x \in U, y \in V</m>.</li>
+                        <li>A topological space <m>\X</m> is called <term>normal</term> if it is <m>T_4</m>; that is, <m>\X</m> is <m>T_1</m> and for any disjoint closed sets <m>A, B</m> in <m>\X</m>, there are disjoint open sets <m>U, V</m> with <m>A \subset U</m> and <m>B \subset V</m>.</li>
+                    </ul>
+                </p>
+            </definition>
+            <definition xml:id="def-bigpile"><title>Continuous functions</title>
+                <p>Suppose that <m>\X, \Y</m> are topological spaces.
+                    <ul>
+                        <li>A function is called <term>continuous</term> if <m>f\inv(V)</m> is open for every open set <m>V \subset \X</m>.</li>
+                        <li>A function is called <term>continuous at <m>x</m></term> if <m>f\inv(V)</m> is open for every neighborhood <m>V</m> of <m>x</m>.</li>
+                        <li>A bijective function <m>f:\X \to \Y</m> is called a <term>homeomorphism</term> if <m>f, f\inv</m> are continuous.</li>
+                    </ul>
+                </p>
+            </definition>
+
+            <p>We'll use the notation <m>C(\X, \Y)</m> to designate the family of continuous functions <m>f: \X \to \Y</m>.</p>
+
+            <p>We'll need a couple of extension theorems. They have names, so you know they must be important.</p>
+
+            <theorem xml:id="thm-uryshon"><title>Uryshon's Lemma</title>
+                <p>Let <m>X</m> be a normal space. If <m>A, B</m> are disjoint closed sets in <m>X</m>, then there exists <m>f \in C(X, [0,1])</m> such that <m>f = 0</m> on <m>A</m> and <m>f = 1</m> on <m>B</m>.
+                </p>
+            </theorem>
+
+            <theorem xml:id="thm-tietze"><title>Tietze Extension Theorem</title>
+                <p>Let <m>X</m> be a normal space. If <m>A</m> is a closed subset of <m>\X</m> and <m>f \in C(A, [a,b])</m>, there exists a continuous extension <m>F \in C(X, [a,b])</m> so that the restriction <m>F\vert_A</m> is <m>f</m>.</p>
+            </theorem>
+        </section>
+
+
+
+
+        <section><title>Nets</title>
+            <p>In general topological spaces, we usually can't get away with thinking about sequences. Instead, we'll capture convergence in topological spaces with nets. A sequence is a function <m>x: \mathbb{N} \to \mathcal{X}</m> that maps the natural numbers into a space <m>\mathcal{X}</m>. We want to think of nets as functions that map more general index sets into a space. We need to retain a notion of forward progress to address convergence, which we get with the notion of directed sets. </p>
+            <definition>
+                <p>A <term>directed set</term> is a set <m>A</m> with a binary relation <m>\preceq</m> with the properties that 
+                <ol>
+                    <li> (self-relation): <m>\alpha \preceq \alpha</m> for all <m>\alpha \in \mathcal{A}</m>;</li>
+                    <li> (transitivity): if <m>\alpha \preceq \beta</m> and <m>\beta \preceq  \gamma</m> then <m>\alpha \preceq \gamma</m>;</li>
+                    <li> (upper bounds): for any <m>\alpha, \beta \in \mathcal{A}</m>, there exists <m>\gamma \in \mathcal{A}</m> such that <m>\alpha \preceq \gamma</m> and <m>\beta \preceq \gamma</m>.</li>
+                </ol></p>
+            </definition>
+            <p> Not every pair of elements in a directed set relate (unlike a totally ordered set), but we do have the upper bound property that will allow us to define convergence. </p>
+            <definition>
+                <p>A <term>net</term> in <m>\mathcal{X}</m> is a function <m>x</m> from a directed set <m>\mathcal{A}</m> into a space <m>\mathcal{X}</m>. We usually write <m>x(\alpha) = x_\alpha</m> and write the net as <m>\langle x_\alpha \rangle_{\alpha \in \mathcal A} = \langle x_\alpha \rangle</m>.</p>
+            </definition>
+
+
+            <definition xml:id="def-eventually">
+                <p>Now let <m>\mathcal{X}</m> be a topological space and <m>E \subset \mathcal{X}</m>. 
+                <ul>
+                    <li>A net <m>\net{x_\alpha}</m> is <term>eventually</term> in <m>E</m> if there exists <m>\alpha_0 \in \mathcal{A}</m> such <m>x_\alpha \in \mathcal{A}</m> for all <m>\alpha \succeq \alpha_0</m>.</li>
+                    <li> A net <m>\net{x_\alpha}</m> is <term>frequently</term> in <m>E</m> if for every <m>\alpha \in \mathcal{A}</m> there exists <m>\beta \succeq \alpha</m> such that <m>x_\beta \in E</m>.</li>
+                    <li> A point <m>x \in \mathcal{X}</m> is a <term>limit</term> of <m>\net{x_\alpha}</m> if for every neighborhood <m>U</m> of <m>x</m>, <m>\net{x_\alpha}</m> is eventually in <m>U</m>. In this case, we say that <m>x_\alpha</m> <term>converges</term> to <m>x</m> and we write <m>x_\alpha \to x</m>. </li>
+                    <li>A point <m>x \in E</m> is a <term>cluster point</term> of <m>\net{x_\alpha}</m> if for every neighborhood <m>U</m> if <m>x</m>, <m>\net{x_\alpha}</m> is frequently in <m>E</m>.</li>
+                </ul></p>
+            </definition>
+
+            <p>Now, we'll show that nets have many of the desirable properties that sequences do.</p>
+
+            <proposition xml:id="prop-net1">
+                <p>If <m>\mathcal X</m> is a topological space, <m>E \subset \mathcal{X}</m>, and <m>x \in \mathcal X</m>, then <m>x</m> is an accumulation point of <m>E</m> if and only if there exists a net in <m>E\backslash\{x\}</m> that converges to <m>x</m>. Likewise, <m>x \in \cc{E}</m> if and only if there is a net in <m>E</m> that converges to <m>x</m>.</p>
+            </proposition>
+
+            <proof>
+                <p>If <m>x</m> is a limit point of <m>E</m>, then let <m>\N</m> be the set of neighborhoods of <m>x</m>, directed by reverse inclusion. For each <m>U \in \N</m>, choose an element <m>x_U \in (U\backslash\{x\})\cap E</m>. Then by definition, <m>x_U \to x</m>.</p>
+                <p>On the other hand, if <m>x_\alpha</m> is a net in <m>E\backslash\{x\}</m> and <m>x_\alpha \to x</m>, then for any neighborhood <m>U \in \N</m>, the punctured set <m>U\backslash\{x\}</m> contains some point in <m>x_\alpha</m>. Thus, <m>x</m> is a limit point of <m>E</m>.</p>
+                <p>The second statement follows from the definition and the observation that the closure of a set contains its limit points.</p>
+            </proof>
+
+            <p>We also get a net definition of continuity akin to the typical sequence definition.</p>
+
+            <proposition xml:id="prop-netcont">
+                <p>Let <m>\mathcal X, \mathcal Y</m> be topological spaces and <m>f: \mathcal X \to \mathcal Y</m>. The function <m>f</m> is continuous at <m>x \in \mathcal X</m> if and only if for every net <m>\net{x_\alpha}</m> converging to <m>x</m>, the net <m>\net{f(x_\alpha)}</m> converges to <m>f(x)</m>.</p>
+            </proposition>
+
+            <proof>
+                <p>Suppose that <m>f</m> is continuous at <m>x</m>. Then for a neighborhood <m>V</m> of <m>f(x)</m>, <m>f\inv(V)</m> is a neighborhood of <m>x</m>. Now suppose that a net <m>x_\alpha</m> converges to <m>x</m>. By definition, <m>x_\alpha</m> must eventually be in <m>f\inv(V)</m>, which implies that <m>\net{f(x_\alpha)}</m> is eventually in <m>V</m>. But this means that <m>f(x_\alpha) \to f(x)</m>, as the choice of <m>V</m> was arbitrary.</p>
+            </proof>
+
+            <p>Finally, we'll state a net version of the theorem for sequences that states that sequential cluster points have convergent subsequences - be careful with this one, because a subnet it isn't quite the direct analogy that it appears to be.</p>
+
+            <aside><title>Subnets</title>
+            <p>There are at least three non-equivalent definitions of subnet. Despite the complications, the idea is generally the same - to recover as many theorems involving convergent sequences as possible. To see more explanation, see <url href="https://en.wikipedia.org/wiki/Subnet_(mathematics)">the article on subnets</url> on Wikipedia.
+            </p>
+            </aside>
+
+            <definition xml:id="def-subnet">
+                <p>A <term>subnet</term> of a net <m>\net{x_\alpha}_{\alpha \in \mathcal A}</m> is a net <m>\net{y_\beta}_{\beta \in \mathcal B}</m> and a map <m>\beta \mapsto \alpha_\beta</m> from <m>\mathcal B \to \mathcal A</m> such that the following hold:
+                <ul>
+                    <li> For every <m>\alpha_0 \in \mathcal A</m> there exists <m>\beta_0 \in \mathcal B</m> such that <m>\alpha_\beta \succeq \alpha_0</m> whenever <m>\beta \succeq \beta_0</m>.</li>
+                    <li><m>y_\beta = x_{\alpha_\beta}</m></li>
+                </ul> </p>
+            </definition>
+
+            <p>If <m>\net{x_\alpha}</m> converges to a point <m>x</m>, then so too must any subnet <m>\net{x_{\alpha_\beta}}</m></p>
+
+            <proposition xml:id="prop-subnet-cluster">
+                <p>If <m>\net{x_\alpha}</m> is a net in <m>\mathcal X</m> then <m>x</m> is a cluster point of <m>x_\alpha</m> if and only if there is a subnet of <m>x_\alpha</m> converging to <m>x</m>.
+                </p>
+            </proposition>
+
+            <proof> <p>Suppose that <m>\net{x_\alpha}</m> has a subnet <m>\net{y_\beta} = \net{x_{\alpha_\beta}}</m> converging to <m>x</m>. Let <m>U</m> be a neighborhood of <m>x</m>. Now choose <m>\beta_1</m> so that <m>y_{\beta} \in U</m> whenever <m>{\beta} \succeq \beta_1</m> (which we can do by convergence). For a given <m>\alpha</m>, choose <m>\beta_2</m> so that <m>\alpha_{\beta} \succeq \alpha</m> for <m>\beta \succeq \beta_2</m> (which we can do by the definition of a subnet). Since <m>\mathcal B</m> is a directed set, choose <m>\beta \in \mathcal B</m> so that <m>\beta \succeq \beta_1</m> and <m>\beta \succeq \beta_2</m>. Then <m>\alpha_\beta \succeq \alpha</m> and <m>x_{\alpha_\beta} = y_\beta \in U</m>. That is, <m>x_{\alpha}</m> is frequently in <m>U</m>, and so <m>x</m> is a cluster point of <m>\net{x_\alpha}</m>.</p>
+
+            <p>In the other direction, if <m>x</m> is a cluster point of <m>\net{x_\alpha}</m>, the idea will be to use the neighborhoods at <m>x</m> as the index. Let <m>\mathcal N</m> be the neighborhoods of <m>x</m>. Construct the product of directed sets <m>\mathcal N \times \mathcal A</m> with the relation <m>(U, \alpha) \preceq (U_1, \alpha_1)</m> when <m>U \supset U_1</m> and <m>\alpha \preceq \alpha_1</m>. Then using the upper bound property, for each <m>(U, \beta) \in \mathcal N \times \mathcal A</m>, we can choose <m>\alpha_{(U, \beta)}</m> such that <m>\alpha_{(U, \beta)} \succeq \beta</m> and <m>x_{\alpha_{(U, \beta)}} \in U</m>. If <m>{(U', \beta')} \succeq (U, \beta)</m>, we have <me>\alpha_{{(U', \beta')}} \succeq {\beta'} \succeq \beta</me> and <me> x_{\alpha_{{(U', \beta')}}} \in {U'} \subset U</me>. Thus <m>\net{x_{\alpha_{{(U, \beta)}}}}</m> is a subnet of <m>\net{x_\alpha}</m> that converges to <m>x</m>.</p>
+            </proof>
+        </section>
+
+        <section><title>Compact spaces</title>
+        <p>Now we'll take a look at how compactness and related results generalize to topological spaces.</p>
+
+        <definition xml:id="def-compact">
+            <p>Let <m>\X</m> be a topological space.
+            <ul> 
+                <li><m>\X</m> is <term>compact</term> if every open cover of <m>\X</m> has a finite subcover. That is, given a collection of open sets so that <m>\X = \bigcup_{\alpha \in \mathcal A} U_\alpha</m>, there is a finite subset <m>\mathcal B</m> of <m>\mathcal A</m> so that <m>X = \bigcup_{\alpha \in \mathcal B} U_\alpha</m>. </li>
+                <li>A subset <m>Y</m> of a topological space is <term>compact</term> if it is compact in the relative topology. That is, <m>Y \subset \X</m> is compact if and only if for every collection of open sets in <m>\X</m> with <m>Y \subset \bigcup_{\alpha \in \mathcal A}</m>, there is a finite subset <m>\mathcal B</m> of <m>\mathcal A</m> so that <m>Y \subset \bigcup_{\alpha \in \mathcal B} U_\alpha</m>.</li>
+                <li>A set <m>Y \subset \X</m> is called <term>precompact</term> if its closure is compact.</li>
+            </ul>
+            </p>
+        </definition>
+
+        <p>One useful characterization of compactness is in terms of closed sets. A family of sets <m>\{F_\alpha\}_{\alpha \in \mathcal A}</m> has the <term>finite intersection property</term> if <m>\bigcap_{\alpha \in \mathcal B} \neq \emptyset</m> for any finite subset <m>\mathcal B</m> of <m>\mathcal A</m>.</p>
+
+        <proposition xml:id="prop-fip">
+            <p>A topological space is compact if and only if <m>\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset</m> for every family of sets <m>\{F_\alpha\}_{\alpha \in \A}</m> with the finite intersection property. </p>
+        </proposition>
+        <proof>
+            <p>Suppose a family of closed sets <m>\{F_\alpha\}</m> is given. Let <m>\{U_\alpha\}</m> be the family of open sets given by <m>U_\alpha = (F_\alpha)^c</m>. By construction, <m>\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset</m> if and only if <m>\bigcup_{\alpha \in \A} U_\alpha \neq \X</m>. Also, <m>\{F_\alpha\}</m> has the finite intersection property if and only if no finite subfamily of <m>\{U_\alpha\}</m> covers <m>\X</m>.</p>
+        </proof>
+
+        <proposition xml:id="prop-closedcpt">
+            <p>A closed subset of a compact space is compact.</p>
+        </proposition>
+
+        <proposition xml:id="prop-cpt-separation">
+            <p>Let <m>\X</m> be a Hausdorff space. If <m>F \subset \X</m> is compact and <m>x \notin F</m> then there exist disjoint open sets <m>U, V</m> so that <m>F \subset U</m> and <m>x \in V</m>.</p>
+        </proposition>
+
+        <proposition xml:id="prop-cptclosed">
+            <p>Every compact subset of a Hausdorff space <m>\X</m> is closed.</p>
+        </proposition>
+
+        <proposition xml:id="prop-cptnormal">
+            <p>Every compact Hausdorff space is normal.</p>.
+        </proposition>
+
+        <proposition xml:id="prop-contcpt">
+            <p>If <m>\X</m> is compact and <m>f:\X \to \Y</m> is continuous, then <m>f(X)</m> is compact.</p>
+        </proposition>
+
+        <p>These properties of compact spaces give a Bolzano-Weierstrass theorem in this setting (with nets replacing sequences, of course).</p>
+
+        <theorem xml:id="thm-cptbolz">
+            <p>If <m>\X</m> is a topological space, the following are equivalent:
+            <ol>
+                <li> <m>\X</m> is compact.</li>
+                <li>Every net in <m>\X</m> has a cluster point.</li>
+                <li>Every net in <m>\X</m> has a convergent subnet.</li>
+                </ol>
+            </p>
+        </theorem>
+        <proof>
+            <p>We have already shown the equivalence of cluster points and convergent subnets in <xref ref="prop-subnet-cluster"/>.</p>
+        </proof>
+
+        </section>
+    </chapter>
+
+    <chapter><title>Locally convex spaces</title>
+        <introduction><p>The move from basic to advanced functional analysis in part comes from generalizing the sorts of spaces that we can work on. The appropriate setting for working in weak topologies in Banach spaces is that of <em>locally convex spaces</em>, which are topological generalizations of Banach spaces.</p></introduction>
+        <section><title>Locally convex spaces</title>
+        <p>We being by introducting a special class of vector spaces that are well-suited for analysis. Since we typically want to consider questions of convergence and continuity, we require our vector spaces to come equipped with a topological structure.</p>
+        <definition xml:id="def-tvs">
+            <p>A topological vector space (TVS) is a vector space <m>\mathcal{X}</m> over a field <m>\mathbb{F}</m> and a topology <m>\mathcal{T}</m> so that
+            <ol>
+                <li>addition is continuous - that is, the map <m>(x, y)\mapsto x + y</m> is continuous.</li>
+                <li>scalar multiplication is continuous - that is, the map <m>(\alpha, x)\mapsto \alpha x</m> is continuous.</li>
+            </ol>
+            </p>
+        </definition>
+
+        Topological vector spaces include normed spaces (and thus inner product spaces). The other big feature of Euclidean space that we'd like to lift into the general setting is the notion of convexity.
+
+        <definition xml:id="def-lcs">
+            <p>A locally convex space (LCS) is a TVS with the property that there is a base of the topology consisting of convex sets</p>
+        </definition>
+
+         One way to create such spaces is by way of seminorms (norm-like functions that may send non-zero vectors to 0).
+
+        <definition xml:id="def-seminorm">
+            <p>A seminorm is a real-valued function <m>p:\mathcal{X} \to \R</m> satisfying the following properties:
+            <ol>
+                <li>Triangle inequality: <me>\forall x, y \in \mathcal{X}, p(x + y) \leq p(x) + p(y)</me></li>
+                <li>Homogeneity: <me> \forall \alpha \in \mathbb{F}, x \in \mathcal{X}, p(\alpha x) = \abs{\alpha}p(x)</me></li>
+                <li>Non-negativity: <me>p(x) \geq 0 \,\,\,\forall x \in \mathcal{X}</me></li>
+            </ol>
+            </p>
+        </definition>
+
+
+        <p>The basic idea is to use the <q>balls</q> defined by the seminorms to generate the topology.</p>
+
+        <theorem xml:id="thm-semiballs">
+            <p></p>
+        </theorem>
+
+
+
+
+
+        </section>
+    </chapter>
+
+
+
+</book>
+
+</pretext>
