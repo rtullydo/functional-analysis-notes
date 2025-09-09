@@ -2,7 +2,7 @@
 <html lang="en-US">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*       on 2022-03-30T12:45:54-07:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -14,20 +14,16 @@
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="ignore-math">
-<h4 class="heading"><span class="type">Paragraph</span></h4>
-<p>If <span class="process-math">\(T\)</span> is the zero operator, then we're done. If <span class="process-math">\(T \neq 0\text{,}\)</span> there exists a sequence of unit vectors <span class="process-math">\(h_n\)</span> so that</p>
+<h3 class="heading"><span class="type">Paragraph</span></h3>
+<p>The hypotheses imply that there exists a sequence of unit vectors <span class="process-math">\(h_n\)</span> so that <span class="process-math">\(\norm{(T - \la)h_n} \to 0\text{.}\)</span> By compactness, this sequence has a subsequence <span class="process-math">\(h_{n_k}\)</span> and a vector <span class="process-math">\(f\)</span> so that <span class="process-math">\(\norm{Th_{n_k} - f}\to 0\text{.}\)</span> Combining these two facts, we can use an algebra trick to get</p>
 <div class="displaymath process-math">
-\begin{equation*}
-\abs{\ip{T h_n}{h_n}} \to \norm{T}.
-\end{equation*}
+\begin{align*}
+h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})\\
+\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] \\
+\amp\to \la\inv[0 + f] = \la\inv f.
+\end{align*}
 </div>
-<p class="continuation">A limit point argument produces a subsequence <span class="process-math">\(h_n\)</span> so that</p>
-<div class="displaymath process-math">
-\begin{equation*}
-\ip{T h_n}{h_n} \to \la
-\end{equation*}
-</div>
-<p class="continuation">where <span class="process-math">\(\abs{\la} = \norm{T}\text{.}\)</span></p>
+<p class="continuation">Since the <span class="process-math">\(h_n\)</span> are unit vectors, so is any limit point of the sequence, and so <span class="process-math">\(1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}\text{,}\)</span> and so <span class="process-math">\(\norm{f} \neq 0\text{.}\)</span> Furthermore, <span class="process-math">\(T h_{n_k} \to \la\inv Tf\text{.}\)</span> Since we also have <span class="process-math">\(T h_{n_k} \to f\text{,}\)</span> it must be that <span class="process-math">\(f = \la\inv T f\text{,}\)</span> or rather that <span class="process-math">\(T f = \la f\text{.}\)</span> That is, <span class="process-math">\(f\neq 0\text{,}\)</span> <span class="process-math">\(f \in \ker(T - \la)\text{,}\)</span> which gives that <span class="process-math">\(\la \in \sigma_p(T)\text{.}\)</span></p>
 <span class="incontext"><a href="section-3.html#p-52">in-context</a></span>
 </body>
 </html>

@@ -1,0 +1,1122 @@
+%********************************************%
+%*       Generated from PreTeXt source      *%
+%*       on 2022-03-30T12:32:00-07:00       *%
+%*   A recent stable commit (2020-08-09):   *%
+%* 98f21740783f166a773df4dc83cab5293ab63a4a *%
+%*                                          *%
+%*         https://pretextbook.org          *%
+%*                                          *%
+%********************************************%
+%% We elect to always write snapshot output into <job>.dep file
+\RequirePackage{snapshot}
+\documentclass[oneside,10pt,]{book}
+%% Custom Preamble Entries, early (use latex.preamble.early)
+%% Default LaTeX packages
+%%   1.  always employed (or nearly so) for some purpose, or
+%%   2.  a stylewriter may assume their presence
+\usepackage{geometry}
+%% Some aspects of the preamble are conditional,
+%% the LaTeX engine is one such determinant
+\usepackage{ifthen}
+%% etoolbox has a variety of modern conveniences
+\usepackage{etoolbox}
+\usepackage{ifxetex,ifluatex}
+%% Raster graphics inclusion
+\usepackage{graphicx}
+%% Color support, xcolor package
+%% Always loaded, for: add/delete text, author tools
+%% Here, since tcolorbox loads tikz, and tikz loads xcolor
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table}{xcolor}
+\usepackage{xcolor}
+%% begin: defined colors, via xcolor package, for styling
+%% end: defined colors, via xcolor package, for styling
+%% Colored boxes, and much more, though mostly styling
+%% skins library provides "enhanced" skin, employing tikzpicture
+%% boxes may be configured as "breakable" or "unbreakable"
+%% "raster" controls grids of boxes, aka side-by-side
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{raster}
+%% We load some "stock" tcolorbox styles that we use a lot
+%% Placement here is provisional, there will be some color work also
+%% First, black on white, no border, transparent, but no assumption about titles
+\tcbset{ bwminimalstyle/.style={size=minimal, boxrule=-0.3pt, frame empty,
+colback=white, colbacktitle=white, coltitle=black, opacityfill=0.0} }
+%% Second, bold title, run-in to text/paragraph/heading
+%% Space afterwards will be controlled by environment,
+%% independent of constructions of the tcb title
+%% Places \blocktitlefont onto many block titles
+\tcbset{ runintitlestyle/.style={fonttitle=\blocktitlefont\upshape\bfseries, attach title to upper} }
+%% Spacing prior to each exercise, anywhere
+\tcbset{ exercisespacingstyle/.style={before skip={1.5ex plus 0.5ex}} }
+%% Spacing prior to each block
+\tcbset{ blockspacingstyle/.style={before skip={2.0ex plus 0.5ex}} }
+%% xparse allows the construction of more robust commands,
+%% this is a necessity for isolating styling and behavior
+%% The tcolorbox library of the same name loads the base library
+\tcbuselibrary{xparse}
+%% The tcolorbox library loads TikZ, its calc package is generally useful,
+%% and is necessary for some smaller documents that use partial tcolor boxes
+%% See:  https://github.com/rbeezer/mathbook/issues/1624
+\usetikzlibrary{calc}
+%% Hyperref should be here, but likes to be loaded late
+%%
+%% Inline math delimiters, \(, \), need to be robust
+%% 2016-01-31:  latexrelease.sty  supersedes  fixltx2e.sty
+%% If  latexrelease.sty  exists, bugfix is in kernel
+%% If not, bugfix is in  fixltx2e.sty
+%% See:  https://tug.org/TUGboat/tb36-3/tb114ltnews22.pdf
+%% and read "Fewer fragile commands" in distribution's  latexchanges.pdf
+\IfFileExists{latexrelease.sty}{}{\usepackage{fixltx2e}}
+%% Footnote counters and part/chapter counters are manipulated
+%% April 2018:  chngcntr  commands now integrated into the kernel,
+%% but circa 2018/2019 the package would still try to redefine them,
+%% so we need to do the work of loading conditionally for old kernels.
+%% From version 1.1a,  chngcntr  should detect defintions made by LaTeX kernel.
+\ifdefined\counterwithin
+\else
+    \usepackage{chngcntr}
+\fi
+%% Text height identically 9 inches, text width varies on point size
+%% See Bringhurst 2.1.1 on measure for recommendations
+%% 75 characters per line (count spaces, punctuation) is target
+%% which is the upper limit of Bringhurst's recommendations
+\geometry{letterpaper,total={340pt,9.0in}}
+%% Custom Page Layout Adjustments (use latex.geometry)
+%% This LaTeX file may be compiled with pdflatex, xelatex, or lualatex executables
+%% LuaTeX is not explicitly supported, but we do accept additions from knowledgeable users
+%% The conditional below provides  pdflatex  specific configuration last
+%% begin: engine-specific capabilities
+\ifthenelse{\boolean{xetex} \or \boolean{luatex}}{%
+%% begin: xelatex and lualatex-specific default configuration
+\ifxetex\usepackage{xltxtra}\fi
+%% realscripts is the only part of xltxtra relevant to lualatex 
+\ifluatex\usepackage{realscripts}\fi
+%% end:   xelatex and lualatex-specific default configuration
+}{
+%% begin: pdflatex-specific default configuration
+%% We assume a PreTeXt XML source file may have Unicode characters
+%% and so we ask LaTeX to parse a UTF-8 encoded file
+%% This may work well for accented characters in Western language,
+%% but not with Greek, Asian languages, etc.
+%% When this is not good enough, switch to the  xelatex  engine
+%% where Unicode is better supported (encouraged, even)
+\usepackage[utf8]{inputenc}
+%% end: pdflatex-specific default configuration
+}
+%% end:   engine-specific capabilities
+%%
+%% Fonts.  Conditional on LaTex engine employed.
+%% Default Text Font: The Latin Modern fonts are
+%% "enhanced versions of the [original TeX] Computer Modern fonts."
+%% We use them as the default text font for PreTeXt output.
+%% Automatic Font Control
+%% Portions of a document, are, or may, be affected by defined commands
+%% These are perhaps more flexible when using  xelatex  rather than  pdflatex
+%% The following definitions are meant to be re-defined in a style, using \renewcommand
+%% They are scoped when employed (in a TeX group), and so should not be defined with an argument
+\newcommand{\divisionfont}{\relax}
+\newcommand{\blocktitlefont}{\relax}
+\newcommand{\contentsfont}{\relax}
+\newcommand{\pagefont}{\relax}
+\newcommand{\tabularfont}{\relax}
+\newcommand{\xreffont}{\relax}
+\newcommand{\titlepagefont}{\relax}
+%%
+\ifthenelse{\boolean{xetex} \or \boolean{luatex}}{%
+%% begin: font setup and configuration for use with xelatex
+%% Generally, xelatex is necessary for non-Western fonts
+%% fontspec package provides extensive control of system fonts,
+%% meaning *.otf (OpenType), and apparently *.ttf (TrueType)
+%% that live *outside* your TeX/MF tree, and are controlled by your *system*
+%% (it is possible that a TeX distribution will place fonts in a system location)
+%%
+%% The fontspec package is the best vehicle for using different fonts in  xelatex
+%% So we load it always, no matter what a publisher or style might want
+%%
+\usepackage{fontspec}
+%%
+%% begin: xelatex main font ("font-xelatex-main" template)
+%% Latin Modern Roman is the default font for xelatex and so is loaded with a TU encoding
+%% *in the format* so we can't touch it, only perhaps adjust it later
+%% in one of two ways (then known by NFSS names such as "lmr")
+%% (1) via NFSS with font family names such as "lmr" and "lmss"
+%% (2) via fontspec with commands like \setmainfont{Latin Modern Roman}
+%% The latter requires the font to be known at the system-level by its font name,
+%% but will give access to OTF font features through optional arguments
+%% https://tex.stackexchange.com/questions/470008/
+%% where-and-how-does-fontspec-sty-specify-the-default-font-latin-modern-roman
+%% http://tex.stackexchange.com/questions/115321
+%% /how-to-optimize-latin-modern-font-with-xelatex
+%%
+%% end:   xelatex main font ("font-xelatex-main" template)
+%% begin: xelatex mono font ("font-xelatex-mono" template)
+%% (conditional on non-trivial uses being present in source)
+%% end:   xelatex mono font ("font-xelatex-mono" template)
+%% begin: xelatex font adjustments ("font-xelatex-style" template)
+%% end:   xelatex font adjustments ("font-xelatex-style" template)
+%%
+%% Extensive support for other languages
+\usepackage{polyglossia}
+%% Set main/default language based on pretext/@xml:lang value
+%% document language code is "en-US", US English
+%% usmax variant has extra hypenation
+\setmainlanguage[variant=usmax]{english}
+%% Enable secondary languages based on discovery of @xml:lang values
+%% Enable fonts/scripts based on discovery of @xml:lang values
+%% Western languages should be ably covered by Latin Modern Roman
+%% end:   font setup and configuration for use with xelatex
+}{%
+%% begin: font setup and configuration for use with pdflatex
+%% begin: pdflatex main font ("font-pdflatex-main" template)
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+%% end:   pdflatex main font ("font-pdflatex-main" template)
+%% begin: pdflatex mono font ("font-pdflatex-mono" template)
+%% (conditional on non-trivial uses being present in source)
+%% end:   pdflatex mono font ("font-pdflatex-mono" template)
+%% begin: pdflatex font adjustments ("font-pdflatex-style" template)
+%% end:   pdflatex font adjustments ("font-pdflatex-style" template)
+%% end:   font setup and configuration for use with pdflatex
+}
+%% Micromanage spacing, etc.  The named "microtype-options"
+%% template may be employed to fine-tune package behavior
+\usepackage{microtype}
+%% Symbols, align environment, commutative diagrams, bracket-matrix
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+%% allow page breaks within display mathematics anywhere
+%% level 4 is maximally permissive
+%% this is exactly the opposite of AMSmath package philosophy
+%% there are per-display, and per-equation options to control this
+%% split, aligned, gathered, and alignedat are not affected
+\allowdisplaybreaks[4]
+%% allow more columns to a matrix
+%% can make this even bigger by overriding with  latex.preamble.late  processing option
+\setcounter{MaxMatrixCols}{30}
+%%
+%%
+%% Division Titles, and Page Headers/Footers
+%% titlesec package, loading "titleps" package cooperatively
+%% See code comments about the necessity and purpose of "explicit" option.
+%% The "newparttoc" option causes a consistent entry for parts in the ToC 
+%% file, but it is only effective if there is a \titleformat for \part.
+%% "pagestyles" loads the  titleps  package cooperatively.
+\usepackage[explicit, newparttoc, pagestyles]{titlesec}
+%% The companion titletoc package for the ToC.
+\usepackage{titletoc}
+%% Fixes a bug with transition from chapters to appendices in a "book"
+%% See generating XSL code for more details about necessity
+\newtitlemark{\chaptertitlename}
+%% begin: customizations of page styles via the modal "titleps-style" template
+%% Designed to use commands from the LaTeX "titleps" package
+%% Plain pages should have the same font for page numbers
+\renewpagestyle{plain}{%
+\setfoot{}{\pagefont\thepage}{}%
+}%
+%% Single pages as in default LaTeX
+\renewpagestyle{headings}{%
+\sethead{\pagefont\slshape\MakeUppercase{\ifthechapter{\chaptertitlename\space\thechapter.\space}{}\chaptertitle}}{}{\pagefont\thepage}%
+}%
+\pagestyle{headings}
+%% end: customizations of page styles via the modal "titleps-style" template
+%%
+%% Create globally-available macros to be provided for style writers
+%% These are redefined for each occurence of each division
+\newcommand{\divisionnameptx}{\relax}%
+\newcommand{\titleptx}{\relax}%
+\newcommand{\subtitleptx}{\relax}%
+\newcommand{\shortitleptx}{\relax}%
+\newcommand{\authorsptx}{\relax}%
+\newcommand{\epigraphptx}{\relax}%
+%% Create environments for possible occurences of each division
+%% Environment for a PTX "chapter" at the level of a LaTeX "chapter"
+\NewDocumentEnvironment{chapterptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Chapter}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\chapter[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "section" at the level of a LaTeX "section"
+\NewDocumentEnvironment{sectionptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Section}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\section[{#3}]{#1}%
+\label{#6}%
+}{}%
+%% Environment for a PTX "subsection" at the level of a LaTeX "subsection"
+\NewDocumentEnvironment{subsectionptx}{mmmmmm}
+{%
+\renewcommand{\divisionnameptx}{Subsection}%
+\renewcommand{\titleptx}{#1}%
+\renewcommand{\subtitleptx}{#2}%
+\renewcommand{\shortitleptx}{#3}%
+\renewcommand{\authorsptx}{#4}%
+\renewcommand{\epigraphptx}{#5}%
+\subsection[{#3}]{#1}%
+\label{#6}%
+}{}%
+%%
+%% Styles for six traditional LaTeX divisions
+\titleformat{\part}[display]
+{\divisionfont\Huge\bfseries\centering}{\divisionnameptx\space\thepart}{30pt}{\Huge#1}
+[{\Large\centering\authorsptx}]
+\titleformat{\chapter}[display]
+{\divisionfont\huge\bfseries}{\divisionnameptx\space\thechapter}{20pt}{\Huge#1}
+[{\Large\authorsptx}]
+\titleformat{name=\chapter,numberless}[display]
+{\divisionfont\huge\bfseries}{}{0pt}{#1}
+[{\Large\authorsptx}]
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titleformat{\section}[hang]
+{\divisionfont\Large\bfseries}{\thesection}{1ex}{#1}
+[{\large\authorsptx}]
+\titleformat{name=\section,numberless}[block]
+{\divisionfont\Large\bfseries}{}{0pt}{#1}
+[{\large\authorsptx}]
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titleformat{\subsection}[hang]
+{\divisionfont\large\bfseries}{\thesubsection}{1ex}{#1}
+[{\normalsize\authorsptx}]
+\titleformat{name=\subsection,numberless}[block]
+{\divisionfont\large\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsubsection}[hang]
+{\divisionfont\normalsize\bfseries}{\thesubsubsection}{1em}{#1}
+[{\small\authorsptx}]
+\titleformat{name=\subsubsection,numberless}[block]
+{\divisionfont\normalsize\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\paragraph}[hang]
+{\divisionfont\normalsize\bfseries}{\theparagraph}{1em}{#1}
+[{\small\authorsptx}]
+\titleformat{name=\paragraph,numberless}[block]
+{\divisionfont\normalsize\bfseries}{}{0pt}{#1}
+[{\normalsize\authorsptx}]
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5em}
+%%
+%% Styles for five traditional LaTeX divisions
+\titlecontents{part}%
+[0pt]{\contentsmargin{0em}\addvspace{1pc}\contentsfont\bfseries}%
+{\Large\thecontentslabel\enspace}{\Large}%
+{}%
+[\addvspace{.5pc}]%
+\titlecontents{chapter}%
+[0pt]{\contentsmargin{0em}\addvspace{1pc}\contentsfont\bfseries}%
+{\large\thecontentslabel\enspace}{\large}%
+{\hfill\bfseries\thecontentspage}%
+[\addvspace{.5pc}]%
+\dottedcontents{section}[3.8em]{\contentsfont}{2.3em}{1pc}%
+\dottedcontents{subsection}[6.1em]{\contentsfont}{3.2em}{1pc}%
+\dottedcontents{subsubsection}[9.3em]{\contentsfont}{4.3em}{1pc}%
+%%
+%% Begin: Semantic Macros
+%% To preserve meaning in a LaTeX file
+%%
+%% \mono macro for content of "c", "cd", "tag", etc elements
+%% Also used automatically in other constructions
+%% Simply an alias for \texttt
+%% Always defined, even if there is no need, or if a specific tt font is not loaded
+\newcommand{\mono}[1]{\texttt{#1}}
+%%
+%% Following semantic macros are only defined here if their
+%% use is required only in this specific document
+%%
+%% Used for inline definitions of terms
+\newcommand{\terminology}[1]{\textbf{#1}}
+%% End: Semantic Macros
+%% Localize LaTeX supplied names (possibly none)
+\renewcommand*{\chaptername}{Chapter}
+%% Equation Numbering
+%% Controlled by  numbering.equations.level  processing parameter
+%% No adjustment here implies document-wide numbering
+\numberwithin{equation}{section}
+%% Footnote Numbering
+%% Specified by numbering.footnotes.level
+%% Undo counter reset by chapter for a book
+\counterwithout{footnote}{chapter}
+\counterwithin*{footnote}{section}
+%% More flexible list management, esp. for references
+%% But also for specifying labels (i.e. custom order) on nested lists
+\usepackage{enumitem}
+%% hyperref driver does not need to be specified, it will be detected
+%% Footnote marks in tcolorbox have broken linking under
+%% hyperref, so it is necessary to turn off all linking
+%% It *must* be given as a package option, not with \hypersetup
+\usepackage[hyperfootnotes=false]{hyperref}
+%% configure hyperref's  \href{}{}  and  \nolinkurl  to match listings' inline verbatim
+\renewcommand\UrlFont{\small\ttfamily}
+%% Hyperlinking active in electronic PDFs, all links without surrounding boxes and blue
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+\hypersetup{pdftitle={Notes on functional analysis}}
+%% If you manually remove hyperref, leave in this next command
+%% This will allow LaTeX compilation, employing this no-op command
+\providecommand\phantomsection{}
+%% Division Numbering: Chapters, Sections, Subsections, etc
+%% Division numbers may be turned off at some level ("depth")
+%% A section *always* has depth 1, contrary to us counting from the document root
+%% The latex default is 3.  If a larger number is present here, then
+%% removing this command may make some cross-references ambiguous
+%% The precursor variable $numbering-maxlevel is checked for consistency in the common XSL file
+\setcounter{secnumdepth}{3}
+%%
+%% AMS "proof" environment is no longer used, but we leave previously
+%% implemented \qedhere in place, should the LaTeX be recycled
+\newcommand{\qedhere}{\relax}
+%%
+%% A faux tcolorbox whose only purpose is to provide common numbering
+%% facilities for most blocks (possibly not projects, 2D displays)
+%% Controlled by  numbering.theorems.level  processing parameter
+\newtcolorbox[auto counter, number within=section]{block}{}
+%%
+%% This document is set to number PROJECT-LIKE on a separate numbering scheme
+%% So, a faux tcolorbox whose only purpose is to provide this numbering
+%% Controlled by  numbering.projects.level  processing parameter
+\newtcolorbox[auto counter, number within=section]{project-distinct}{}
+%% A faux tcolorbox whose only purpose is to provide common numbering
+%% facilities for 2D displays which are subnumbered as part of a "sidebyside"
+\makeatletter
+\newtcolorbox[auto counter, number within=tcb@cnt@block, number freestyle={\noexpand\thetcb@cnt@block(\noexpand\alph{\tcbcounter})}]{subdisplay}{}
+\makeatother
+%%
+%% tcolorbox, with styles, for THEOREM-LIKE
+%%
+%% proposition: fairly simple numbered block/structure
+\tcbset{ propositionstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{proposition}[3]{title={{Proposition~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, propositionstyle, }
+%% theorem: fairly simple numbered block/structure
+\tcbset{ theoremstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{theorem}[3]{title={{Theorem~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, theoremstyle, }
+%% lemma: fairly simple numbered block/structure
+\tcbset{ lemmastyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox[use counter from=block]{lemma}[3]{title={{Lemma~\thetcbcounter\notblank{#1#2}{\space}{}\notblank{#1}{\space#1}{}\notblank{#2}{\space(#2)}{}}}, phantomlabel={#3}, breakable, parbox=false, after={\par}, fontupper=\itshape, lemmastyle, }
+%%
+%% tcolorbox, with styles, for DEFINITION-LIKE
+%%
+%% definition: fairly simple numbered block/structure
+\tcbset{ definitionstyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\lozenge\)}, } }
+\newtcolorbox[use counter from=block]{definition}[2]{title={{Definition~\thetcbcounter\notblank{#1}{\space\space#1}{}}}, phantomlabel={#2}, breakable, parbox=false, after={\par}, definitionstyle, }
+%%
+%% tcolorbox, with styles, for ASIDE-LIKE
+%%
+%% aside: fairly simple un-numbered block/structure
+\tcbset{ asidestyle/.style={bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, } }
+\newtcolorbox{aside}[2]{title={\notblank{#1}{#1}{}}, phantomlabel={#2}, breakable, parbox=false, asidestyle}
+%%
+%% xparse environments for introductions and conclusions of divisions
+%%
+%% introduction: in a structured division
+\NewDocumentEnvironment{introduction}{m}
+{\notblank{#1}{\noindent\textbf{#1}\space}{}}{\par\medskip}
+%%
+%% tcolorbox, with styles, for miscellaneous environments
+%%
+%% proof: title is a replacement
+\tcbset{ proofstyle/.style={bwminimalstyle, fonttitle=\blocktitlefont\itshape, attach title to upper, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\blacksquare\)},
+} }
+\newtcolorbox{proof}[2]{title={\notblank{#1}{#1}{Proof.}}, phantom={\hypertarget{#2}{}}, breakable, parbox=false, after={\par}, proofstyle }
+%% Graphics Preamble Entries
+%% If tikz has been loaded, replace ampersand with \amp macro
+%% extpfeil package for certain extensible arrows,
+%% as also provided by MathJax extension of the same name
+%% NB: this package loads mtools, which loads calc, which redefines
+%%     \setlength, so it can be removed if it seems to be in the 
+%%     way and your math does not use:
+%%     
+%%     \xtwoheadrightarrow, \xtwoheadleftarrow, \xmapsto, \xlongequal, \xtofrom
+%%     
+%%     we have had to be extra careful with variable thickness
+%%     lines in tables, and so also load this package late
+\usepackage{extpfeil}
+%% Custom Preamble Entries, late (use latex.preamble.late)
+%% Begin: Author-provided packages
+%% (From  docinfo/latex-preamble/package  elements)
+%% End: Author-provided packages
+%% Begin: Author-provided macros
+%% (From  docinfo/macros  element)
+%% Plus three from MBX for XML characters
+\DeclareMathOperator{\RE}{Re}
+  \DeclareMathOperator{\IM}{Im}
+  \DeclareMathOperator{\ess}{ess}
+  \DeclareMathOperator{\intr}{int}
+  \DeclareMathOperator{\dist}{dist}
+  \DeclareMathOperator{\dom}{dom}
+  \DeclareMathOperator{\diag}{diag}
+  \DeclareMathOperator{\span}{span}
+  \DeclareMathOperator{\null}{null}
+  \DeclareMathOperator{\rank}{rank}
+  \DeclareMathOperator{\col}{col}
+  \DeclareMathOperator{\cl}{cl}
+  \DeclareMathOperator{\row}{row}
+  \DeclareMathOperator{\proj}{proj}
+  \DeclareMathOperator{\ball}{ball}
+  \DeclareMathOperator\re{\mathrm {Re~}}
+  \DeclareMathOperator\im{\mathrm {Im~}}
+  
+  \newcommand\dd{\mathrm d}
+  \newcommand{\eps}{\varepsilon}
+  \newcommand{\To}{\longrightarrow}
+  \newcommand{\hilbert}{\mathcal{H}}
+  \newcommand{\s}{\mathcal{S}_2}
+  \newcommand{\A}{\mathcal{A}}
+  \newcommand\h{\mathcal{H}}
+  \newcommand{\J}{\mathcal{J}}
+  \newcommand{\M}{\mathcal{M}}
+  \newcommand{\F}{\mathbb{F}}
+  \newcommand{\K}{\mathcal{K}}
+  \newcommand{\N}{\mathcal{N}}
+  \newcommand{\T}{\mathbb{T}}
+  \newcommand{\W}{\mathcal{W}}
+  \newcommand{\X}{\mathcal{X}}
+  \newcommand{\Y}{\mathcal{Y}}
+  \newcommand{\D}{\mathbb{D}}
+  \newcommand{\C}{\mathbb{C}}
+  \newcommand{\BOP}{\mathbf{B}}
+  \newcommand{\Z}{\mathbb{Z}}
+  \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+  \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+  \newcommand{\pick}{\mathcal{P}_2}
+  \newcommand{\schur}{\mathcal{S}_2}
+  \newcommand{\R}{\mathbb{R}}
+  \newcommand{\Complex}{\mathbb{C}}
+  \newcommand{\Field}{\mathbb{F}}
+  \newcommand{\RPlus}{\Real^{+}}
+  \newcommand{\Polar}{\mathcal{P}_{\s}}
+  \newcommand{\Poly}{\mathcal{P}(E)}
+  \newcommand{\EssD}{\mathcal{D}}
+  \newcommand{\Lop}{\mathcal{L}}
+  \newcommand{\cc}[1]{\overline{#1}}
+  \newcommand{\abs}[1]{\left\vert#1\right\vert}
+  \newcommand{\set}[1]{\left\{#1\right\}}
+  \newcommand{\seq}[1]{\left\lt#1\right>}
+  \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+  \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+  \newcommand{\tr}{\operatorname{tr}}
+  \newcommand{\ran}[1]{\operatorname{ran}#1}
+  \newcommand{\nt}{\stackrel{\mathrm {nt}}{\to}}
+  \newcommand{\pnt}{\xrightarrow{pnt}}
+  \newcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+  \newcommand{\ad}{^\ast}
+  \newcommand{\inv}{^{-1}}
+  \newcommand{\adinv}{^{\ast -1}}
+  \newcommand{\invad}{^{-1 \ast}}
+  \newcommand\Pick{\mathcal P}
+  \newcommand\Ha{\mathbb{H}}
+  \newcommand{\HH}{\Ha\times\Ha}
+  \newcommand\Htau{\mathbb{H}(\tau)}
+  \newcommand{\vp}{\varphi}
+  \newcommand{\ph}{\varphi}
+  \newcommand\al{\alpha}
+  \newcommand\ga{\gamma}
+  \newcommand\de{\delta}
+  \newcommand\ep{\varepsilon}
+  \newcommand\la{\lambda}
+  \newcommand\up{\upsilon}
+  \newcommand\si{\sigma}
+  \newcommand\beq{\begin{equation}}
+  \newcommand\ds{\displaystyle}
+  \newcommand\eeq{\end{equation}}
+  \newcommand\df{\stackrel{\rm def}{=}}
+  \newcommand\ii{\mathrm i}
+  \newcommand\net[1]{\langle #1 \rangle}
+  \newcommand{\vectwo}[2]
+  {
+     \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+  }
+  \newcommand{\vecthree}[3]
+  {
+     \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+  }
+  \newcommand\blue{\color{blue}}
+  \newcommand\black{\color{black}}
+  \newcommand\red{\color{red}}
+  
+  \newcommand\nn{\nonumber}
+  \newcommand\bbm{\begin{bmatrix}}
+  \newcommand\ebm{\end{bmatrix}}
+  \newcommand\bpm{\begin{pmatrix}}
+  \newcommand\epm{\end{pmatrix}}
+  \numberwithin{equation}{section}
+  \newcommand\nin{\noindent}
+  \newcommand{\nCr}[2]{\,_{#1}C_{#2}} 
+  \newcommand{\vec}[1]{{\bf #1}}
+  \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
+  \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
+  \newcommand{\hz}{\,\mathrm{Hz}}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\newcommand{\amp}{&}
+%% End: Author-provided macros
+\begin{document}
+%% bottom alignment is explicit, since it normally depends on oneside, twoside
+\raggedbottom
+\frontmatter
+%% begin: half-title
+\thispagestyle{empty}
+{\titlepagefont\centering
+\vspace*{0.28\textheight}
+{\Huge Notes on functional analysis}\\}
+\clearpage
+%% end:   half-title
+%% begin: title page
+%% Inspired by Peter Wilson's "titleDB" in "titlepages" CTAN package
+\thispagestyle{empty}
+{\titlepagefont\centering
+\vspace*{0.14\textheight}
+%% Target for xref to top-level element is ToC
+\addtocontents{toc}{\protect\hypertarget{x:book:linanal}{}}
+{\Huge Notes on functional analysis}\\[3\baselineskip]
+{\Large Ryan Tully-Doyle}\\[0.5\baselineskip]
+{\Large Cal Poly, SLO}\\[3\baselineskip]
+{\Large March 30, 2022}\\}
+\clearpage
+%% end:   title page
+%% begin: copyright-page
+\thispagestyle{empty}
+\vspace*{\stretch{2}}
+\vspace*{\stretch{1}}
+\null\clearpage
+%% end:   copyright-page
+%% begin: table of contents
+%% Adjust Table of Contents
+\setcounter{tocdepth}{1}
+\renewcommand*\contentsname{Contents}
+\tableofcontents
+%% end:   table of contents
+\mainmatter
+%
+%
+\typeout{************************************************}
+\typeout{Chapter 1 The spectral theorem for compact operators}
+\typeout{************************************************}
+%
+\begin{chapterptx}{The spectral theorem for compact operators}{}{The spectral theorem for compact operators}{}{}{g:chapter:idm140000755581296}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.1 The spectral theorem in finite dimensions}
+\typeout{************************************************}
+%
+\begin{sectionptx}{The spectral theorem in finite dimensions}{}{The spectral theorem in finite dimensions}{}{}{g:section:idm140000755578832}
+The point of these notes is to generalize one of the most useful theorems in undergraduate linear algebra to a very general setting. Along the way, we'll look at some very modern developments in analysis and the study of spaces of functions.%
+\par
+Recall that a complex \(n \times n\) matrix \(A\) is called \terminology{normal} if \(A A\ad = A\ad A\) where \(\ast\) represents the conjugate transpose. The spectral theorem for normal matrices says that \(A\) can be \terminology{diagonalized} as%
+\begin{equation*}
+A = U D U\ad
+\end{equation*}
+where \(D\) is a diagonal matrix of eigenvalues of \(A\) and \(U\) is a unitary matrix of associated eigenvectors.%
+\par
+The big idea of diagonalization is that operators (maps represented by square matrices) can be understood by looking at their action on \terminology{invariant subspaces}, which are spaces that a matrix leaves ``pointing in the same direction''. This is a major simplification in the understanding of (normal) linear maps - every normal linear map is (up to a change of basis) scalar multiplication on orthogonal spaces.%
+\par
+A slightly more sophisticated way of presenting this idea is to use \terminology{projection operators}.%
+\begin{definition}{}{x:definition:def-finite-proj}%
+Let \(\hilbert\) be a finite dimensional Hilbert space, and \(V \subset \hilbert\) a linear subspace. Let \(\{v_1, \ldots, v_k\}\) be an orthonormal basis for \(V\). The \terminology{projection operator of \(\hilbert\) onto \(V\)}, denoted \(P_V\), is given by%
+\begin{equation*}
+P_V h = \sum_{i=1}^k \ip{h}{v_i} v_i \in V
+\end{equation*}
+%
+\end{definition}
+With this language, diagonalization becomes the decomposition of operators into sums of projections. That is, given an operator \(A\) on a (complex) finite dimensional Hilbert space \(\hilbert\), denote by \((\la_i, E_i)\) the \(i\)th eigenvalue and corresponding eigenspace. Recall that each eigenspace is \(E_i = \ker(A - \la_i)\). A normal matrix will always have \(\hilbert = \bigoplus_{i=1}^k E_i\) and we can write%
+\begin{equation}
+A = \sum_{i=1}^k \la_i P_{i}.\label{x:men:eq-finite-spec}
+\end{equation}
+where \(P_i\) is the projection operator onto \(\ker(A - \la_i)\).%
+\par
+A special case is that of hermitian matrices (that is, matrices that have the property that \(A = A\ad\)), in which case the eigenvalues of \(A\) are real.%
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.2 Projections and invariant subspaces}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Projections and invariant subspaces}{}{Projections and invariant subspaces}{}{}{g:section:idm140000756830672}
+The content of this section is motivated by the idea of eigenspaces in finite dimensions. Eigenspaces are invariant under the action of their operators (since they are mapped into themselves) and moreover, eigenspaces of distinct eigenvalues are orthogonal to each other. When we diagonalize, we're essentially pulling an operator apart into projections onto its eigenspaces. All of these ideas are useful in the Hilbert space setting.%
+\begin{definition}{}{x:definition:def-proj}%
+An operator \(E\) in \(\BH\) is called \terminology{idempotent} if \(E^2 = E\). An idempotent \(P\) is called a \terminology{projection} if \(\ker P = (\ran P)^\perp\).%
+\end{definition}
+Operators defined this way act precisely as you should expect - a projection produces the ``orthogonal'' piece of a general vector in \(\hilbert\) restricted to the subspace \(\ran P\). Of course, this must be made rigorous.%
+\begin{proposition}{}{}{x:proposition:prop-idem-proj}%
+Let \(E\) be a non-zero idempotent on \(\hilbert\). The following are equivalent:%
+\begin{enumerate}
+\item{}\(E\) is a projection.%
+\item{}\(E\) is the orthogonal projection of \(\hilbert\) onto \(\ran E\).%
+\item{}\(\norm{E} = 1\).%
+\item{}\(E\) is self-adjoint.%
+\item{}\(E\) is normal.%
+\item{}\(\ip{Eh}{h} \geq 0\) for all \(h \in \hilbert\).%
+\end{enumerate}
+%
+\end{proposition}
+The proof will be left as an exercise. (To be revisited in a future draft.)%
+\par
+As in finite dimensions, the range of a projection can be used to decompose a space. Let \(P\) be a projection with \(\ran P = \M\) and \(\ker P = \N\). Kernel and range are closed subspaces, and thus Hilbert spaces in their own right. Then construct the space \(\M \oplus \N\). It is straighforward that \(\M \oplus \N\) is isomorphic to \(\hilbert\), and in the usual abuse of notation, we'll just say \(\hilbert = \M \oplus \N\), or that \(\hilbert\) has been orthogonally decomposed.%
+\begin{definition}{}{x:definition:def-decomp}%
+If \(\M_i\) is a collection of pairwise orthogonal subspaces of \(\hilbert\), then set%
+\begin{equation*}
+\bigoplus_{i} \M_i = \bigvee_i \M_i.
+\end{equation*}
+%
+\par
+If \(\M, \N\) are closed linear subspaces of \(\hilbert\), then set the \terminology{orthogonal difference} of \(\M\) and \(\N\) to be%
+\begin{equation*}
+\M \ominus \N = \M \cap \N^\perp.
+\end{equation*}
+%
+\end{definition}
+Now we'll identify the sort of special spaces that can be used to pull operators apart.%
+\begin{definition}{}{x:definition:def-reducing}%
+If \(A \in \BH\) and \(\M\) is a closed linear subspace of \(\hilbert\), then we say \(\M\) is an \terminology{invariant subspace} of \(A\) if \(A\M \subseteq \M\). If in addition \(A \M^\perp \subseteq \M^\perp\), we say that \(\M\) \terminology{reduces} \(A\) or that \(\M\) is a \terminology{reducing subspace} of \(A\).%
+\end{definition}
+One of the nice consequences of the existence of an invariant or reducing subspace is that we get information about block operator representation of operators on \(\hilbert\). First, suppose that \(\hilbert = \M + \M^\perp\). Then any \(h \in \hilbert\) can be written as \(h = u + v\) where \(u \in \M\) and \(v \in \M^\perp\).So for \(A \in \BH\), we can think about the action of \(A\) on the components of \(\hilbert\) by%
+\begin{equation*}
+Ah = \bbm X \amp W \\ Z \amp Y \ebm \bpm u \\ v \epm,
+\end{equation*}
+where \(X \in \BOP(\M)\), \(W \in\BOP(\M^\perp, \M)\), \(Z \in  \BOP(\M, \M^\perp)\), and \(Y \in \BOP(\M^\perp)\).%
+\par
+In the representation above, if \(\M\) is invariant for \(A\), then \(Z\) must be 0. If \(\M\) is reducing for \(A\), then we get further that \(W = 0\). That is, a reducing subspace essentially diagonalizes an operator by reducing it to smaller operators.%
+\begin{proposition}{}{}{x:proposition:prop-block-reduce}%
+Suppose that \(A \in \BH\), \(\M\) is a closed linear subspace of \(\hilbert\)  and that \(P = P_{\M}\). The following are equivalent.%
+\begin{enumerate}
+\item{}\(\M\) is invariant for \(A\).%
+\item{}\(PAP = AP\).%
+\item{}The block \(Z\) as in the block representation above is the \(0\) operator.%
+\end{enumerate}
+%
+\par
+The following statemens are also equivalent.%
+\begin{enumerate}
+\item{}\(\M\) reduces \(A\).%
+\item{}\(PA = AP\).%
+\item{}In the block representation above, both \(W, Z\) are \(0\) operators.%
+\item{}\(\M\) is invariant for both \(A\) and \(A\ad\).%
+\end{enumerate}
+%
+\end{proposition}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.3 Compact operators}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Compact operators}{}{Compact operators}{}{}{g:section:idm140000755554832}
+The object of study in this section is essentially the most direct generalization of matrices to infinite dimensions, for reasons that will become apparent.%
+\begin{definition}{}{x:definition:def-compactop}%
+Suppose \(\hilbert\) is a Hilbert space. A linear map \(T: \hilbert \to \hilbert\) is \terminology{compact} if the image of the unit ball in \(\hilbert\) under \(T\), denoted \(T(\ball \hilbert)\), has compact closure in \(\hilbert\).%
+\end{definition}
+Denote by \(\BOP_0(\hilbert, \K)\) the set of compact operators from \(\hilbert\) to \(\K\), and \(\BOP_0(\hilbert) = \BOP_0(\hilbert, \hilbert)\).%
+\begin{proposition}{}{}{x:proposition:prop-compopbounded}%
+\(\BOP_0(\hilbert,\K) \subset \BOP(\hilbert, \K)\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755494576}
+Let \(T \in \BOP_0(\hilbert, \K)\). Since \(T(\ball \hilbert)\) is compact, there must exist a constant \(C\) so that \(T(\ball \hilbert) \subset B_\K(C) = \{k \in \K : \norm{k} \leq C\}\). But then \(\norm{T} \leq C\), and so \(T \in \BH\).%
+\end{proof}
+\begin{proposition}{}{}{x:proposition:prop-comp}%
+\(\BOP_0(\hilbert, \K)\) is a linear space.%
+\end{proposition}
+\begin{proposition}{}{}{x:proposition:prop-convcomp}%
+If \(T_n\) is a sequence in \(\BOP_0(\hilbert, \K)\) and \(T\) is an operator in \(\BOP(\hilbert, \K)\) such that \(\norm{T_n - T} \to 0\), then \(T\) is compact.%
+\end{proposition}
+\begin{proposition}{}{}{x:proposition:prop-compprod}%
+If \(A \in \BOP(\hilbert)\), \(B \in \BOP(\K)\), and \(T \in \BOP_0(\hilbert, \K)\), then \(TA\) and \(BT\) are compact.%
+\end{proposition}
+A special family of compact operators is even more restricted by the size of their ranges. Say that an operator is of \terminology{finite rank}, if \(\ran T\) is finite dimensional (that is, the closed linear span of a finite set of vectors). Let \(\BOP_{00}(\hilbert, \K)\) be the set of continuous finite rank operators. It is straightfoward that \(\BOP_{00}\) is a linear space and that \(\BOP_{00} \subset \BOP_0\). It turns out to be the case that compact operators are (norm) limits of operators of finite rank.%
+\begin{theorem}{}{}{x:theorem:thm-compapprox}%
+Let \(T \in \BOP(\hilbert, \K)\). The following are equivalent.%
+\begin{enumerate}
+\item{}\(T\) is compact.%
+\item{}\(T\ad\) is compact.%
+\item{}There is a sequence \(T_n\) of operators of finite rank such that \(\norm{T_n - T} \to 0\).%
+\end{enumerate}
+%
+\end{theorem}
+\begin{proof}{}{g:proof:idm140000755475968}
+First, note that \((3) \Rightarrow (1)\) follows from \hyperref[x:proposition:prop-convcomp]{Proposition~{\xreffont\ref{x:proposition:prop-convcomp}}}.%
+\par
+We will show that \((1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)\).%
+\par
+\((1) \Rightarrow (3)\): We use the fact that since \(T\) is compact, the closure of \(T(\ball \hilbert)\) contains a countable dense subset (one can construct this set using the fact that the image of the ball under \(T\) is totally bounded). Then \(\mathcal L = \cl \ran T\) is a separable subspace of \(\K\). Let \(\{e_j\}\) be a basis for \(\mathcal L\), and let \(P_n\) be the projection of \(\K\) onto the closed linear span of the first \(n\) basis vectors; that is, \(P_n\) is the projection onto \(\vee\{e_j: 1 \leq j \leq n\}\). Now set \(T_n = P_n T\). Each \(T_n\) is a finite rank operator.%
+\par
+We will show that \(\norm{T_n - T} \to 0\) by establishing a uniform bound on \(\norm{T_n h - T h}\) for \(\norm{h}\leq 1\). Choose \(\eps > 0\). By compactness, we can find a finite collection of vectors \(h_1, \ldots, h_m\) so that%
+\begin{equation*}
+T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
+\end{equation*}
+For \(h \in \ball \hilbert\), choose \(h_j\) so that \(\norm{Th - Th_j} \leq \eps/3\). Then for any \(n \in \N\),%
+\begin{align*}
+\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}\\
+\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.
+\end{align*}
+Now, we show that we can find \(n_0\) so that \(\norm{T_n h_j  - T h_j} \leq \eps/3\). Certainly \(Th_j \in \mathcal{L}\), and so can be expanded as \(Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k\). On the other hand,%
+\begin{equation*}
+T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k
+\end{equation*}
+Together, this gives \(\norm{T_n h_j - T h_j} \to 0\), and so the desired \(n_0\) exists. Since \(h\) was an arbitrary vector with \(\norm{h} \leq 1\), this bound is uniform, and so in the operator norm we have \(\norm{T_n - T} \to 0\).%
+\par
+\(3 \Rightarrow 2:\) Suppose that \(T_n\) is a sequence in \(\BOP_{00}(\hilbert, \K)\) with \(\norm{T_n - T} \to 0\). Then \(\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0\). But \(T_n\ad\) is also in \(\BOP_{00}(\hilbert, \K)\) (Exercise). Since \(3 \Rightarrow 1\), \(T\ad\) is compact.%
+\par
+\(2 \Rightarrow 1\): (Exercise)%
+\end{proof}
+We used an important convergence theorem about finite rank projections in the proof above, so we record the following corollary of the proof.%
+\begin{proposition}{}{}{x:proposition:prop-finrankzero}%
+If \(T \in \BOP_0(\hilbert, \K)\), then \(\cl \ran T\) is separable. If \(\{e_j\}\) is a basis for \(\cl \ran T\) and \(P_n\) is the projection of \(\K\) onto \(\vee\{e_j:1 \leq j\leq n\}\), then%
+\begin{equation*}
+\norm{P_n T - T} \to 0.
+\end{equation*}
+%
+\end{proposition}
+This allows a method for constructing compact operators, at least in separable Hilbert spaces, in a manner suggestive of finite dimensional eigenvalues.%
+\begin{proposition}{}{}{g:proposition:idm140000755445968}%
+Let \(\hilbert\) be a separable Hilbert space with basis \(\{e_j\}\). Let \(\{\alpha_n\}\) be a sequence in \(\mathbb{F}\) with \(M = \sup_n\{\abs{\alpha_n}\} \lt \infty\). Define an operator \(A\) on the basis \(\{e_j\}\)by \(A e_j = \alpha_j e_j\) for all \(j\). Then \(A\) extends by linearity to a bounded operator on \(\hilbert\) with \(\norm{A} = M\). The operator \(A\) is compact if and only if \(\alpha_n \to 0\).%
+\end{proposition}
+We are now ready to make explicit the apparent connection to eigenvalues of matrices acting on finite dimensional spaces.%
+\begin{definition}{}{x:definition:def-eigenthings}%
+Suppose that \(A \in \BH\). A scalar \(\alpha \in \mathbb{F}\) is called an \terminology{eigenvalue} of \(A\) if \(\ker(A - \alpha) \neq \{0\}\). A nonzero vector \(h\) in \(\ker(A - \alpha)\) is called an \terminology{eigenvector} of \(A\). We recover the usual relationship \(Ah = \alpha h\) for such a pair. Let \(\sigma_p(A)\) denote the set of eigenvalues of \(A\).%
+\end{definition}
+\begin{aside}{}{g:aside:idm140000755438736}%
+The \(p\) in the notation \(\sigma_p(A)\) refers to the \terminology{point spectrum} of more general operators, which we'll talk about later.%
+\end{aside}
+Unlike linear operators on finite dimensional spaces, compact operators need not possesses eigenvalues. The prototypical example is the \terminology{Volterra operator}.%
+\begin{proposition}{}{}{x:proposition:prop-volterra}%
+Let \(\hilbert = L^2[0,1]\). For \(t \in [0,1]\), let \(V:L^2 \to L^2\) be the operator%
+\begin{equation*}
+V(f)(x) = \int_0^x f(y) \, dy.
+\end{equation*}
+The operator \(V\) is compact. However, \(V\) has no eigenvalues.%
+\end{proposition}
+The whole thrust of our conversation is diagonalization of operators in terms of eigen-like structures, and here we've identified a compact operator that cannot be. It's worth asking why. Note that \(V\ad(f)(x) = \int_x^1 f(y) \, dy\); that is, \(V\) isn't self-adjoint (in fact, \(V\) is also not normal). Keep that in mind as we proceed.%
+\par
+If, however, a compact operator does have an eigenvalue, nice things happen.%
+\begin{proposition}{}{}{x:proposition:prop-finiteeig}%
+If \(T \in \BOP_0(\hilbert)\) and \(\la \in \sigma_p(T)\) with \(\la \neq 0\), then the eigenspace \(\ker(T - \la)\) is finite-dimensional.%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755421344}
+Proceed by contradiction. Suppose that \(\ker(T - \alpha)\) is infinite-dimensional and so contains an infinite orthonormal sequence. Because \(T\) is compact, \(Te_n\) has a convergent subsequence \(T_{e_{n_k}}\). Then as a sequence, \(\{T e_{n_k}\}\) is Cauchy. But for any \(n_k \neq n_j\),%
+\begin{equation*}
+\norm{T e_{n_k} - T e_{n_j}}^2 = \norm{\la e_{n_k} - \la e_{n_j}}^2 = 2\abs{\la}^2 > 0.
+\end{equation*}
+This contradicts the Cauchyness of \(\{T e_{n_k}\}\). We conclude that \(\ker(T - \alpha)\) is finite-dimensional.%
+\end{proof}
+\begin{proposition}{}{}{x:proposition:prop-compinf}%
+If \(T \in \BOP_0(\hilbert)\), \(\la \neq 0\), and \(\inf\{\norm{(T - \la)h}: \norm{h}=1\}=0\) then \(\la \in \sigma_p(T)\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755414048}
+The hypotheses imply that there exists a sequence of unit vectors \(h_n\) so that \(\norm{(T - \la)h_n} \to 0\). By compactness, this sequence has a subsequence \(h_{n_k}\) and a vector \(f\) so that \(\norm{Th_{n_k} - f}\to 0\). Combining these two facts, we can use an algebra trick to get%
+\begin{align*}
+h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})\\
+\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] \\
+\amp\to \la\inv[0 + f] = \la\inv f.
+\end{align*}
+Since the \(h_n\) are unit vectors, so is any limit point of the sequence, and so \(1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}\), and so \(\norm{f} \neq 0\). Furthermore, \(T h_{n_k} \to \la\inv Tf\). Since we also have \(T h_{n_k} \to f\), it must be that \(f = \la\inv T f\), or rather that \(T f = \la f\). That is, \(f\neq 0\), \(f \in \ker(T - \la)\), which gives that \(\la \in \sigma_p(T)\).%
+\end{proof}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 1.4 The spectral theorem for compact self-adjoint operators}
+\typeout{************************************************}
+%
+\begin{sectionptx}{The spectral theorem for compact self-adjoint operators}{}{The spectral theorem for compact self-adjoint operators}{}{}{g:section:idm140000755577536}
+\begin{introduction}{}%
+Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in \hyperref[x:men:eq-finite-spec]{({\xreffont\ref{x:men:eq-finite-spec}})}.%
+\begin{theorem}{}{}{x:theorem:thm-specsacomp}%
+Let \(T\) be a compact self-adjoint operator on a Hilbert space \(\hilbert\). Then \(T\) has only countable distinct eigenvalues. Enumerating the eigenvalues as \(\{\la_1, \la_2, \ldots\}\), let \(P_n\) denote the projection of \(\hilbert\) onto \(\ker(T - \la_n)\). Then \(P_nP_m = P_m P_n = 0\) when \(n \neq m\), each \(\la_n\) is real, and%
+\begin{equation*}
+T = \sum_{n=1}^\infty \la_n P_n,
+\end{equation*}
+where the sum converges in the norm of \(\BH\).%
+\end{theorem}
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Subsection 1.4.1 Proof of the spectral theorem for compact self-adjoint operators}
+\typeout{************************************************}
+%
+\begin{subsectionptx}{Proof of the spectral theorem for compact self-adjoint operators}{}{Proof of the spectral theorem for compact self-adjoint operators}{}{}{g:subsection:idm140000755395520}
+\begin{proposition}{}{}{x:proposition:prop-normal-reducing}%
+If \(A\) is a normal operator and \(\la \in \mathbb{F}\), then \(\ker(A - \la) = \ker(A - \la)\ad\) and \(\ker(A - \la)\) is a reducing subspace for \(A\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755393424}
+Since \(A\) is normal, it is easy to see that so must be \(A - \la\). By \mono{[provisional cross-reference: prop-normaladnorm]}, we have that \(\norm{(A - \la)h} = \norm{(A - \la)\ad h}\) for all \(h\). But then \(h \in \ker(A - \ad)\) if and only if \(h \in \ker(A - \la)\ad\).%
+\par
+If \(h \in \ker(A - \la)\), then \(Ah = \la h \in \ker(A - \la)\) and \(A\ad h = \cc\la h \in \ker(A - \la)\). We conclude that \(\ker(A - \la)\) is a reducing subspace for \(A\).%
+\end{proof}
+The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.%
+\begin{proposition}{}{}{x:proposition:prop-ortho-eigenspace}%
+If \(A\) is a normal operator and \(\la, \mu\) are distinct eigenvalues of \(A\) then \(\ker(A - \la)\perp \ker(A - \mu)\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755380992}
+Let \(h \in \ker(A - \la)\) and \(g \in \ker(A - \mu)\). By \hyperref[x:proposition:prop-normal-reducing]{Proposition~{\xreffont\ref{x:proposition:prop-normal-reducing}}}, we have that \(A\ad g = \cc\mu g\). Then%
+\begin{align*}
+\la\ip{h}{g} \amp=\ip{A h}{g}\\
+\amp= \ip{h}{A\ad g}\\
+\amp= \ip{h}{\cc\mu g}\\
+\amp= \mu\ip{h}{g}.
+\end{align*}
+Thus, \((\la - \mu)\ip{h}{g} = 0\). Since \(\la, \mu\) are distinct, we must have \(h\perp g\) and thus that \(\ker(A - \la) \perp \ker(A - \mu)\).%
+\end{proof}
+As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.%
+\begin{proposition}{}{}{x:proposition:prop-eigreal}%
+If \(A = A\ad\) and \(\la \in \sigma_p(A)\) then \(\la\) is a real number.%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755372432}
+If \(A h = \la h\) then \(A h = A \ad h = \cc{\la}h\) by \hyperref[x:proposition:prop-normal-reducing]{Proposition~{\xreffont\ref{x:proposition:prop-normal-reducing}}}. Equating the two expression for \(Ah\), we get%
+\begin{equation*}
+(\la - \cc\la)h = 0.
+\end{equation*}
+Choosing a non-zero \(h\) requires that \(\la - \cc\la = 0\), or \(\la = \cc\la\).%
+\end{proof}
+The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.%
+\begin{lemma}{}{}{x:lemma:lemma-compsa-norm-eig}%
+If \(T\) is a compact self-adjoint operator, then \(\norm{T}\) or \(-\norm{T}\) is an eigenvalue of \(T\).%
+\end{lemma}
+\begin{proof}{}{g:proof:idm140000755365024}
+If \(T\) is the zero operator, then we're done. If \(T \neq 0\), there exists a sequence of unit vectors \(h_n\) so that%
+\begin{equation*}
+\abs{\ip{T h_n}{h_n}} \to \norm{T}.
+\end{equation*}
+A limit point argument produces a subsequence \(h_n\) so that%
+\begin{equation*}
+\ip{T h_n}{h_n} \to \la
+\end{equation*}
+where \(\abs{\la} = \norm{T}\).%
+\par
+Since \(\abs{\la} = \norm{T}\), we get%
+\begin{align*}
+0 \amp \leq \norm{(T - \la)h_n}^2\\
+\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2\\
+\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.
+\end{align*}
+But \(\ip{Th_n}{h_n} \to \la\), so the computation above implies that \(\norm{(T - \la)h_n} \to 0\). Applying \hyperref[x:proposition:prop-compinf]{Proposition~{\xreffont\ref{x:proposition:prop-compinf}}}, we conclude that \(\la \in \sigma_p(T)\).%
+\end{proof}
+We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use \hyperref[x:lemma:lemma-compsa-norm-eig]{Lemma~{\xreffont\ref{x:lemma:lemma-compsa-norm-eig}}} to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.%
+\begin{proof}{Proof of Theorem~{\xreffont\ref*{x:theorem:thm-specsacomp}}..}{g:proof:idm140000755355984}
+Suppose that \(T\) is a compact self-adjoint operator on a Hilbert space \(\hilbert\).%
+\par
+By \hyperref[x:proposition:prop-eigreal]{Proposition~{\xreffont\ref{x:proposition:prop-eigreal}}} and \hyperref[x:lemma:lemma-compsa-norm-eig]{Lemma~{\xreffont\ref{x:lemma:lemma-compsa-norm-eig}}}, there exists a real number \(\la_1\) in \(\sigma_p(T)\) with \(\abs{\la_1} = \norm{T}\). Let \(E_1 = \ker(T - \la_1)\) and \(P_1:\hilbert \to E_1\) be the projection onto \(E_1\). Denote by \(\hilbert_2\) the orthogonal complement of \(E_1\) in \(\hilbert\). By \hyperref[x:proposition:prop-normal-reducing]{Proposition~{\xreffont\ref{x:proposition:prop-normal-reducing}}}, \(E_1\) reduces \(T\), and so \(\hilbert_2\) reduces \(T\). Then define \(T_2\) to be the restriction of \(T\) to \(\hilbert_2\); that is \(T_2 = T\vert_{\hilbert_2} = T P_1\). Using block operator representation of \(T\) on \(\hilbert = E_1 \oplus \hilbert_2\), it is easy to see that \(T_2\) is a compact self-adjoint operator on \(\hilbert_2\).%
+\end{proof}
+\end{subsectionptx}
+\end{sectionptx}
+\end{chapterptx}
+%
+%
+\typeout{************************************************}
+\typeout{Chapter 2 Topology}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Topology}{}{Topology}{}{}{g:chapter:idm140000755574784}
+%
+%
+\typeout{************************************************}
+\typeout{Section 2.1 Topological catch-all}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Topological catch-all}{}{Topological catch-all}{}{}{g:section:idm140000755581040}
+\begin{definition}{Separation axioms.}{x:definition:def-top}%
+%
+\begin{itemize}[label=\textbullet]
+\item{}A topological space \(\X\) is \(T_1\) if whenever \(x \neq y\), there exists an open set containing \(y\) but not \(x\).%
+\item{}A topological space \(\X\) is called \terminology{Hausdorff} if it is \(T_2\); that is, if \(x \neq y\) then there are disjoint open sets \(U, V\) with \(x \in U, y \in V\).%
+\item{}A topological space \(\X\) is called \terminology{normal} if it is \(T_4\); that is, \(\X\) is \(T_1\) and for any disjoint closed sets \(A, B\) in \(\X\), there are disjoint open sets \(U, V\) with \(A \subset U\) and \(B \subset V\).%
+\end{itemize}
+%
+\end{definition}
+\begin{definition}{Continuous functions.}{x:definition:def-bigpile}%
+Suppose that \(\X, \Y\) are topological spaces.%
+\begin{itemize}[label=\textbullet]
+\item{}A function is called \terminology{continuous} if \(f\inv(V)\) is open for every open set \(V \subset \X\).%
+\item{}A function is called \terminology{continuous at \(x\)} if \(f\inv(V)\) is open for every neighborhood \(V\) of \(x\).%
+\item{}A bijective function \(f:\X \to \Y\) is called a \terminology{homeomorphism} if \(f, f\inv\) are continuous.%
+\end{itemize}
+%
+\end{definition}
+We'll use the notation \(C(\X, \Y)\) to designate the family of continuous functions \(f: \X \to \Y\).%
+\par
+We'll need a couple of extension theorems. They have names, so you know they must be important.%
+\begin{theorem}{Uryshon's Lemma.}{}{x:theorem:thm-uryshon}%
+Let \(X\) be a normal space. If \(A, B\) are disjoint closed sets in \(X\), then there exists \(f \in C(X, [0,1])\) such that \(f = 0\) on \(A\) and \(f = 1\) on \(>B\).%
+\end{theorem}
+\begin{theorem}{}{}{x:theorem:thm-tietze}%
+Let \(X\) be a normal space. If \(A\) is a closed subset of \(\X\) and \(f \in C(A, [a,b])\), there exists a continuous extension \(F \in C(X, [a,b])\) so that the restriction \(F\vert_A\) is \(f\).%
+\end{theorem}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 2.2 Nets}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Nets}{}{Nets}{}{}{g:section:idm140000755310960}
+In general topological spaces, we usually can't get away with thinking about sequences. Instead, we'll capture convergence in topological spaces with nets. A sequence is a function \(x: \mathbb{N} \to \mathcal{X}\) that maps the natural numbers into a space \(\mathcal{X}\). We want to think of nets as functions that map more general index sets into a space. We need to retain a notion of forward progress to address convergence, which we get with the notion of directed sets.%
+\begin{definition}{}{g:definition:idm140000755308480}%
+A \terminology{directed set} is a set \(A\) with a binary relation \(\preceq\) with the properties that%
+\begin{enumerate}
+\item{}(self-relation): \(\alpha \preceq \alpha\) for all \(\alpha \in \mathcal{A}\);%
+\item{}(transitivity): if \(\alpha \preceq \beta\) and \(\beta \preceq  \gamma\) then \(\alpha \preceq \gamma\);%
+\item{}(upper bounds): for any \(\alpha, \beta \in \mathcal{A}\), there exists \(\gamma \in \mathcal{A}\) such that \(\alpha \preceq \gamma\) and \(\beta \preceq \gamma\).%
+\end{enumerate}
+%
+\end{definition}
+Not every pair of elements in a directed set relate (unlike a totally ordered set), but we do have the upper bound property that will allow us to define convergence.%
+\begin{definition}{}{g:definition:idm140000755301008}%
+A \terminology{net} in \(\mathcal{X}\) is a function \(x\) from a directed set \(\mathcal{A}\) into a space \(\mathcal{X}\). We usually write \(x(\alpha) = x_\alpha\) and write the net as \(\langle x_\alpha \rangle_{\alpha \in \mathcal A} = \langle x_\alpha \rangle\).%
+\end{definition}
+\begin{definition}{}{x:definition:def-eventually}%
+Now let \(\mathcal{X}\) be a topological space and \(E \subset \mathcal{X}\).%
+\begin{itemize}[label=\textbullet]
+\item{}A net \(\net{x_\alpha}\) is \terminology{eventually} in \(E\) if there exists \(\alpha_0 \in \mathcal{A}\) such \(x_\alpha \in \mathcal{A}\) for all \(\alpha \succeq \alpha_0\).%
+\item{}A net \(\net{x_\alpha}\) is \terminology{frequently} in \(E\) if for every \(\alpha \in \mathcal{A}\) there exists \(\beta \succeq \alpha\) such that \(x_\beta \in E\).%
+\item{}A point \(x \in \mathcal{X}\) is a \terminology{limit} of \(\net{x_\alpha}\) if for every neighborhood \(U\) of \(x\), \(\net{x_\alpha}\) is eventually in \(U\). In this case, we say that \(x_\alpha\) \terminology{converges} to \(x\) and we write \(x_\alpha \to x\).%
+\item{}A point \(x \in E\) is a \terminology{cluster point} of \(\net{x_\alpha}\) if for every neighborhood \(U\) if \(x\), \(\net{x_\alpha}\) is frequently in \(E\).%
+\end{itemize}
+%
+\end{definition}
+Now, we'll show that nets have many of the desirable properties that sequences do.%
+\begin{proposition}{}{}{x:proposition:prop-net1}%
+If \(\mathcal X\) is a topological space, \(E \subset \mathcal{X}\), and \(x \in \mathcal X\), then \(x\) is an accumulation point of \(E\) if and only if there exists a net in \(E\backslash\{x\}\) that converges to \(x\). Likewise, \(x \in \cc{E}\) if and only if there is a net in \(E\) that converges to \(x\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755279952}
+If \(x\) is a limit point of \(E\), then let \(\N\) be the set of neighborhoods of \(x\), directed by reverse inclusion. For each \(U \in \N\), choose an element \(x_U \in (U\backslash\{x\})\cap E\). Then by definition, \(x_U \to x\).%
+\par
+On the other hand, if \(x_\alpha\) is a net in \(E\backslash\{x\}\) and \(x_\alpha \to x\), then for any neighborhood \(U \in \N\), the punctured set \(U\backslash\{x\}\) contains some point in \(x_\alpha\). Thus, \(x\) is a limit point of \(E\).%
+\par
+The second statement follows from the definition and the observation that the closure of a set contains its limit points.%
+\end{proof}
+We also get a net definition of continuity akin to the typical sequence definition.%
+\begin{proposition}{}{}{x:proposition:prop-netcont}%
+Let \(\mathcal X, \mathcal Y\) be topological spaces and \(f: \mathcal X \to \mathcal Y\). The function \(f\) is continuous at \(x \in \mathcal X\) if and only if for every net \(\net{x_\alpha}\) converging to \(x\), the net \(\net{f(x_\alpha)}\) converges to \(f(x)\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755266496}
+Suppose that \(f\) is continuous at \(x\). Then for a neighborhood \(V\) of \(f(x)\), \(f\inv(V)\) is a neighborhood of \(x\). Now suppose that a net \(x_\alpha\) converges to \(x\). By definition, \(x_\alpha\) must eventually be in \(f\inv(V)\), which implies that \(\net{f(x_\alpha)}\) is eventually in \(V\). But this means that \(f(x_\alpha) \to f(x)\), as the choice of \(V\) was arbitrary.%
+\end{proof}
+Finally, we'll state a net version of the theorem for sequences that states that sequential cluster points have convergent subsequences - be careful with this one, because a subnet it isn't quite the direct analogy that it appears to be.%
+\begin{aside}{Subnets.}{g:aside:idm140000755255376}%
+There are at least three non-equivalent definitions of subnet. Despite the complications, the idea is generally the same - to recover as many theorems involving convergent sequences as possible. To see more explanation, see \href{https://en.wikipedia.org/wiki/Subnet_(mathematics)}{the article on subnets}\footnotemark{} on Wikipedia.%
+\end{aside}
+\footnotetext[1]{\nolinkurl{https://en.wikipedia.org/wiki/Subnet_(mathematics)}\label{g:fn:idm140000755253808}}%
+\begin{definition}{}{x:definition:def-subnet}%
+A \terminology{subnet} of a net \(\net{x_\alpha}_{\alpha \in \mathcal A}\) is a net \(\net{y_\beta}_{\beta \in \mathcal B}\) and a map \(\beta \mapsto \alpha_\beta\) from \(\mathcal B \to \mathcal A\) such that the following hold:%
+\begin{itemize}[label=\textbullet]
+\item{}For every \(\alpha_0 \in \mathcal A\) there exists \(\beta_0 \in \mathcal B\) such that \(\alpha_\beta \succeq \alpha_0\) whenever \(\beta \succeq \beta_0\).%
+\item{}\(\displaystyle y_\beta = x_{\alpha_\beta}\)%
+\end{itemize}
+%
+\end{definition}
+If \(\net{x_\alpha}\) converges to a point \(x\), then so too must any subnet \(\net{x_{\alpha_\beta}}\)%
+\begin{proposition}{}{}{x:proposition:prop-subnet-cluster}%
+If \(\net{x_\alpha}\) is a net in \(\mathcal X\) then \(x\) is a cluster point of \(x_\alpha\) if and only if there is a subnet of \(x_\alpha\) converging to \(x\).%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755244944}
+Suppose that \(\net{x_\alpha}\) has a subnet \(\net{y_\beta} = \net{x_{\alpha_\beta}}\) converging to \(x\). Let \(U\) be a neighborhood of \(x\). Now choose \(\beta_1\) so that \(y_{\beta} \in U\) whenever \({\beta} \succeq \beta_1\) (which we can do by convergence). For a given \(\alpha\), choose \(\beta_2\) so that \(\alpha_{\beta} \succeq \alpha\) for \(\beta \succeq \beta_2\) (which we can do by the definition of a subnet). Since \(\mathcal B\) is a directed set, choose \(\beta \in \mathcal B\) so that \(\beta \succeq \beta_1\) and \(\beta \succeq \beta_2\). Then \(\alpha_\beta \succeq \alpha\) and \(x_{\alpha_\beta} = y_\beta \in U\). That is, \(x_{\alpha}\) is frequently in \(U\), and so \(x\) is a cluster point of \(\net{x_\alpha}\).%
+\par
+In the other direction, if \(x\) is a cluster point of \(\net{x_\alpha}\), the idea will be to use the neighborhoods at \(x\) as the index. Let \(\mathcal N\) be the neighborhoods of \(x\). Construct the product of directed sets \(\mathcal N \times \mathcal A\) with the relation \((U, \alpha) \preceq (U_1, \alpha_1)\) when \(U \supset U_1\) and \(\alpha \preceq \alpha_1\). Then using the upper bound property, for each \((U, \beta) \in \mathcal N \times \mathcal A\), we can choose \(\alpha_{(U, \beta)}\) such that \(\alpha_{(U, \beta)} \succeq \beta\) and \(x_{\alpha_{(U, \beta)}} \in U\). If \({(U', \beta')} \succeq (U, \beta)\), we have%
+\begin{equation*}
+\alpha_{{(U', \beta')}} \succeq {\beta'} \succeq \beta
+\end{equation*}
+and%
+\begin{equation*}
+x_{\alpha_{{(U', \beta')}}} \in {U'} \subset U\text{.}
+\end{equation*}
+Thus \(\net{x_{\alpha_{{(U, \beta)}}}}\) is a subnet of \(\net{x_\alpha}\) that converges to \(x\).%
+\end{proof}
+\end{sectionptx}
+%
+%
+\typeout{************************************************}
+\typeout{Section 2.3 Compact spaces}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Compact spaces}{}{Compact spaces}{}{}{g:section:idm140000755324480}
+Now we'll take a look at how compactness and related results generalize to topological spaces.%
+\begin{definition}{}{x:definition:def-compact}%
+Let \(\X\) be a topological space.%
+\begin{itemize}[label=\textbullet]
+\item{}\(\X\) is \terminology{compact} if every open cover of \(\X\) has a finite subcover. That is, given a collection of open sets so that \(\X = \bigcup_{\alpha \in \mathcal A} U_\alpha\), there is a finite subset \(\mathcal B\) of \(\mathcal A\) so that \(X = \bigcup_{\alpha \in \mathcal B} U_\alpha\).%
+\item{}A subset \(Y\) of a topological space is \terminology{compact} if it is compact in the relative topology. That is, \(Y \subset \X\) is compact if and only if for every collection of open sets in \(\X\) with \(Y \subset \bigcup_{\alpha \in \mathcal A}\), there is a finite subset \(\mathcal B\) of \(\mathcal A\) so that \(Y \subset \bigcup_{\alpha \in \mathcal B} U_\alpha\).%
+\item{}A set \(Y \subset \X\) is called \terminology{precompact} if its closure is compact.%
+\end{itemize}
+%
+\end{definition}
+One useful characterization of compactness is in terms of closed sets. A family of sets \(\{F_\alpha\}_{\alpha \in \mathcal A}\) has the \terminology{finite intersection property} if \(\bigcap_{\alpha \in \mathcal B} \neq \emptyset\) for any finite subset \(\mathcal B\) of \(\mathcal A\).%
+\begin{proposition}{}{}{x:proposition:prop-fip}%
+A topological space is compact if and only if \(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\) for every family of sets \(\{F_\alpha\}_{\alpha \in \A}\) with the finite intersection property.%
+\end{proposition}
+\begin{proof}{}{g:proof:idm140000755205904}
+Suppose a family of closed sets \(\{F_\alpha\}\) is given. Let \(\{U_\alpha\}\) be the family of open sets given by \(U_\alpha = (F_\alpha)^c\). By construction, \(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\) if and only if \(\bigcup_{\alpha \in \A} U_\alpha \neq \X\). Also, \(\{F_\alpha\}\) has the finite intersection property if and only if no finite subfamily of \(\{U_\alpha\}\) covers \(\X\).%
+\end{proof}
+\end{sectionptx}
+\end{chapterptx}
+%
+%
+\typeout{************************************************}
+\typeout{Chapter 3 Locally convex spaces}
+\typeout{************************************************}
+%
+\begin{chapterptx}{Locally convex spaces}{}{Locally convex spaces}{}{}{g:chapter:idm140000755394480}
+\begin{introduction}{}%
+The move from basic to advanced functional analysis in part comes from generalizing the sorts of spaces that we can work on. The appropriate setting for working in weak topologies in Banach spaces is that of \emph{locally convex spaces}, which are topological generalizations of Banach spaces.%
+\end{introduction}%
+%
+%
+\typeout{************************************************}
+\typeout{Section 3.1 Locally convex spaces}
+\typeout{************************************************}
+%
+\begin{sectionptx}{Locally convex spaces}{}{Locally convex spaces}{}{}{g:section:idm140000755199712}
+We being by introducting a special class of vector spaces that are well-suited for analysis. Since we typically want to consider questions of convergence and continuity, we require our vector spaces to come equipped with a topological structure.%
+\begin{definition}{}{x:definition:def-tvs}%
+A topological vector space (TVS) is a vector space \(\mathcal{X}\) over a field \(\mathbb{F}\) and a topology \(\mathcal{T}\) so that%
+\begin{enumerate}
+\item{}addition is continuous - that is, the map \((x, y)\mapsto x + y\) is continuous.%
+\item{}scalar multiplication is continuous - that is, the map \((\alpha, x)\mapsto \alpha x\) is continuous.%
+\end{enumerate}
+%
+\end{definition}
+ Topological vector spaces include normed spaces (and thus inner product spaces). The other big feature of Euclidean space that we'd like to lift into the general setting is the notion of convexity. \begin{definition}{}{x:definition:def-lcs}%
+A locally convex space (LCS) is a TVS with the property that there is a base of the topology consisting of convex sets%
+\end{definition}
+ One way to create such spaces is by way of seminorms (norm-like functions that may send non-zero vectors to 0). \begin{definition}{}{x:definition:def-seminorm}%
+A seminorm is a real-valued function \(p:\mathcal{X} \to \R\) satisfying the following properties:%
+\begin{enumerate}
+\item{}Triangle inequality:%
+\begin{equation*}
+\forall x, y \in \mathcal{X}, p(x + y) \leq p(x) + p(y)
+\end{equation*}
+%
+\item{}Homogeneity:%
+\begin{equation*}
+\forall \alpha \in \mathbb{F}, x \in \mathcal{X}, p(\alpha x) = \abs{\alpha}p(x)
+\end{equation*}
+%
+\item{}Non-negativity:%
+\begin{equation*}
+p(x) \geq 0 \,\,\,\forall x \in \mathcal{X}
+\end{equation*}
+%
+\end{enumerate}
+%
+\end{definition}
+The basic idea is to use the ``balls'' defined by the seminorms to generate the topology.%
+\begin{theorem}{}{}{x:theorem:thm-semiballs}%
+%
+\end{theorem}
+\end{sectionptx}
+\end{chapterptx}
+\end{document}

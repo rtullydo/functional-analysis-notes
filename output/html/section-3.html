@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*       on 2022-03-30T12:45:54-07:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>The spectral theorem for compact self-adjoint operators</title>
+<title>Compact operators</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -60,8 +60,8 @@
   \DeclareMathOperator{\dist}{dist}
   \DeclareMathOperator{\dom}{dom}
   \DeclareMathOperator{\diag}{diag}
-  \DeclareMathOperator{\span}{span}
-  \DeclareMathOperator{\null}{null}
+  \DeclareMathOperator{\spn}{span}
+  \DeclareMathOperator{\nll}{null}
   \DeclareMathOperator{\rank}{rank}
   \DeclareMathOperator{\col}{col}
   \DeclareMathOperator{\cl}{cl}
@@ -156,8 +156,6 @@
   \newcommand\epm{\end{pmatrix}}
   \numberwithin{equation}{section}
   \newcommand\nin{\noindent}
-  \newcommand{\nCr}[2]{\,_{#1}C_{#2}} 
-  \newcommand{\vec}[1]{{\bf #1}}
   \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
   \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
   \newcommand{\hz}{\,\mathrm{Hz}}
@@ -173,10 +171,10 @@
 </div></div>
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chapter-2.html" title="Next">Next</a></span></div>
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="section-4.html" title="Next">Next</a></span></div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chapter-2.html" title="Next">Next</a>
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-2.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-1.html" title="Up">Up</a><a class="next-button button toolbar-item" href="section-4.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
 <div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
@@ -185,97 +183,131 @@
 <li class="link">
 <a href="chapter-1.html" data-scroll="chapter-1" class="internal"><span class="codenumber">1</span> <span class="title">The spectral theorem for compact operators</span></a><ul>
 <li><a href="section-1.html" data-scroll="section-1" class="internal">The spectral theorem in finite dimensions</a></li>
-<li><a href="section-2.html" data-scroll="section-2" class="internal">Compact operators</a></li>
-<li><a href="section-3.html" data-scroll="section-3" class="active">The spectral theorem for compact self-adjoint operators</a></li>
+<li><a href="section-2.html" data-scroll="section-2" class="internal">Projections and invariant subspaces</a></li>
+<li><a href="section-3.html" data-scroll="section-3" class="active">Compact operators</a></li>
+<li><a href="section-4.html" data-scroll="section-4" class="internal">The spectral theorem for compact self-adjoint operators</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="chapter-2.html" data-scroll="chapter-2" class="internal"><span class="codenumber">2</span> <span class="title">Topology</span></a><ul>
-<li><a href="section-4.html" data-scroll="section-4" class="internal">Topological catch-all</a></li>
-<li><a href="section-5.html" data-scroll="section-5" class="internal">Nets</a></li>
-<li><a href="section-6.html" data-scroll="section-6" class="internal">Compact spaces</a></li>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Topological catch-all</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Nets</a></li>
+<li><a href="section-7.html" data-scroll="section-7" class="internal">Compact spaces</a></li>
 </ul>
 </li>
 <li class="link">
-<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-7.html" data-scroll="section-7" class="internal">Locally convex spaces</a></li></ul>
+<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-8.html" data-scroll="section-8" class="internal">Locally convex spaces</a></li></ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
 <main class="main"><div id="content" class="pretext-content"><section class="section" id="section-3"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">1.3</span> <span class="title">The spectral theorem for compact self-adjoint operators</span>
+<span class="type">Section</span> <span class="codenumber">1.3</span> <span class="title">Compact operators</span>
 </h2>
-<section class="introduction" id="introduction-1"><p id="p-39">Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in <a href="" class="xref" data-knowl="./knowl/eq-finite-spec.html" title="Equation 1.1.1">(1.1.1)</a>.</p>
-<article class="theorem theorem-like" id="thm-specsacomp"><h3 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span>
+<p id="p-22">The object of study in this section is essentially the most direct generalization of matrices to infinite dimensions, for reasons that will become apparent.</p>
+<article class="definition definition-like" id="def-compactop"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span>
 </h3>
-<p id="p-40">Let <span class="process-math">\(T\)</span> be a compact self-adjoint operator on a Hilbert space <span class="process-math">\(\hilbert\text{.}\)</span> Then <span class="process-math">\(T\)</span> has only countable distinct eigenvalues. Enumerating the eigenvalues as <span class="process-math">\(\{\la_1, \la_2, \ldots\}\text{,}\)</span> let <span class="process-math">\(P_n\)</span> denote the projection of <span class="process-math">\(\hilbert\)</span> onto <span class="process-math">\(\ker(T - \la_n)\text{.}\)</span> Then <span class="process-math">\(P_nP_m = P_m P_n = 0\)</span> when <span class="process-math">\(n \neq m\text{,}\)</span> each <span class="process-math">\(\la_n\)</span> is real, and</p>
-<div class="displaymath process-math">
-\begin{equation*}
-T = \sum_{n=1}^\infty \la_n P_n,
-\end{equation*}
-</div>
-<p class="continuation">where the sum converges in the norm of <span class="process-math">\(\BH\text{.}\)</span></p></article></section><section class="subsection" id="subsection-1"><h3 class="heading hide-type">
-<span class="type">Subsection</span> <span class="codenumber">1.3.1</span> <span class="title">Proof of the spectral theorem for compact self-adjoint operators</span>
-</h3>
-<article class="proposition theorem-like" id="prop-normal-reducing"><h4 class="heading">
+<p id="p-23">Suppose <span class="process-math">\(\hilbert\)</span> is a Hilbert space. A linear map <span class="process-math">\(T: \hilbert \to \hilbert\)</span> is <dfn class="terminology">compact</dfn> if the image of the unit ball in <span class="process-math">\(\hilbert\)</span> under <span class="process-math">\(T\text{,}\)</span> denoted <span class="process-math">\(T(\ball \hilbert)\text{,}\)</span> has compact closure in <span class="process-math">\(\hilbert\text{.}\)</span></p></article><p id="p-24">Denote by <span class="process-math">\(\BOP_0(\hilbert, \K)\)</span> the set of compact operators from <span class="process-math">\(\hilbert\)</span> to <span class="process-math">\(\K\text{,}\)</span> and <span class="process-math">\(\BOP_0(\hilbert) = \BOP_0(\hilbert, \hilbert)\text{.}\)</span></p>
+<article class="proposition theorem-like" id="prop-compopbounded"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span>
-</h4>
-<p id="p-41">If <span class="process-math">\(A\)</span> is a normal operator and <span class="process-math">\(\la \in \mathbb{F}\text{,}\)</span> then <span class="process-math">\(\ker(A - \la) = \ker(A - \la)\ad\)</span> and <span class="process-math">\(\ker(A - \la)\)</span> is a reducing subspace for <span class="process-math">\(A\text{.}\)</span></p></article><article class="hiddenproof" id="proof-5"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-5"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-5"><article class="hiddenproof"><p id="p-42">Since <span class="process-math">\(A\)</span> is normal, it is easy to see that so must be <span class="process-math">\(A - \la\text{.}\)</span> By <code class="code-inline tex2jax_ignore">[provisional cross-reference: prop-normaladnorm]</code>, we have that <span class="process-math">\(\norm{(A - \la)h} = \norm{(A - \la)\ad h}\)</span> for all <span class="process-math">\(h\text{.}\)</span> But then <span class="process-math">\(h \in \ker(A - \ad)\)</span> if and only if <span class="process-math">\(h \in \ker(A - \la)\ad\text{.}\)</span></p>
-<p id="p-43">If <span class="process-math">\(h \in \ker(A - \la)\text{,}\)</span> then <span class="process-math">\(Ah = \la h \in \ker(A - \la)\)</span> and <span class="process-math">\(A\ad h = \cc\la h \in \ker(A - \la)\text{.}\)</span> We conclude that <span class="process-math">\(\ker(A - \la)\)</span> is a reducing subspace for <span class="process-math">\(A\text{.}\)</span></p></article></div>
-<p id="p-44">The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.</p>
-<article class="proposition theorem-like" id="prop-ortho-eigenspace"><h4 class="heading">
+</h3>
+<p id="p-25"><span class="process-math">\(\BOP_0(\hilbert,\K) \subset \BOP(\hilbert, \K)\text{.}\)</span></p></article><article class="hiddenproof" id="proof-1"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-1"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-1"><article class="hiddenproof"><p id="p-26">Let <span class="process-math">\(T \in \BOP_0(\hilbert, \K)\text{.}\)</span> Since <span class="process-math">\(T(\ball \hilbert)\)</span> is compact, there must exist a constant <span class="process-math">\(C\)</span> so that <span class="process-math">\(T(\ball \hilbert) \subset B_\K(C) = \{k \in \K : \norm{k} \leq C\}\text{.}\)</span> But then <span class="process-math">\(\norm{T} \leq C\text{,}\)</span> and so <span class="process-math">\(T \in \BH\text{.}\)</span></p></article></div>
+<article class="proposition theorem-like" id="prop-comp"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="period">.</span>
-</h4>
-<p id="p-45">If <span class="process-math">\(A\)</span> is a normal operator and <span class="process-math">\(\la, \mu\)</span> are distinct eigenvalues of <span class="process-math">\(A\)</span> then <span class="process-math">\(\ker(A - \la)\perp \ker(A - \mu)\text{.}\)</span></p></article><article class="hiddenproof" id="proof-6"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-6"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-6"><article class="hiddenproof"><p id="p-46">Let <span class="process-math">\(h \in \ker(A - \la)\)</span> and <span class="process-math">\(g \in \ker(A - \mu)\text{.}\)</span> By <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>, we have that <span class="process-math">\(A\ad g = \cc\mu g\text{.}\)</span> Then</p>
-<div class="displaymath process-math">
-\begin{align*}
-\la\ip{h}{g} \amp=\ip{A h}{g}\\
-\amp= \ip{h}{A\ad g}\\
-\amp= \ip{h}{\cc\mu g}\\
-\amp= \mu\ip{h}{g}.
-\end{align*}
-</div>
-<p class="continuation">Thus, <span class="process-math">\((\la - \mu)\ip{h}{g} = 0\text{.}\)</span> Since <span class="process-math">\(\la, \mu\)</span> are distinct, we must have <span class="process-math">\(h\perp g\)</span> and thus that <span class="process-math">\(\ker(A - \la) \perp \ker(A - \mu)\text{.}\)</span></p></article></div>
-<p id="p-47">As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.</p>
-<article class="proposition theorem-like" id="prop-eigreal"><h4 class="heading">
+</h3>
+<p id="p-27"><span class="process-math">\(\BOP_0(\hilbert, \K)\)</span> is a linear space.</p></article><article class="proposition theorem-like" id="prop-convcomp"><h3 class="heading">
 <span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span>
-</h4>
-<p id="p-48">If <span class="process-math">\(A = A\ad\)</span> and <span class="process-math">\(\la \in \sigma_p(A)\)</span> then <span class="process-math">\(\la\)</span> is a real number.</p></article><article class="hiddenproof" id="proof-7"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-7"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-7"><article class="hiddenproof"><p id="p-49">If <span class="process-math">\(A h = \la h\)</span> then <span class="process-math">\(A h = A \ad h = \cc{\la}h\)</span> by <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>. Equating the two expression for <span class="process-math">\(Ah\text{,}\)</span> we get</p>
+</h3>
+<p id="p-28">If <span class="process-math">\(T_n\)</span> is a sequence in <span class="process-math">\(\BOP_0(\hilbert, \K)\)</span> and <span class="process-math">\(T\)</span> is an operator in <span class="process-math">\(\BOP(\hilbert, \K)\)</span> such that <span class="process-math">\(\norm{T_n - T} \to 0\text{,}\)</span> then <span class="process-math">\(T\)</span> is compact.</p></article><article class="proposition theorem-like" id="prop-compprod"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
+</h3>
+<p id="p-29">If <span class="process-math">\(A \in \BOP(\hilbert)\text{,}\)</span> <span class="process-math">\(B \in \BOP(\K)\text{,}\)</span> and <span class="process-math">\(T \in \BOP_0(\hilbert, \K)\text{,}\)</span> then <span class="process-math">\(TA\)</span> and <span class="process-math">\(BT\)</span> are compact.</p></article><p id="p-30">A special family of compact operators is even more restricted by the size of their ranges. Say that an operator is of <dfn class="terminology">finite rank</dfn>, if <span class="process-math">\(\ran T\)</span> is finite dimensional (that is, the closed linear span of a finite set of vectors). Let <span class="process-math">\(\BOP_{00}(\hilbert, \K)\)</span> be the set of continuous finite rank operators. It is straightfoward that <span class="process-math">\(\BOP_{00}\)</span> is a linear space and that <span class="process-math">\(\BOP_{00} \subset \BOP_0\text{.}\)</span> It turns out to be the case that compact operators are (norm) limits of operators of finite rank.</p>
+<article class="theorem theorem-like" id="thm-compapprox"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span>
+</h3>
+<p id="p-31">Let <span class="process-math">\(T \in \BOP(\hilbert, \K)\text{.}\)</span> The following are equivalent.</p>
+<ol class="decimal">
+<li id="li-14"><p id="p-derived-li-14"><span class="process-math">\(T\)</span> is compact.</p></li>
+<li id="li-15"><p id="p-derived-li-15"><span class="process-math">\(T\ad\)</span> is compact.</p></li>
+<li id="li-16"><p id="p-derived-li-16">There is a sequence <span class="process-math">\(T_n\)</span> of operators of finite rank such that <span class="process-math">\(\norm{T_n - T} \to 0\text{.}\)</span></p></li>
+</ol></article><article class="hiddenproof" id="proof-2"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-2"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-2"><article class="hiddenproof"><p id="p-32">First, note that <span class="process-math">\((3) \Rightarrow (1)\)</span> follows from <a href="" class="xref" data-knowl="./knowl/prop-convcomp.html" title="Proposition 1.3.4">Proposition 1.3.4</a>.</p>
+<p id="p-33">We will show that <span class="process-math">\((1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)\text{.}\)</span></p>
+<p id="p-34"><span class="process-math">\((1) \Rightarrow (3)\text{:}\)</span> We use the fact that since <span class="process-math">\(T\)</span> is compact, the closure of <span class="process-math">\(T(\ball \hilbert)\)</span> contains a countable dense subset (one can construct this set using the fact that the image of the ball under <span class="process-math">\(T\)</span> is totally bounded). Then <span class="process-math">\(\mathcal L = \cl \ran T\)</span> is a separable subspace of <span class="process-math">\(\K\text{.}\)</span> Let <span class="process-math">\(\{e_j\}\)</span> be a basis for <span class="process-math">\(\mathcal L\text{,}\)</span> and let <span class="process-math">\(P_n\)</span> be the projection of <span class="process-math">\(\K\)</span> onto the closed linear span of the first <span class="process-math">\(n\)</span> basis vectors; that is, <span class="process-math">\(P_n\)</span> is the projection onto <span class="process-math">\(\vee\{e_j: 1 \leq j \leq n\}\text{.}\)</span> Now set <span class="process-math">\(T_n = P_n T\text{.}\)</span> Each <span class="process-math">\(T_n\)</span> is a finite rank operator.</p>
+<p id="p-35">We will show that <span class="process-math">\(\norm{T_n - T} \to 0\)</span> by establishing a uniform bound on <span class="process-math">\(\norm{T_n h - T h}\)</span> for <span class="process-math">\(\norm{h}\leq 1\text{.}\)</span> Choose <span class="process-math">\(\eps &gt; 0\text{.}\)</span> By compactness, we can find a finite collection of vectors <span class="process-math">\(h_1, \ldots, h_m\)</span> so that</p>
 <div class="displaymath process-math">
 \begin{equation*}
-(\la - \cc\la)h = 0.
+T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
 \end{equation*}
 </div>
-<p class="continuation">Choosing a non-zero <span class="process-math">\(h\)</span> requires that <span class="process-math">\(\la - \cc\la = 0\text{,}\)</span> or <span class="process-math">\(\la = \cc\la\text{.}\)</span></p></article></div>
-<p id="p-50">The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.</p>
-<article class="lemma theorem-like" id="lemma-compsa-norm-eig"><h4 class="heading">
-<span class="type">Lemma</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span>
-</h4>
-<p id="p-51">If <span class="process-math">\(T\)</span> is a compact self-adjoint operator, then <span class="process-math">\(\norm{T}\)</span> or <span class="process-math">\(-\norm{T}\)</span> is an eigenvalue of <span class="process-math">\(T\text{.}\)</span></p></article><article class="hiddenproof" id="proof-8"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-8"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-8"><article class="hiddenproof"><p id="p-52">If <span class="process-math">\(T\)</span> is the zero operator, then we're done. If <span class="process-math">\(T \neq 0\text{,}\)</span> there exists a sequence of unit vectors <span class="process-math">\(h_n\)</span> so that</p>
-<div class="displaymath process-math">
-\begin{equation*}
-\abs{\ip{T h_n}{h_n}} \to \norm{T}.
-\end{equation*}
-</div>
-<p class="continuation">A limit point argument produces a subsequence <span class="process-math">\(h_n\)</span> so that</p>
-<div class="displaymath process-math">
-\begin{equation*}
-\ip{T h_n}{h_n} \to \la
-\end{equation*}
-</div>
-<p class="continuation">where <span class="process-math">\(\abs{\la} = \norm{T}\text{.}\)</span></p>
-<p id="p-53">Since <span class="process-math">\(\abs{\la} = \norm{T}\text{,}\)</span> we get</p>
+<p class="continuation">For <span class="process-math">\(h \in \ball \hilbert\text{,}\)</span> choose <span class="process-math">\(h_j\)</span> so that <span class="process-math">\(\norm{Th - Th_j} \leq \eps/3\text{.}\)</span> Then for any <span class="process-math">\(n \in \N\text{,}\)</span></p>
 <div class="displaymath process-math">
 \begin{align*}
-0 \amp \leq \norm{(T - \la)h_n}^2\\
-\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2\\
-\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.
+\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} \\
+\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}\\
+\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.
 \end{align*}
 </div>
-<p class="continuation">But <span class="process-math">\(\ip{Th_n}{h_n} \to \la\text{,}\)</span> so the computation above implies that <span class="process-math">\(\norm{(T - \la)h_n} \to 0\text{.}\)</span> Applying <a href="" class="xref" data-knowl="./knowl/prop-compinf.html" title="Proposition 1.2.12">Proposition 1.2.12</a>, we conclude that <span class="process-math">\(\la \in \sigma_p(T)\text{.}\)</span></p></article></div>
-<p id="p-54">We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use <a href="" class="xref" data-knowl="./knowl/lemma-compsa-norm-eig.html" title="Lemma 1.3.5">Lemma 1.3.5</a> to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.</p>
-<article class="hiddenproof" id="proof-9"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-9"><h4 class="heading"><span class="title">Proof of Theorem 1.3.1..</span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-9"><article class="hiddenproof"><p id="p-55">Suppose that <span class="process-math">\(T\)</span> is a compact self-adjoint operator on a Hilbert space <span class="process-math">\(\hilbert\text{.}\)</span></p>
-<p id="p-56">By <a href="" class="xref" data-knowl="./knowl/prop-eigreal.html" title="Proposition 1.3.4">Proposition 1.3.4</a> and <a href="" class="xref" data-knowl="./knowl/lemma-compsa-norm-eig.html" title="Lemma 1.3.5">Lemma 1.3.5</a>, there exists a real number <span class="process-math">\(\la_1\)</span> in <span class="process-math">\(\sigma_p(T)\)</span> with <span class="process-math">\(\abs{\la_1} = \norm{T}\text{.}\)</span> Let <span class="process-math">\(E_1 = \ker(T - \la_1)\)</span> and <span class="process-math">\(P_1:\hilbert \to E_1\)</span> be the projection onto <span class="process-math">\(E_1\text{.}\)</span> Denote by <span class="process-math">\(\hilbert_2\)</span> the orthogonal complement of <span class="process-math">\(E_1\)</span> in <span class="process-math">\(\hilbert\text{.}\)</span> By <a href="" class="xref" data-knowl="./knowl/prop-normal-reducing.html" title="Proposition 1.3.2">Proposition 1.3.2</a>, <span class="process-math">\(E_1\)</span> reduces <span class="process-math">\(T\text{,}\)</span> and so <span class="process-math">\(\hilbert_2\)</span> reduces <span class="process-math">\(T\text{.}\)</span> Then define <span class="process-math">\(T_2\)</span> to be the restriction of <span class="process-math">\(T\)</span> to <span class="process-math">\(\hilbert_2\text{;}\)</span> that is <span class="process-math">\(T_2 = T_{\hilbert_2}\text{.}\)</span></p></article></div></section></section></div></main>
+<p class="continuation">Now, we show that we can find <span class="process-math">\(n_0\)</span> so that <span class="process-math">\(\norm{T_n h_j  - T h_j} \leq \eps/3\text{.}\)</span> Certainly <span class="process-math">\(Th_j \in \mathcal{L}\text{,}\)</span> and so can be expanded as <span class="process-math">\(Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k\text{.}\)</span> On the other hand,</p>
+<div class="displaymath process-math">
+\begin{equation*}
+T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k
+\end{equation*}
+</div>
+<p class="continuation">Together, this gives <span class="process-math">\(\norm{T_n h_j - T h_j} \to 0\text{,}\)</span> and so the desired <span class="process-math">\(n_0\)</span> exists. Since <span class="process-math">\(h\)</span> was an arbitrary vector with <span class="process-math">\(\norm{h} \leq 1\text{,}\)</span> this bound is uniform, and so in the operator norm we have <span class="process-math">\(\norm{T_n - T} \to 0\text{.}\)</span></p>
+<p id="p-36"><span class="process-math">\(3 \Rightarrow 2:\)</span> Suppose that <span class="process-math">\(T_n\)</span> is a sequence in <span class="process-math">\(\BOP_{00}(\hilbert, \K)\)</span> with <span class="process-math">\(\norm{T_n - T} \to 0\text{.}\)</span> Then <span class="process-math">\(\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0\text{.}\)</span> But <span class="process-math">\(T_n\ad\)</span> is also in <span class="process-math">\(\BOP_{00}(\hilbert, \K)\)</span> (Exercise). Since <span class="process-math">\(3 \Rightarrow 1\text{,}\)</span> <span class="process-math">\(T\ad\)</span> is compact.</p>
+<p id="p-37"><span class="process-math">\(2 \Rightarrow 1\text{:}\)</span> (Exercise)</p></article></div>
+<p id="p-38">We used an important convergence theorem about finite rank projections in the proof above, so we record the following corollary of the proof.</p>
+<article class="proposition theorem-like" id="prop-finrankzero"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span>
+</h3>
+<p id="p-39">If <span class="process-math">\(T \in \BOP_0(\hilbert, \K)\text{,}\)</span> then <span class="process-math">\(\cl \ran T\)</span> is separable. If <span class="process-math">\(\{e_j\}\)</span> is a basis for <span class="process-math">\(\cl \ran T\)</span> and <span class="process-math">\(P_n\)</span> is the projection of <span class="process-math">\(\K\)</span> onto <span class="process-math">\(\vee\{e_j:1 \leq j\leq n\}\text{,}\)</span> then</p>
+<div class="displaymath process-math">
+\begin{equation*}
+\norm{P_n T - T} \to 0.
+\end{equation*}
+</div></article><p id="p-40">This allows a method for constructing compact operators, at least in separable Hilbert spaces, in a manner suggestive of finite dimensional eigenvalues.</p>
+<article class="proposition theorem-like" id="proposition-8"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span>
+</h3>
+<p id="p-41">Let <span class="process-math">\(\hilbert\)</span> be a separable Hilbert space with basis <span class="process-math">\(\{e_j\}\text{.}\)</span> Let <span class="process-math">\(\{\alpha_n\}\)</span> be a sequence in <span class="process-math">\(\mathbb{F}\)</span> with <span class="process-math">\(M = \sup_n\{\abs{\alpha_n}\} \lt \infty\text{.}\)</span> Define an operator <span class="process-math">\(A\)</span> on the basis <span class="process-math">\(\{e_j\}\)</span>by <span class="process-math">\(A e_j = \alpha_j e_j\)</span> for all <span class="process-math">\(j\text{.}\)</span> Then <span class="process-math">\(A\)</span> extends by linearity to a bounded operator on <span class="process-math">\(\hilbert\)</span> with <span class="process-math">\(\norm{A} = M\text{.}\)</span> The operator <span class="process-math">\(A\)</span> is compact if and only if <span class="process-math">\(\alpha_n \to 0\text{.}\)</span></p></article><p id="p-42">We are now ready to make explicit the apparent connection to eigenvalues of matrices acting on finite dimensional spaces.</p>
+<article class="definition definition-like" id="def-eigenthings"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span>
+</h3>
+<p id="p-43">Suppose that <span class="process-math">\(A \in \BH\text{.}\)</span> A scalar <span class="process-math">\(\alpha \in \mathbb{F}\)</span> is called an <dfn class="terminology">eigenvalue</dfn> of <span class="process-math">\(A\)</span> if <span class="process-math">\(\ker(A - \alpha) \neq \{0\}\text{.}\)</span> A nonzero vector <span class="process-math">\(h\)</span> in <span class="process-math">\(\ker(A - \alpha)\)</span> is called an <dfn class="terminology">eigenvector</dfn> of <span class="process-math">\(A\text{.}\)</span> We recover the usual relationship <span class="process-math">\(Ah = \alpha h\)</span> for such a pair. Let <span class="process-math">\(\sigma_p(A)\)</span> denote the set of eigenvalues of <span class="process-math">\(A\text{.}\)</span></p></article><aside class="aside aside-like" id="aside-1"><p id="p-44">The <span class="process-math">\(p\)</span> in the notation <span class="process-math">\(\sigma_p(A)\)</span> refers to the <dfn class="terminology">point spectrum</dfn> of more general operators, which we'll talk about later.</p></aside><p id="p-45">Unlike linear operators on finite dimensional spaces, compact operators need not possesses eigenvalues. The prototypical example is the <dfn class="terminology">Volterra operator</dfn>.</p>
+<article class="proposition theorem-like" id="prop-volterra"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span>
+</h3>
+<p id="p-46">Let <span class="process-math">\(\hilbert = L^2[0,1]\text{.}\)</span> For <span class="process-math">\(t \in [0,1]\text{,}\)</span> let <span class="process-math">\(V:L^2 \to L^2\)</span> be the operator</p>
+<div class="displaymath process-math">
+\begin{equation*}
+V(f)(x) = \int_0^x f(y) \, dy.
+\end{equation*}
+</div>
+<p class="continuation">The operator <span class="process-math">\(V\)</span> is compact. However, <span class="process-math">\(V\)</span> has no eigenvalues.</p></article><p id="p-47">The whole thrust of our conversation is diagonalization of operators in terms of eigen-like structures, and here we've identified a compact operator that cannot be. It's worth asking why. Note that <span class="process-math">\(V\ad(f)(x) = \int_x^1 f(y) \, dy\text{;}\)</span> that is, <span class="process-math">\(V\)</span> isn't self-adjoint (in fact, <span class="process-math">\(V\)</span> is also not normal). Keep that in mind as we proceed.</p>
+<p id="p-48">If, however, a compact operator does have an eigenvalue, nice things happen.</p>
+<article class="proposition theorem-like" id="prop-finiteeig"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.11</span><span class="period">.</span>
+</h3>
+<p id="p-49">If <span class="process-math">\(T \in \BOP_0(\hilbert)\)</span> and <span class="process-math">\(\la \in \sigma_p(T)\)</span> with <span class="process-math">\(\la \neq 0\text{,}\)</span> then the eigenspace <span class="process-math">\(\ker(T - \la)\)</span> is finite-dimensional.</p></article><article class="hiddenproof" id="proof-3"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-3"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-3"><article class="hiddenproof"><p id="p-50">Proceed by contradiction. Suppose that <span class="process-math">\(\ker(T - \alpha)\)</span> is infinite-dimensional and so contains an infinite orthonormal sequence. Because <span class="process-math">\(T\)</span> is compact, <span class="process-math">\(Te_n\)</span> has a convergent subsequence <span class="process-math">\(T_{e_{n_k}}\text{.}\)</span> Then as a sequence, <span class="process-math">\(\{T e_{n_k}\}\)</span> is Cauchy. But for any <span class="process-math">\(n_k \neq n_j\text{,}\)</span></p>
+<div class="displaymath process-math">
+\begin{equation*}
+\norm{T e_{n_k} - T e_{n_j}}^2 = \norm{\la e_{n_k} - \la e_{n_j}}^2 = 2\abs{\la}^2 &gt; 0.
+\end{equation*}
+</div>
+<p class="continuation">This contradicts the Cauchyness of <span class="process-math">\(\{T e_{n_k}\}\text{.}\)</span> We conclude that <span class="process-math">\(\ker(T - \alpha)\)</span> is finite-dimensional.</p></article></div>
+<article class="proposition theorem-like" id="prop-compinf"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">1.3.12</span><span class="period">.</span>
+</h3>
+<p id="p-51">If <span class="process-math">\(T \in \BOP_0(\hilbert)\text{,}\)</span> <span class="process-math">\(\la \neq 0\text{,}\)</span> and <span class="process-math">\(\inf\{\norm{(T - \la)h}: \norm{h}=1\}=0\)</span> then <span class="process-math">\(\la \in \sigma_p(T)\text{.}\)</span></p></article><article class="hiddenproof" id="proof-4"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-4"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-4"><article class="hiddenproof"><p id="p-52">The hypotheses imply that there exists a sequence of unit vectors <span class="process-math">\(h_n\)</span> so that <span class="process-math">\(\norm{(T - \la)h_n} \to 0\text{.}\)</span> By compactness, this sequence has a subsequence <span class="process-math">\(h_{n_k}\)</span> and a vector <span class="process-math">\(f\)</span> so that <span class="process-math">\(\norm{Th_{n_k} - f}\to 0\text{.}\)</span> Combining these two facts, we can use an algebra trick to get</p>
+<div class="displaymath process-math">
+\begin{align*}
+h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})\\
+\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] \\
+\amp\to \la\inv[0 + f] = \la\inv f.
+\end{align*}
+</div>
+<p class="continuation">Since the <span class="process-math">\(h_n\)</span> are unit vectors, so is any limit point of the sequence, and so <span class="process-math">\(1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}\text{,}\)</span> and so <span class="process-math">\(\norm{f} \neq 0\text{.}\)</span> Furthermore, <span class="process-math">\(T h_{n_k} \to \la\inv Tf\text{.}\)</span> Since we also have <span class="process-math">\(T h_{n_k} \to f\text{,}\)</span> it must be that <span class="process-math">\(f = \la\inv T f\text{,}\)</span> or rather that <span class="process-math">\(T f = \la f\text{.}\)</span> That is, <span class="process-math">\(f\neq 0\text{,}\)</span> <span class="process-math">\(f \in \ker(T - \la)\text{,}\)</span> which gives that <span class="process-math">\(\la \in \sigma_p(T)\text{.}\)</span></p></article></div></section></div></main>
 </div>
 </body>
 </html>

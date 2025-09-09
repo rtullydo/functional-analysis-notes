@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*       on 2022-03-30T12:45:54-07:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Compact spaces</title>
+<title>Nets</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -60,8 +60,8 @@
   \DeclareMathOperator{\dist}{dist}
   \DeclareMathOperator{\dom}{dom}
   \DeclareMathOperator{\diag}{diag}
-  \DeclareMathOperator{\span}{span}
-  \DeclareMathOperator{\null}{null}
+  \DeclareMathOperator{\spn}{span}
+  \DeclareMathOperator{\nll}{null}
   \DeclareMathOperator{\rank}{rank}
   \DeclareMathOperator{\col}{col}
   \DeclareMathOperator{\cl}{cl}
@@ -156,8 +156,6 @@
   \newcommand\epm{\end{pmatrix}}
   \numberwithin{equation}{section}
   \newcommand\nin{\noindent}
-  \newcommand{\nCr}[2]{\,_{#1}C_{#2}} 
-  \newcommand{\vec}[1]{{\bf #1}}
   \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
   \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
   \newcommand{\hz}{\,\mathrm{Hz}}
@@ -173,10 +171,10 @@
 </div></div>
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-5.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chapter-3.html" title="Next">Next</a></span></div>
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-5.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="section-7.html" title="Next">Next</a></span></div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-5.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chapter-3.html" title="Next">Next</a>
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-5.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a class="next-button button toolbar-item" href="section-7.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
 <div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
@@ -185,39 +183,89 @@
 <li class="link">
 <a href="chapter-1.html" data-scroll="chapter-1" class="internal"><span class="codenumber">1</span> <span class="title">The spectral theorem for compact operators</span></a><ul>
 <li><a href="section-1.html" data-scroll="section-1" class="internal">The spectral theorem in finite dimensions</a></li>
-<li><a href="section-2.html" data-scroll="section-2" class="internal">Compact operators</a></li>
-<li><a href="section-3.html" data-scroll="section-3" class="internal">The spectral theorem for compact self-adjoint operators</a></li>
+<li><a href="section-2.html" data-scroll="section-2" class="internal">Projections and invariant subspaces</a></li>
+<li><a href="section-3.html" data-scroll="section-3" class="internal">Compact operators</a></li>
+<li><a href="section-4.html" data-scroll="section-4" class="internal">The spectral theorem for compact self-adjoint operators</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="chapter-2.html" data-scroll="chapter-2" class="internal"><span class="codenumber">2</span> <span class="title">Topology</span></a><ul>
-<li><a href="section-4.html" data-scroll="section-4" class="internal">Topological catch-all</a></li>
-<li><a href="section-5.html" data-scroll="section-5" class="internal">Nets</a></li>
-<li><a href="section-6.html" data-scroll="section-6" class="active">Compact spaces</a></li>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Topological catch-all</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="active">Nets</a></li>
+<li><a href="section-7.html" data-scroll="section-7" class="internal">Compact spaces</a></li>
 </ul>
 </li>
 <li class="link">
-<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-7.html" data-scroll="section-7" class="internal">Locally convex spaces</a></li></ul>
+<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-8.html" data-scroll="section-8" class="internal">Locally convex spaces</a></li></ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section class="section" id="section-6"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">2.3</span> <span class="title">Compact spaces</span>
+<main class="main"><div id="content" class="pretext-content">
+<section class="section" id="section-6"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">2.2</span> <span class="title">Nets</span>
 </h2>
-<p id="p-83">Now we'll take a look at how compactness and related results generalize to topological spaces.</p>
-<article class="definition definition-like" id="def-compact"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.3.1</span><span class="period">.</span>
+<p id="p-80">In general topological spaces, we usually can't get away with thinking about sequences. Instead, we'll capture convergence in topological spaces with nets. A sequence is a function <span class="process-math">\(x: \mathbb{N} \to \mathcal{X}\)</span> that maps the natural numbers into a space <span class="process-math">\(\mathcal{X}\text{.}\)</span> We want to think of nets as functions that map more general index sets into a space. We need to retain a notion of forward progress to address convergence, which we get with the notion of directed sets.</p>
+<article class="definition definition-like" id="definition-9"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.1</span><span class="period">.</span>
 </h3>
-<p id="p-84">Let <span class="process-math">\(\X\)</span> be a topological space.</p>
+<p id="p-81">A <dfn class="terminology">directed set</dfn> is a set <span class="process-math">\(A\)</span> with a binary relation <span class="process-math">\(\preceq\)</span> with the properties that</p>
+<ol class="decimal">
+<li id="li-23"><p id="p-derived-li-23">(self-relation): <span class="process-math">\(\alpha \preceq \alpha\)</span> for all <span class="process-math">\(\alpha \in \mathcal{A}\text{;}\)</span></p></li>
+<li id="li-24"><p id="p-derived-li-24">(transitivity): if <span class="process-math">\(\alpha \preceq \beta\)</span> and <span class="process-math">\(\beta \preceq  \gamma\)</span> then <span class="process-math">\(\alpha \preceq \gamma\text{;}\)</span></p></li>
+<li id="li-25"><p id="p-derived-li-25">(upper bounds): for any <span class="process-math">\(\alpha, \beta \in \mathcal{A}\text{,}\)</span> there exists <span class="process-math">\(\gamma \in \mathcal{A}\)</span> such that <span class="process-math">\(\alpha \preceq \gamma\)</span> and <span class="process-math">\(\beta \preceq \gamma\text{.}\)</span></p></li>
+</ol></article><p id="p-82">Not every pair of elements in a directed set relate (unlike a totally ordered set), but we do have the upper bound property that will allow us to define convergence.</p>
+<article class="definition definition-like" id="definition-10"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="period">.</span>
+</h3>
+<p id="p-83">A <dfn class="terminology">net</dfn> in <span class="process-math">\(\mathcal{X}\)</span> is a function <span class="process-math">\(x\)</span> from a directed set <span class="process-math">\(\mathcal{A}\)</span> into a space <span class="process-math">\(\mathcal{X}\text{.}\)</span> We usually write <span class="process-math">\(x(\alpha) = x_\alpha\)</span> and write the net as <span class="process-math">\(\langle x_\alpha \rangle_{\alpha \in \mathcal A} = \langle x_\alpha \rangle\text{.}\)</span></p></article><article class="definition definition-like" id="def-eventually"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.3</span><span class="period">.</span>
+</h3>
+<p id="p-84">Now let <span class="process-math">\(\mathcal{X}\)</span> be a topological space and <span class="process-math">\(E \subset \mathcal{X}\text{.}\)</span></p>
 <ul class="disc">
-<li id="li-19"><p id="p-derived-li-19"><span class="process-math">\(\X\)</span> is <dfn class="terminology">compact</dfn> if every open cover of <span class="process-math">\(\X\)</span> has a finite subcover. That is, given a collection of open sets so that <span class="process-math">\(\X = \bigcup_{\alpha \in \mathcal A} U_\alpha\text{,}\)</span> there is a finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\)</span> so that <span class="process-math">\(X = \bigcup_{\alpha \in \mathcal B} U_\alpha\text{.}\)</span></p></li>
-<li id="li-20"><p id="p-derived-li-20">A subset <span class="process-math">\(Y\)</span> of a topological space is <dfn class="terminology">compact</dfn> if it is compact in the relative topology. That is, <span class="process-math">\(Y \subset \X\)</span> is compact if and only if for every collection of open sets in <span class="process-math">\(\X\)</span> with <span class="process-math">\(Y \subset \bigcup_{\alpha \in \mathcal A}\text{,}\)</span> there is a finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\)</span> so that <span class="process-math">\(Y \subset \bigcup_{\alpha \in \mathcal B} U_\alpha\text{.}\)</span></p></li>
-<li id="li-21"><p id="p-derived-li-21">A set <span class="process-math">\(Y \subset \X\)</span> is called <dfn class="terminology">precompact</dfn> if its closure is compact.</p></li>
-</ul></article><p id="p-85">One useful characterization of compactness is in terms of closed sets. A family of sets <span class="process-math">\(\{F_\alpha\}_{\alpha \in \mathcal A}\)</span> has the <dfn class="terminology">finite intersection property</dfn> if <span class="process-math">\(\bigcap_{\alpha \in \mathcal B} \neq \emptyset\)</span> for any finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\text{.}\)</span></p>
-<article class="proposition theorem-like" id="prop-fip"><h3 class="heading">
-<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.2</span><span class="period">.</span>
+<li id="li-26"><p id="p-derived-li-26">A net <span class="process-math">\(\net{x_\alpha}\)</span> is <dfn class="terminology">eventually</dfn> in <span class="process-math">\(E\)</span> if there exists <span class="process-math">\(\alpha_0 \in \mathcal{A}\)</span> such <span class="process-math">\(x_\alpha \in \mathcal{A}\)</span> for all <span class="process-math">\(\alpha \succeq \alpha_0\text{.}\)</span></p></li>
+<li id="li-27"><p id="p-derived-li-27">A net <span class="process-math">\(\net{x_\alpha}\)</span> is <dfn class="terminology">frequently</dfn> in <span class="process-math">\(E\)</span> if for every <span class="process-math">\(\alpha \in \mathcal{A}\)</span> there exists <span class="process-math">\(\beta \succeq \alpha\)</span> such that <span class="process-math">\(x_\beta \in E\text{.}\)</span></p></li>
+<li id="li-28"><p id="p-derived-li-28">A point <span class="process-math">\(x \in \mathcal{X}\)</span> is a <dfn class="terminology">limit</dfn> of <span class="process-math">\(\net{x_\alpha}\)</span> if for every neighborhood <span class="process-math">\(U\)</span> of <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(\net{x_\alpha}\)</span> is eventually in <span class="process-math">\(U\text{.}\)</span> In this case, we say that <span class="process-math">\(x_\alpha\)</span> <dfn class="terminology">converges</dfn> to <span class="process-math">\(x\)</span> and we write <span class="process-math">\(x_\alpha \to x\text{.}\)</span></p></li>
+<li id="li-29"><p id="p-derived-li-29">A point <span class="process-math">\(x \in E\)</span> is a <dfn class="terminology">cluster point</dfn> of <span class="process-math">\(\net{x_\alpha}\)</span> if for every neighborhood <span class="process-math">\(U\)</span> if <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(\net{x_\alpha}\)</span> is frequently in <span class="process-math">\(E\text{.}\)</span></p></li>
+</ul></article><p id="p-85">Now, we'll show that nets have many of the desirable properties that sequences do.</p>
+<article class="proposition theorem-like" id="prop-net1"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.2.4</span><span class="period">.</span>
 </h3>
-<p id="p-86">A topological space is compact if and only if <span class="process-math">\(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\)</span> for every family of sets <span class="process-math">\(\{F_\alpha\}_{\alpha \in \A}\)</span> with the finite intersection property.</p></article><article class="hiddenproof" id="proof-13"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-13"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-13"><article class="hiddenproof"><p id="p-87">Suppose a family of closed sets <span class="process-math">\(\{F_\alpha\}\)</span> is given. Let <span class="process-math">\(\{U_\alpha\}\)</span> be the family of open sets given by <span class="process-math">\(U_\alpha = (F_\alpha)^c\text{.}\)</span> By construction, <span class="process-math">\(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\)</span> if and only if <span class="process-math">\(\bigcup_{\alpha \in \A} U_\alpha \neq \X\text{.}\)</span> Also, <span class="process-math">\(\{F_\alpha\}\)</span> has the finite intersection property if and only if no finite subfamily of <span class="process-math">\(\{U_\alpha\}\)</span> covers <span class="process-math">\(\X\text{.}\)</span></p></article></div></section></div></main>
+<p id="p-86">If <span class="process-math">\(\mathcal X\)</span> is a topological space, <span class="process-math">\(E \subset \mathcal{X}\text{,}\)</span> and <span class="process-math">\(x \in \mathcal X\text{,}\)</span> then <span class="process-math">\(x\)</span> is an accumulation point of <span class="process-math">\(E\)</span> if and only if there exists a net in <span class="process-math">\(E\backslash\{x\}\)</span> that converges to <span class="process-math">\(x\text{.}\)</span> Likewise, <span class="process-math">\(x \in \cc{E}\)</span> if and only if there is a net in <span class="process-math">\(E\)</span> that converges to <span class="process-math">\(x\text{.}\)</span></p></article><article class="hiddenproof" id="proof-10"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-10"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-10"><article class="hiddenproof"><p id="p-87">If <span class="process-math">\(x\)</span> is a limit point of <span class="process-math">\(E\text{,}\)</span> then let <span class="process-math">\(\N\)</span> be the set of neighborhoods of <span class="process-math">\(x\text{,}\)</span> directed by reverse inclusion. For each <span class="process-math">\(U \in \N\text{,}\)</span> choose an element <span class="process-math">\(x_U \in (U\backslash\{x\})\cap E\text{.}\)</span> Then by definition, <span class="process-math">\(x_U \to x\text{.}\)</span></p>
+<p id="p-88">On the other hand, if <span class="process-math">\(x_\alpha\)</span> is a net in <span class="process-math">\(E\backslash\{x\}\)</span> and <span class="process-math">\(x_\alpha \to x\text{,}\)</span> then for any neighborhood <span class="process-math">\(U \in \N\text{,}\)</span> the punctured set <span class="process-math">\(U\backslash\{x\}\)</span> contains some point in <span class="process-math">\(x_\alpha\text{.}\)</span> Thus, <span class="process-math">\(x\)</span> is a limit point of <span class="process-math">\(E\text{.}\)</span></p>
+<p id="p-89">The second statement follows from the definition and the observation that the closure of a set contains its limit points.</p></article></div>
+<p id="p-90">We also get a net definition of continuity akin to the typical sequence definition.</p>
+<article class="proposition theorem-like" id="prop-netcont"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.2.5</span><span class="period">.</span>
+</h3>
+<p id="p-91">Let <span class="process-math">\(\mathcal X, \mathcal Y\)</span> be topological spaces and <span class="process-math">\(f: \mathcal X \to \mathcal Y\text{.}\)</span> The function <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(x \in \mathcal X\)</span> if and only if for every net <span class="process-math">\(\net{x_\alpha}\)</span> converging to <span class="process-math">\(x\text{,}\)</span> the net <span class="process-math">\(\net{f(x_\alpha)}\)</span> converges to <span class="process-math">\(f(x)\text{.}\)</span></p></article><article class="hiddenproof" id="proof-11"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-11"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-11"><article class="hiddenproof"><p id="p-92">Suppose that <span class="process-math">\(f\)</span> is continuous at <span class="process-math">\(x\text{.}\)</span> Then for a neighborhood <span class="process-math">\(V\)</span> of <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(f\inv(V)\)</span> is a neighborhood of <span class="process-math">\(x\text{.}\)</span> Now suppose that a net <span class="process-math">\(x_\alpha\)</span> converges to <span class="process-math">\(x\text{.}\)</span> By definition, <span class="process-math">\(x_\alpha\)</span> must eventually be in <span class="process-math">\(f\inv(V)\text{,}\)</span> which implies that <span class="process-math">\(\net{f(x_\alpha)}\)</span> is eventually in <span class="process-math">\(V\text{.}\)</span> But this means that <span class="process-math">\(f(x_\alpha) \to f(x)\text{,}\)</span> as the choice of <span class="process-math">\(V\)</span> was arbitrary.</p></article></div>
+<p id="p-93">Finally, we'll state a net version of the theorem for sequences that states that sequential cluster points have convergent subsequences - be careful with this one, because a subnet it isn't quite the direct analogy that it appears to be.</p>
+<aside class="aside aside-like" id="aside-2"><h3 class="heading"><span class="title">Subnets.</span></h3>
+<p id="p-94">There are at least three non-equivalent definitions of subnet. Despite the complications, the idea is generally the same - to recover as many theorems involving convergent sequences as possible. To see more explanation, see <a class="external" href="https://en.wikipedia.org/wiki/Subnet_(mathematics)" target="_blank">the article on subnets</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-1" id="fn-1"><sup> 1 </sup></a> on Wikipedia.</p></aside><article class="definition definition-like" id="def-subnet"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.2.6</span><span class="period">.</span>
+</h3>
+<p id="p-95">A <dfn class="terminology">subnet</dfn> of a net <span class="process-math">\(\net{x_\alpha}_{\alpha \in \mathcal A}\)</span> is a net <span class="process-math">\(\net{y_\beta}_{\beta \in \mathcal B}\)</span> and a map <span class="process-math">\(\beta \mapsto \alpha_\beta\)</span> from <span class="process-math">\(\mathcal B \to \mathcal A\)</span> such that the following hold:</p>
+<ul class="disc">
+<li id="li-30"><p id="p-derived-li-30">For every <span class="process-math">\(\alpha_0 \in \mathcal A\)</span> there exists <span class="process-math">\(\beta_0 \in \mathcal B\)</span> such that <span class="process-math">\(\alpha_\beta \succeq \alpha_0\)</span> whenever <span class="process-math">\(\beta \succeq \beta_0\text{.}\)</span></p></li>
+<li id="li-31"><p id="p-derived-li-31"><span class="process-math">\(\displaystyle y_\beta = x_{\alpha_\beta}\)</span></p></li>
+</ul></article><p id="p-96">If <span class="process-math">\(\net{x_\alpha}\)</span> converges to a point <span class="process-math">\(x\text{,}\)</span> then so too must any subnet <span class="process-math">\(\net{x_{\alpha_\beta}}\)</span></p>
+<article class="proposition theorem-like" id="prop-subnet-cluster"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.2.7</span><span class="period">.</span>
+</h3>
+<p id="p-97">If <span class="process-math">\(\net{x_\alpha}\)</span> is a net in <span class="process-math">\(\mathcal X\)</span> then <span class="process-math">\(x\)</span> is a cluster point of <span class="process-math">\(x_\alpha\)</span> if and only if there is a subnet of <span class="process-math">\(x_\alpha\)</span> converging to <span class="process-math">\(x\text{.}\)</span></p></article><article class="hiddenproof" id="proof-12"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-12"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-12"><article class="hiddenproof"><p id="p-98">Suppose that <span class="process-math">\(\net{x_\alpha}\)</span> has a subnet <span class="process-math">\(\net{y_\beta} = \net{x_{\alpha_\beta}}\)</span> converging to <span class="process-math">\(x\text{.}\)</span> Let <span class="process-math">\(U\)</span> be a neighborhood of <span class="process-math">\(x\text{.}\)</span> Now choose <span class="process-math">\(\beta_1\)</span> so that <span class="process-math">\(y_{\beta} \in U\)</span> whenever <span class="process-math">\({\beta} \succeq \beta_1\)</span> (which we can do by convergence). For a given <span class="process-math">\(\alpha\text{,}\)</span> choose <span class="process-math">\(\beta_2\)</span> so that <span class="process-math">\(\alpha_{\beta} \succeq \alpha\)</span> for <span class="process-math">\(\beta \succeq \beta_2\)</span> (which we can do by the definition of a subnet). Since <span class="process-math">\(\mathcal B\)</span> is a directed set, choose <span class="process-math">\(\beta \in \mathcal B\)</span> so that <span class="process-math">\(\beta \succeq \beta_1\)</span> and <span class="process-math">\(\beta \succeq \beta_2\text{.}\)</span> Then <span class="process-math">\(\alpha_\beta \succeq \alpha\)</span> and <span class="process-math">\(x_{\alpha_\beta} = y_\beta \in U\text{.}\)</span> That is, <span class="process-math">\(x_{\alpha}\)</span> is frequently in <span class="process-math">\(U\text{,}\)</span> and so <span class="process-math">\(x\)</span> is a cluster point of <span class="process-math">\(\net{x_\alpha}\text{.}\)</span></p>
+<p id="p-99">In the other direction, if <span class="process-math">\(x\)</span> is a cluster point of <span class="process-math">\(\net{x_\alpha}\text{,}\)</span> the idea will be to use the neighborhoods at <span class="process-math">\(x\)</span> as the index. Let <span class="process-math">\(\mathcal N\)</span> be the neighborhoods of <span class="process-math">\(x\text{.}\)</span> Construct the product of directed sets <span class="process-math">\(\mathcal N \times \mathcal A\)</span> with the relation <span class="process-math">\((U, \alpha) \preceq (U_1, \alpha_1)\)</span> when <span class="process-math">\(U \supset U_1\)</span> and <span class="process-math">\(\alpha \preceq \alpha_1\text{.}\)</span> Then using the upper bound property, for each <span class="process-math">\((U, \beta) \in \mathcal N \times \mathcal A\text{,}\)</span> we can choose <span class="process-math">\(\alpha_{(U, \beta)}\)</span> such that <span class="process-math">\(\alpha_{(U, \beta)} \succeq \beta\)</span> and <span class="process-math">\(x_{\alpha_{(U, \beta)}} \in U\text{.}\)</span> If <span class="process-math">\({(U', \beta')} \succeq (U, \beta)\text{,}\)</span> we have</p>
+<div class="displaymath process-math">
+\begin{equation*}
+\alpha_{{(U', \beta')}} \succeq {\beta'} \succeq \beta
+\end{equation*}
+</div>
+<p class="continuation">and</p>
+<div class="displaymath process-math">
+\begin{equation*}
+x_{\alpha_{{(U', \beta')}}} \in {U'} \subset U\text{.}
+\end{equation*}
+</div>
+<p class="continuation">Thus <span class="process-math">\(\net{x_{\alpha_{{(U, \beta)}}}}\)</span> is a subnet of <span class="process-math">\(\net{x_\alpha}\)</span> that converges to <span class="process-math">\(x\text{.}\)</span></p></article></div></section><div class="hidden-content tex2jax_ignore" id="hk-fn-1"><div class="fn"><code class="code-inline tex2jax_ignore">https://en.wikipedia.org/wiki/Subnet_(mathematics)</code></div></div>
+</div></main>
 </div>
 </body>
 </html>

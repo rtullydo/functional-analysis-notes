@@ -1,5 +1,2 @@
-/mnt/d/Cloud/Dropbox/funct/source/main.ptx:159:15:FATAL:PARSER:ERR_TAG_NAME_MISMATCH: Opening and ending tag mismatch: p line 153 and section
-/mnt/d/Cloud/Dropbox/funct/source/main.ptx:312:15:FATAL:PARSER:ERR_TAG_NAME_MISMATCH: Opening and ending tag mismatch: section line 134 and chapter
-/mnt/d/Cloud/Dropbox/funct/source/main.ptx:504:8:FATAL:PARSER:ERR_TAG_NAME_MISMATCH: Opening and ending tag mismatch: chapter line 132 and book
-/mnt/d/Cloud/Dropbox/funct/source/main.ptx:506:11:FATAL:PARSER:ERR_TAG_NAME_MISMATCH: Opening and ending tag mismatch: book line 118 and pretext
-/mnt/d/Cloud/Dropbox/funct/source/main.ptx:507:1:FATAL:PARSER:ERR_TAG_NOT_FINISHED: Premature end of data in tag pretext line 3
+/home/rtullydo/Dropbox/funct/source/main.ptx:204:33:FATAL:PARSER:ERR_NAME_REQUIRED: xmlParseEntityRef: no name
+/home/rtullydo/Dropbox/funct/source/main.ptx:204:42:FATAL:PARSER:ERR_NAME_REQUIRED: xmlParseEntityRef: no name

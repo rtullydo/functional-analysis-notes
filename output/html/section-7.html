@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2022-03-28T13:25:58-07:00       *-->
+<!--*       on 2022-03-30T12:45:54-07:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Locally convex spaces</title>
+<title>Compact spaces</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -60,8 +60,8 @@
   \DeclareMathOperator{\dist}{dist}
   \DeclareMathOperator{\dom}{dom}
   \DeclareMathOperator{\diag}{diag}
-  \DeclareMathOperator{\span}{span}
-  \DeclareMathOperator{\null}{null}
+  \DeclareMathOperator{\spn}{span}
+  \DeclareMathOperator{\nll}{null}
   \DeclareMathOperator{\rank}{rank}
   \DeclareMathOperator{\col}{col}
   \DeclareMathOperator{\cl}{cl}
@@ -156,8 +156,6 @@
   \newcommand\epm{\end{pmatrix}}
   \numberwithin{equation}{section}
   \newcommand\nin{\noindent}
-  \newcommand{\nCr}[2]{\,_{#1}C_{#2}} 
-  \newcommand{\vec}[1]{{\bf #1}}
   \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
   \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
   \newcommand{\hz}{\,\mathrm{Hz}}
@@ -173,10 +171,10 @@
 </div></div>
 <nav id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chapter-3.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-3.html" title="Up">Up</a><span id="nextbutton" class="next-button button toolbar-item disabled">Next</span></span></div>
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-6.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chapter-3.html" title="Next">Next</a></span></div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="chapter-3.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-3.html" title="Up">Up</a><span class="next-button button toolbar-item disabled">Next</span>
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="section-6.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter-2.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chapter-3.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
 <div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
@@ -185,61 +183,40 @@
 <li class="link">
 <a href="chapter-1.html" data-scroll="chapter-1" class="internal"><span class="codenumber">1</span> <span class="title">The spectral theorem for compact operators</span></a><ul>
 <li><a href="section-1.html" data-scroll="section-1" class="internal">The spectral theorem in finite dimensions</a></li>
-<li><a href="section-2.html" data-scroll="section-2" class="internal">Compact operators</a></li>
-<li><a href="section-3.html" data-scroll="section-3" class="internal">The spectral theorem for compact self-adjoint operators</a></li>
+<li><a href="section-2.html" data-scroll="section-2" class="internal">Projections and invariant subspaces</a></li>
+<li><a href="section-3.html" data-scroll="section-3" class="internal">Compact operators</a></li>
+<li><a href="section-4.html" data-scroll="section-4" class="internal">The spectral theorem for compact self-adjoint operators</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="chapter-2.html" data-scroll="chapter-2" class="internal"><span class="codenumber">2</span> <span class="title">Topology</span></a><ul>
-<li><a href="section-4.html" data-scroll="section-4" class="internal">Topological catch-all</a></li>
-<li><a href="section-5.html" data-scroll="section-5" class="internal">Nets</a></li>
-<li><a href="section-6.html" data-scroll="section-6" class="internal">Compact spaces</a></li>
+<li><a href="section-5.html" data-scroll="section-5" class="internal">Topological catch-all</a></li>
+<li><a href="section-6.html" data-scroll="section-6" class="internal">Nets</a></li>
+<li><a href="section-7.html" data-scroll="section-7" class="active">Compact spaces</a></li>
 </ul>
 </li>
 <li class="link">
-<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-7.html" data-scroll="section-7" class="active">Locally convex spaces</a></li></ul>
+<a href="chapter-3.html" data-scroll="chapter-3" class="internal"><span class="codenumber">3</span> <span class="title">Locally convex spaces</span></a><ul><li><a href="section-8.html" data-scroll="section-8" class="internal">Locally convex spaces</a></li></ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
 <main class="main"><div id="content" class="pretext-content"><section class="section" id="section-7"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">3.1</span> <span class="title">Locally convex spaces</span>
+<span class="type">Section</span> <span class="codenumber">2.3</span> <span class="title">Compact spaces</span>
 </h2>
-<p id="p-89">We being by introducting a special class of vector spaces that are well-suited for analysis. Since we typically want to consider questions of convergence and continuity, we require our vector spaces to come equipped with a topological structure.</p>
-<article class="definition definition-like" id="def-tvs"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">3.1.1</span><span class="period">.</span>
+<p id="p-100">Now we'll take a look at how compactness and related results generalize to topological spaces.</p>
+<article class="definition definition-like" id="def-compact"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.3.1</span><span class="period">.</span>
 </h3>
-<p id="p-90">A topological vector space (TVS) is a vector space <span class="process-math">\(\mathcal{X}\)</span> over a field <span class="process-math">\(\mathbb{F}\)</span> and a topology <span class="process-math">\(\mathcal{T}\)</span> so that</p>
-<ol class="decimal">
-<li id="li-22"><p id="p-derived-li-22">addition is continuous - that is, the map <span class="process-math">\((x, y)\mapsto x + y\)</span> is continuous.</p></li>
-<li id="li-23"><p id="p-derived-li-23">scalar multiplication is continuous - that is, the map <span class="process-math">\((\alpha, x)\mapsto \alpha x\)</span> is continuous.</p></li>
-</ol></article><article class="definition definition-like" id="def-lcs"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">3.1.2</span><span class="period">.</span>
+<p id="p-101">Let <span class="process-math">\(\X\)</span> be a topological space.</p>
+<ul class="disc">
+<li id="li-32"><p id="p-derived-li-32"><span class="process-math">\(\X\)</span> is <dfn class="terminology">compact</dfn> if every open cover of <span class="process-math">\(\X\)</span> has a finite subcover. That is, given a collection of open sets so that <span class="process-math">\(\X = \bigcup_{\alpha \in \mathcal A} U_\alpha\text{,}\)</span> there is a finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\)</span> so that <span class="process-math">\(X = \bigcup_{\alpha \in \mathcal B} U_\alpha\text{.}\)</span></p></li>
+<li id="li-33"><p id="p-derived-li-33">A subset <span class="process-math">\(Y\)</span> of a topological space is <dfn class="terminology">compact</dfn> if it is compact in the relative topology. That is, <span class="process-math">\(Y \subset \X\)</span> is compact if and only if for every collection of open sets in <span class="process-math">\(\X\)</span> with <span class="process-math">\(Y \subset \bigcup_{\alpha \in \mathcal A}\text{,}\)</span> there is a finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\)</span> so that <span class="process-math">\(Y \subset \bigcup_{\alpha \in \mathcal B} U_\alpha\text{.}\)</span></p></li>
+<li id="li-34"><p id="p-derived-li-34">A set <span class="process-math">\(Y \subset \X\)</span> is called <dfn class="terminology">precompact</dfn> if its closure is compact.</p></li>
+</ul></article><p id="p-102">One useful characterization of compactness is in terms of closed sets. A family of sets <span class="process-math">\(\{F_\alpha\}_{\alpha \in \mathcal A}\)</span> has the <dfn class="terminology">finite intersection property</dfn> if <span class="process-math">\(\bigcap_{\alpha \in \mathcal B} \neq \emptyset\)</span> for any finite subset <span class="process-math">\(\mathcal B\)</span> of <span class="process-math">\(\mathcal A\text{.}\)</span></p>
+<article class="proposition theorem-like" id="prop-fip"><h3 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">2.3.2</span><span class="period">.</span>
 </h3>
-<p id="p-91">A locally convex space (LCS) is a TVS with the property that there is a base of the topology consisting of convex sets</p></article><article class="definition definition-like" id="def-seminorm"><h3 class="heading">
-<span class="type">Definition</span><span class="space"> </span><span class="codenumber">3.1.3</span><span class="period">.</span>
-</h3>
-<p id="p-92">A seminorm is a real-valued function <span class="process-math">\(p:\mathcal{X} \to \R\)</span> satisfying the following properties:</p>
-<ol class="decimal">
-<li id="li-24"><p id="p-derived-li-24">Triangle inequality:<div class="displaymath process-math">
-\begin{equation*}
-\forall x, y \in \mathcal{X}, p(x + y) \leq p(x) + p(y)
-\end{equation*}
-</div></p></li>
-<li id="li-25"><p id="p-derived-li-25">Homogeneity:<div class="displaymath process-math">
-\begin{equation*}
-\forall \alpha \in \mathbb{F}, x \in \mathcal{X}, p(\alpha x) = \abs{\alpha}p(x)
-\end{equation*}
-</div></p></li>
-<li id="li-26"><p id="p-derived-li-26">Non-negativity:<div class="displaymath process-math">
-\begin{equation*}
-p(x) \geq 0 \,\,\,\forall x \in \mathcal{X}
-\end{equation*}
-</div></p></li>
-</ol></article><p id="p-93">The basic idea is to use the “balls” defined by the seminorms to generate the topology.</p>
-<article class="theorem theorem-like" id="thm-semiballs"><h3 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">3.1.4</span><span class="period">.</span>
-</h3>
-<p id="p-94"></p></article></section></div></main>
+<p id="p-103">A topological space is compact if and only if <span class="process-math">\(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\)</span> for every family of sets <span class="process-math">\(\{F_\alpha\}_{\alpha \in \A}\)</span> with the finite intersection property.</p></article><article class="hiddenproof" id="proof-13"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-13"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-13"><article class="hiddenproof"><p id="p-104">Suppose a family of closed sets <span class="process-math">\(\{F_\alpha\}\)</span> is given. Let <span class="process-math">\(\{U_\alpha\}\)</span> be the family of open sets given by <span class="process-math">\(U_\alpha = (F_\alpha)^c\text{.}\)</span> By construction, <span class="process-math">\(\bigcap_{\alpha \in \A} F_\alpha \neq \emptyset\)</span> if and only if <span class="process-math">\(\bigcup_{\alpha \in \A} U_\alpha \neq \X\text{.}\)</span> Also, <span class="process-math">\(\{F_\alpha\}\)</span> has the finite intersection property if and only if no finite subfamily of <span class="process-math">\(\{U_\alpha\}\)</span> covers <span class="process-math">\(\X\text{.}\)</span></p></article></div></section></div></main>
 </div>
 </body>
 </html>

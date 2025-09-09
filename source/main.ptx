@@ -11,8 +11,8 @@
           \DeclareMathOperator{\dist}{dist}
           \DeclareMathOperator{\dom}{dom}
           \DeclareMathOperator{\diag}{diag}
-          \DeclareMathOperator{\span}{span}
-          \DeclareMathOperator{\null}{null}
+          \DeclareMathOperator{\spn}{span}
+          \DeclareMathOperator{\nll}{null}
           \DeclareMathOperator{\rank}{rank}
           \DeclareMathOperator{\col}{col}
           \DeclareMathOperator{\cl}{cl}
@@ -107,8 +107,6 @@
           \newcommand\epm{\end{pmatrix}}
           \numberwithin{equation}{section}
           \newcommand\nin{\noindent}
-          \newcommand{\nCr}[2]{\,_{#1}C_{#2}} % nCr
-          \newcommand{\vec}[1]{{\bf #1}}
           \newcommand{\ps}{\displaystyle \sum_{n=0}^\infty a_n x^n}
           \newcommand{\psg}{\displaystyle \sum_{n=0}^\infty b_n x^n}
           \newcommand{\hz}{\,\mathrm{Hz}}
@@ -132,259 +130,333 @@
     <chapter><title>The spectral theorem for compact operators</title>
 
         <section> <title>The spectral theorem in finite dimensions</title>
-        <p> The point of these notes is to generalize one of the most useful theorems in undergraduate linear algebra to a very general setting. Along the way, we'll look at some very modern developments in analysis and the study of spaces of functions.</p>
-        <p> Recall that a complex <m>n \times n</m> matrix <m>A</m> is called <term>normal</term> if <m>A A\ad = A\ad A</m> where <m>\ast</m> represents the conjugate transpose. The spectral theorem for normal matrices says that <m>A</m> can be <term>diagonalized</term> as
-        <me>
-            A = U D U\ad
-        </me>
-        where <m>D</m> is a diagonal matrix of eigenvalues of <m>A</m> and <m>U</m> is a unitary matrix of associated eigenvectors. </p>
-
-        <p>The big idea of diagonalization is that operators (maps represented by square matrices) can be understood by looking at their action on <term>invariant subspaces</term>, which are spaces that a matrix leaves <q>pointing in the same direction</q>. This is a major simplification in the understanding of (normal) linear maps - every normal linear map is (up to a change of basis) scalar multiplication on orthogonal spaces.</p>
-
-        <p>A slightly more sophisticated way of presenting this idea is to use <term>projection operators</term>.</p>
-
-        <definition xml:id="def-finite-proj">
-            <p>Let <m>\hilbert</m> be a finite dimensional Hilbert space, and <m>V \subset \hilbert</m> a linear subspace. Let <m>\{v_1, \ldots, v_k\}</m> be an orthonormal basis for <m>V</m>. The <term>projection operator of <m>\hilbert</m> onto <m>V</m></term>, denoted <m>P_V</m>, is given by
+            <p> The point of these notes is to generalize one of the most useful theorems in undergraduate linear algebra to a very general setting. Along the way, we'll look at some very modern developments in analysis and the study of spaces of functions.</p>
+            <p> Recall that a complex <m>n \times n</m> matrix <m>A</m> is called <term>normal</term> if <m>A A\ad = A\ad A</m> where <m>\ast</m> represents the conjugate transpose. The spectral theorem for normal matrices says that <m>A</m> can be <term>diagonalized</term> as
             <me>
-                P_V h = \sum_{i=1}^k \ip{h}{v_i} v_i \in V
+                A = U D U\ad
             </me>
-        </p></definition>
+            where <m>D</m> is a diagonal matrix of eigenvalues of <m>A</m> and <m>U</m> is a unitary matrix of associated eigenvectors. </p>
 
-        <p>With this language, diagonalization becomes the decomposition of operators into sums of projections. That is, given an operator <m>A</m> on a (complex) finite dimensional Hilbert space <m>\hilbert</m>, denote by <m>(\la_i, E_i)</m> the <m>i</m>th eigenvalue and corresponding eigenspace. Recall that each eigenspace is <m>E_i = \ker(A - \la_i)</m>. A normal matrix will always have <m>\hilbert = \bigoplus_{i=1}^k E_i</m> and we can write
-        <men xml:id="eq-finite-spec">
-            A = \sum_{i=1}^k \la_i P_{i}.
-        </men>
-        where <m>P_i</m> is the projection operator onto <m>\ker(A - \la_i)</m>.</p>
+            <p>The big idea of diagonalization is that operators (maps represented by square matrices) can be understood by looking at their action on <term>invariant subspaces</term>, which are spaces that a matrix leaves <q>pointing in the same direction</q>. This is a major simplification in the understanding of (normal) linear maps - every normal linear map is (up to a change of basis) scalar multiplication on orthogonal spaces.</p>
 
-        <p>A special case is that of hermitian matrices (that is, matrices that have the property that <m>A = A\ad</m>), in which case the eigenvalues of <m>A</m> are real.</p>
-    </section>
+            <p>A slightly more sophisticated way of presenting this idea is to use <term>projection operators</term>.</p>
 
-    <section><title>Compact operators</title>
-        <p>The object of study in this section is essentially the most direct generalization of matrices to infinite dimensions, for reasons that will become apparent.</p>
-
-        <definition xml:id="def-compactop">
-            <p>Suppose <m>\hilbert</m> is a Hilbert space. A linear map <m>T: \hilbert \to \hilbert</m> is <term>compact</term> if the image of the unit ball in <m>\hilbert</m> under <m>T</m>, denoted <m>T(\ball \hilbert)</m>, has compact closure in <m>\hilbert</m>.  </p>
-        </definition>
-
-        <p>Denote by <m>\BOP_0(\hilbert, \K)</m> the set of compact operators from <m>\hilbert</m> to <m>\K</m>, and <m>\BOP_0(\hilbert) = \BOP_0(\hilbert, \hilbert)</m>.</p>
-
-        <proposition xml:id="prop-compopbounded">
-            <p><m>\BOP_0(\hilbert,\K) \subset \BOP(\hilbert, \K)</m>.</p>
-        </proposition>
-        <proof>
-            <p>Let <m>T \in \BOP_0(\hilbert, \K)</m>. Since <m>T(\ball \hilbert)</m> is compact, there must exist a constant <m>C</m> so that <m>T(\ball \hilbert) \subset B_\K(C) = \{k \in \K : \norm{k} \leq C\}</m>. But then <m>\norm{T} \leq C</m>, and so <m>T \in \BH</m>.</p>
-        </proof>
-
-        <proposition xml:id="prop-comp">
-            <p><m>\BOP_0(\hilbert, \K)</m> is a linear space.</p>.
-        </proposition>
-
-        <proposition xml:id = "prop-convcomp">
-            <p>If <m>T_n</m> is a sequence in <m>\BOP_0(\hilbert, \K)</m> and <m>T</m> is an operator in <m>\BOP(\hilbert, \K)</m> such that <m>\norm{T_n - T} \to 0</m>, then <m>T</m> is compact.</p>
-        </proposition>
-
-        <proposition xml:id="prop-compprod">
-            <p>If <m>A \in \BOP(\hilbert)</m>, <m>B \in \BOP(\K)</m>, and <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>TA</m> and <m>BT</m> are compact.</p>
-        </proposition>
-
-        <p>A special family of compact operators is even more restricted by the size of their ranges. Say that an operator is of <term>finite rank</term>, if <m>\ran T</m> is finite dimensional (that is, the closed linear span of a finite set of vectors). Let <m>\BOP_{00}(\hilbert, \K)</m> be the set of continuous finite rank operators. It is straightfoward that <m>\BOP_{00}</m> is a linear space and that <m>\BOP_{00} \subset \BOP_0</m>. It turns out to be the case that compact operators are (norm) limits of operators of finite rank.</p>
-
-        <theorem xml:id="thm-compapprox">
-            <p>Let <m>T \in \BOP(\hilbert, \K)</m>. The following are equivalent.
-            <ol>
-                <li> <m>T</m> is compact.</li>
-                <li> <m>T\ad</m> is compact.</li>
-                <li> There is a sequence <m>T_n</m> of operators of finite rank such that <m>\norm{T_n - T} \to 0</m>.</li>
-            </ol>
-            </p>
-        </theorem>
-
-        <proof><p>First, note that <m>(3) \Rightarrow (1)</m> follows from <xref ref="prop-convcomp"/>.</p>
-        <p>We will show that <m>(1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)</m>.</p>
-
-        <p><m>(1) \Rightarrow (3)</m>: We use the fact that since <m>T</m> is compact, the closure of <m>T(\ball \hilbert)</m> contains a countable dense subset (one can construct this set using the fact that the image of the ball under <m>T</m> is totally bounded). Then <m>\mathcal L = \cl \ran T</m> is a separable subspace of <m>\K</m>. Let <m>\{e_j\}</m> be a basis for <m>\mathcal L</m>, and let <m>P_n</m> be the projection of <m>\K</m> onto the closed linear span of the first <m>n</m> basis vectors; that is, <m>P_n</m> is the projection onto <m>\vee\{e_j: 1 \leq j \leq n\}</m>. Now set <m>T_n = P_n T</m>. Each <m>T_n</m> is a finite rank operator.</p>
-
-        <p>We will show that <m>\norm{T_n - T} \to 0</m> by establishing a uniform bound on <m>\norm{T_n h - T h}</m> for <m>\norm{h}\leq 1</m>. Choose <m>\eps > 0</m>. By compactness, we can find a finite collection of vectors <m>h_1, \ldots, h_m</m> so that 
-        <me>
-            T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
-        </me>
-        For <m>h \in \ball \hilbert</m>, choose <m>h_j</m> so that <m>\norm{Th - Th_j} \leq \eps/3</m>. Then for any <m>n \in \N</m>,
-        <md>
-            <mrow>\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
-            <mrow>\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
-            <mrow>\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}</mrow>
-            <mrow>\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.</mrow>
-        </md>
-        Now, we show that we can find <m>n_0</m> so that <m>\norm{T_n h_j  - T h_j} \leq \eps/3</m>. Certainly <m>Th_j \in \mathcal{L}</m>, and so can be expanded as <m>Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k</m>. On the other hand, 
-        <me>T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k</me>
-        Together, this gives
-        <m>\norm{T_n h_j - T h_j} \to 0</m>, and so the desired <m>n_0</m> exists. Since <m>h</m> was an arbitrary vector with <m>\norm{h} \leq 1</m>, this bound is uniform, and so in the operator norm we have <m>\norm{T_n - T} \to 0</m>.
-          </p>
-
-        <p><m>3 \Rightarrow 2:</m> Suppose that <m>T_n</m> is a sequence in <m>\BOP_{00}(\hilbert, \K)</m> with <m>\norm{T_n - T} \to 0</m>. Then <m>\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0</m>. But <m>T_n\ad</m> is also in <m>\BOP_{00}(\hilbert, \K)</m> (Exercise). Since <m>3 \Rightarrow 1</m>, <m>T\ad</m> is compact.</p>
-
-        <p><m>2 \Rightarrow 1</m>: (Exercise)</p>
-
-        </proof>
-
-        <p>We used an important convergence theorem about finite rank projections in the proof above, so we record the following corollary of the proof.</p>
-
-        <proposition xml:id="prop-finrankzero">
-            <p>If <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>\cl \ran T</m> is separable. If <m>\{e_j\}</m> is a basis for <m>\cl \ran T</m> and <m>P_n</m> is the projection of <m>\K</m> onto <m>\vee\{e_j:1 \leq j\leq n\}</m>, then
-            <me>
-                \norm{P_n T - T} \to 0.
-            </me></p>
-        </proposition>
-
-        <p>This allows a method for constructing compact operators, at least in separable Hilbert spaces, in a manner suggestive of finite dimensional eigenvalues.</p>
-
-        <proposition>
-            <p>Let <m>\hilbert</m> be a separable Hilbert space with basis <m>\{e_j\}</m>. Let <m>\{\alpha_n\}</m> be a sequence in <m>\mathbb{F}</m> with <m>M = \sup_n\{\abs{\alpha_n}\} \lt \infty</m>. Define an operator <m>A</m> on the basis <m>\{e_j\}</m>by <m>A e_j = \alpha_j e_j</m> for all <m>j</m>. Then <m>A</m> extends by linearity to a bounded operator on <m>\hilbert</m> with <m>\norm{A} = M</m>. The operator <m>A</m> is compact if and only if <m>\alpha_n \to 0</m>.
-            </p>
-        </proposition>
-
-        <p>We are now ready to make explicit the apparent connection to eigenvalues of matrices acting on finite dimensional spaces.</p>
-
-        <definition xml:id="def-eigenthings">
-            <p>Suppose that <m>A \in \BH</m>. A scalar <m>\alpha \in \mathbb{F}</m> is called an <term>eigenvalue</term> of <m>A</m> if <m>\ker(A - \alpha) \neq \{0\}</m>. A nonzero vector <m>h</m> in <m>\ker(A - \alpha)</m> is called an <term>eigenvector</term> of <m>A</m>. We recover the usual relationship <m>Ah = \alpha h</m> for such a pair. Let <m>\sigma_p(A)</m> denote the set of eigenvalues of <m>A</m>. 
-            </p>
-        </definition>
-
-        <aside>
-            <p>The <m>p</m> in the notation <m>\sigma_p(A)</m> refers to the <term>point spectrum</term> of more general operators, which we'll talk about later.</p>
-        </aside>
-
-        <p>Unlike linear operators on finite dimensional spaces, compact operators need not possesses eigenvalues. The prototypical example is the <term>Volterra operator</term>.</p>
-
-        <proposition xml:id="prop-volterra">
-            <p>Let <m>\hilbert = L^2[0,1]</m>. For <m>t \in [0,1]</m>, let <m>V:L^2 \to L^2</m> be the operator
-            <me>
-                V(f)(x) = \int_0^x f(y) \, dy.
-            </me>
-            The operator <m>V</m> is compact. However, <m>V</m> has no eigenvalues.
-            </p>
-        </proposition>
-
-        <p>The whole thrust of our conversation is diagonalization of operators in terms of eigen-like structures, and here we've identified a compact operator that cannot be. It's worth asking why. Note that <m>V\ad(f)(x) = \int_x^1 f(y) \, dy</m>; that is, <m>V</m> isn't self-adjoint (in fact, <m>V</m> is also not normal). Keep that in mind as we proceed.</p>
-
-        <p>If, however, a compact operator <emph>does</emph> have an eigenvalue, nice things happen.</p>
-
-        <proposition xml:id="prop-finiteeig">
-            <p>If <m>T \in \BOP_0(\hilbert)</m> and <m>\la \in \sigma_p(T)</m> with <m>\la \neq 0</m>, then the eigenspace <m>\ker(T - \la)</m> is finite-dimensional.</p>
-        </proposition>
-        <proof>
-            <p>Proceed by contradiction. Suppose that <m>\ker(T - \alpha)</m> is infinite-dimensional and so contains an infinite orthonormal sequence. Because <m>T</m> is compact, <m>Te_n</m> has a convergent subsequence <m>T_{e_{n_k}}</m>. Then as a sequence, <m>\{T e_{n_k}\}</m> is Cauchy. But for any <m>n_k \neq n_j</m>, 
-            <me>
-                \norm{T e_{n_k} - T e_{n_j}}^2 = \norm{\la e_{n_k} - \la e_{n_j}}^2 = 2\abs{\la}^2 > 0.
-            </me>
-            This contradicts the Cauchyness of <m>\{T e_{n_k}\}</m>. We conclude that <m>\ker(T - \alpha)</m> is finite-dimensional.</p>
-        </proof>
-
-        <proposition xml:id="prop-compinf">
-            <p>If <m>T \in \BOP_0(\hilbert)</m>, <m>\la \neq 0</m>, and <m>\inf\{\norm{(T - \la)h}: \norm{h}=1\}=0</m> then <m>\la \in \sigma_p(T)</m>.
-            </p>
-        </proposition>
-        <proof>
-            <p>The hypotheses imply that there exists a sequence of unit vectors <m>h_n</m> so that <m>\norm{(T - \la)h_n} \to 0</m>. By compactness, this sequence has a subsequence <m>h_{n_k}</m> and a vector <m>f</m> so that <m>\norm{Th_{n_k} - f}\to 0</m>. Combining these two facts, we can use an algebra trick to get
-            <md>
-                <mrow>h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})</mrow>
-                <mrow>\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] </mrow>
-                <mrow>\amp\to \la\inv[0 + f] = \la\inv f.</mrow>
-            </md>
-            Since the <m>h_n</m> are unit vectors, so is any limit point of the sequence, and so <m>1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}</m>, and so <m>\norm{f} \neq 0</m>. Furthermore, <m>T h_{n_k} \to \la\inv Tf</m>. Since we also have <m>T h_{n_k} \to f</m>, it must be that <m>f = \la\inv T f</m>, or rather that <m>T f = \la f</m>. That is, <m>f\neq 0</m>, <m>f \in \ker(T - \la)</m>, which gives that <m>\la \in \sigma_p(T)</m>.
-        </p></proof>
-    </section>
-
-    <section><title>The spectral theorem for compact self-adjoint operators</title>
-    <introduction>        
-        <p>Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in <xref ref="eq-finite-spec"/>. </p>
-
-            <theorem xml:id="thm-specsacomp">
-                <p>Let <m>T</m> be a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>. Then <m>T</m> has only countable distinct eigenvalues. Enumerating the eigenvalues as <m>\{\la_1, \la_2, \ldots\}</m>, let <m>P_n</m> denote the projection of <m>\hilbert</m> onto <m>\ker(T - \la_n)</m>. Then <m>P_nP_m = P_m P_n = 0</m> when <m>n \neq m</m>, each <m>\la_n</m> is real, and
+            <definition xml:id="def-finite-proj">
+                <p>Let <m>\hilbert</m> be a finite dimensional Hilbert space, and <m>V \subset \hilbert</m> a linear subspace. Let <m>\{v_1, \ldots, v_k\}</m> be an orthonormal basis for <m>V</m>. The <term>projection operator of <m>\hilbert</m> onto <m>V</m></term>, denoted <m>P_V</m>, is given by
                 <me>
-                    T = \sum_{n=1}^\infty \la_n P_n,
+                    P_V h = \sum_{i=1}^k \ip{h}{v_i} v_i \in V
                 </me>
-                where the sum converges in the norm of <m>\BH</m>.</p>
+            </p></definition>
+
+            <p>With this language, diagonalization becomes the decomposition of operators into sums of projections. That is, given an operator <m>A</m> on a (complex) finite dimensional Hilbert space <m>\hilbert</m>, denote by <m>(\la_i, E_i)</m> the <m>i</m>th eigenvalue and corresponding eigenspace. Recall that each eigenspace is <m>E_i = \ker(A - \la_i)</m>. A normal matrix will always have <m>\hilbert = \bigoplus_{i=1}^k E_i</m> and we can write
+            <men xml:id="eq-finite-spec">
+                A = \sum_{i=1}^k \la_i P_{i}.
+            </men>
+            where <m>P_i</m> is the projection operator onto <m>\ker(A - \la_i)</m>.</p>
+
+            <p>A special case is that of hermitian matrices (that is, matrices that have the property that <m>A = A\ad</m>), in which case the eigenvalues of <m>A</m> are real.</p>
+        </section>
+
+        <section><title>Projections and invariant subspaces</title>
+            <p>The content of this section is motivated by the idea of eigenspaces in finite dimensions. Eigenspaces are invariant under the action of their operators (since they are mapped into themselves) and moreover, eigenspaces of distinct eigenvalues are orthogonal to each other. When we diagonalize, we're essentially pulling an operator apart into projections onto its eigenspaces. All of these ideas are useful in the Hilbert space setting.</p>
+
+            <definition xml:id="def-proj">
+                <p>An operator <m>E</m> in <m>\BH</m> is called <term>idempotent</term> if <m>E^2 = E</m>. An idempotent <m>P</m> is called a <term>projection</term> if <m>\ker P = (\ran P)^\perp</m>.</p>
+            </definition>
+
+                <p>Operators defined this way act precisely as you should expect - a projection produces the <q>orthogonal</q> piece of a general vector in <m>\hilbert</m> restricted to the subspace <m>\ran P</m>. Of course, this must be made rigorous.</p>
+
+                <proposition xml:id="prop-idem-proj">
+                    <p>Let <m>E</m> be a non-zero idempotent on <m>\hilbert</m>. The following are equivalent:
+                    <ol>
+                        <li><m>E</m> is a projection.</li>
+                        <li><m>E</m> is the orthogonal projection of <m>\hilbert</m> onto <m>\ran E</m>.</li>
+                        <li><m>\norm{E} = 1</m>.</li>
+                        <li><m>E</m> is self-adjoint.</li>
+                        <li><m>E</m> is normal.</li>
+                        <li><m>\ip{Eh}{h} \geq 0</m> for all <m>h \in \hilbert</m>.</li>
+                    </ol>
+                </p></proposition>
+
+                <p>The proof will be left as an exercise. (To be revisited in a future draft.)</p>
+
+                <p>As in finite dimensions, the range of a projection can be used to decompose a space. Let <m>P</m> be a projection with <m>\ran P = \M</m> and <m>\ker P = \N</m>. Kernel and range are closed subspaces, and thus Hilbert spaces in their own right. Then construct the space <m>\M \oplus \N</m>. It is straighforward that <m>\M \oplus \N</m> is isomorphic to <m>\hilbert</m>, and in the usual abuse of notation, we'll just say <m>\hilbert = \M \oplus \N</m>, or that <m>\hilbert</m> has been orthogonally decomposed.</p>
+
+                <definition xml:id="def-decomp">
+                    <p>If <m>\M_i</m> is a collection of pairwise orthogonal subspaces of <m>\hilbert</m>, then set
+                    <me>
+                        \bigoplus_{i} \M_i = \bigvee_i \M_i.
+                    </me></p>
+
+                    <p>If <m>\M, \N</m> are closed linear subspaces of <m>\hilbert</m>, then set the <term>orthogonal difference</term> of <m>\M</m> and <m>\N</m> to be <me>\M \ominus \N = \M \cap \N^\perp.</me></p>
+                </definition>
+
+                <p>Now we'll identify the sort of special spaces that can be used to pull operators apart. </p>
+
+                <definition xml:id="def-reducing">
+                    <p>If <m>A \in \BH</m> and <m>\M</m> is a closed linear subspace of <m>\hilbert</m>, then we say <m>\M</m> is an <term>invariant subspace</term> of <m>A</m> if <m>A\M \subseteq \M</m>. If in addition <m>A \M^\perp \subseteq \M^\perp</m>, we say that <m>\M</m> <term>reduces</term> <m>A</m> or that <m>\M</m> is a <term>reducing subspace</term> of <m>A</m>.</p>
+                </definition>
+
+                <p>One of the nice consequences of the existence of an invariant or reducing subspace is that we get information about block operator representation of operators on <m>\hilbert</m>. First, suppose that <m>\hilbert = \M + \M^\perp</m>. Then any <m>h \in \hilbert</m> can be written as <m>h = u + v</m> where <m>u \in \M</m> and <m>v \in \M^\perp</m>.So for <m>A \in \BH</m>, we can think about the action of <m>A</m> on the components of <m>\hilbert</m> by
+                <me>
+                    Ah = \bbm X \amp W \\ Z \amp Y \ebm \bpm u \\ v \epm,
+                </me>
+                where <m> X \in \BOP(\M)</m>, <m>W \in\BOP(\M^\perp, \M)</m>, <m>Z \in  \BOP(\M, \M^\perp)</m>, and <m>Y \in \BOP(\M^\perp)</m>. </p>
+
+                <p>In the representation above, if <m>\M</m> is invariant for <m>A</m>, then <m>Z</m> must be 0. If <m>\M</m> is reducing for <m>A</m>, then we get further that <m>W = 0</m>. That is, a reducing subspace essentially diagonalizes an operator by reducing it to smaller operators.</p>
+
+                <proposition xml:id="prop-block-reduce">
+                    <p>Suppose that <m>A \in \BH</m>, <m>\M</m> is a closed linear subspace of <m>\hilbert</m>  and that <m>P = P_{\M}</m>. The following are equivalent.
+                    <ol>
+                        <li><m>\M</m> is invariant for <m>A</m>.</li>
+                        <li><m>PAP = AP</m>.</li>
+                        <li> The block <m>Z</m> as in the block representation above is the <m>0</m> operator.</li>
+                    </ol></p>
+
+                    <p>The following statemens are also equivalent.
+                        <ol>
+                            <li><m>\M</m> reduces <m>A</m>.</li>
+                            <li><m>PA = AP</m>.</li>
+                            <li>In the block representation above, both <m>W, Z</m> are <m>0</m> operators.</li>
+                            <li><m>\M</m> is invariant for both <m>A</m> and <m>A\ad</m>.</li>
+                        </ol>
+                    </p>
+                </proposition>
+
+        </section>
+
+        <section><title>Compact operators</title>
+            <p>The object of study in this section is essentially the most direct generalization of matrices to infinite dimensions, for reasons that will become apparent.</p>
+
+            <definition xml:id="def-compactop">
+                <p>Suppose <m>\hilbert</m> is a Hilbert space. A linear map <m>T: \hilbert \to \hilbert</m> is <term>compact</term> if the image of the unit ball in <m>\hilbert</m> under <m>T</m>, denoted <m>T(\ball \hilbert)</m>, has compact closure in <m>\hilbert</m>.  </p>
+            </definition>
+
+            <p>Denote by <m>\BOP_0(\hilbert, \K)</m> the set of compact operators from <m>\hilbert</m> to <m>\K</m>, and <m>\BOP_0(\hilbert) = \BOP_0(\hilbert, \hilbert)</m>.</p>
+
+            <proposition xml:id="prop-compopbounded">
+                <p><m>\BOP_0(\hilbert,\K) \subset \BOP(\hilbert, \K)</m>.</p>
+            </proposition>
+            <proof>
+                <p>Let <m>T \in \BOP_0(\hilbert, \K)</m>. Since <m>T(\ball \hilbert)</m> is compact, there must exist a constant <m>C</m> so that <m>T(\ball \hilbert) \subset B_\K(C) = \{k \in \K : \norm{k} \leq C\}</m>. But then <m>\norm{T} \leq C</m>, and so <m>T \in \BH</m>.</p>
+            </proof>
+
+            <proposition xml:id="prop-comp">
+                <p><m>\BOP_0(\hilbert, \K)</m> is a linear space.</p>.
+            </proposition>
+
+            <proposition xml:id = "prop-convcomp">
+                <p>If <m>T_n</m> is a sequence in <m>\BOP_0(\hilbert, \K)</m> and <m>T</m> is an operator in <m>\BOP(\hilbert, \K)</m> such that <m>\norm{T_n - T} \to 0</m>, then <m>T</m> is compact.</p>
+            </proposition>
+
+            <proposition xml:id="prop-compprod">
+                <p>If <m>A \in \BOP(\hilbert)</m>, <m>B \in \BOP(\K)</m>, and <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>TA</m> and <m>BT</m> are compact.</p>
+            </proposition>
+
+            <p>A special family of compact operators is even more restricted by the size of their ranges. Say that an operator is of <term>finite rank</term>, if <m>\ran T</m> is finite dimensional (that is, the closed linear span of a finite set of vectors). Let <m>\BOP_{00}(\hilbert, \K)</m> be the set of continuous finite rank operators. It is straightfoward that <m>\BOP_{00}</m> is a linear space and that <m>\BOP_{00} \subset \BOP_0</m>. It turns out to be the case that compact operators are (norm) limits of operators of finite rank.</p>
+
+            <theorem xml:id="thm-compapprox">
+                <p>Let <m>T \in \BOP(\hilbert, \K)</m>. The following are equivalent.
+                <ol>
+                    <li> <m>T</m> is compact.</li>
+                    <li> <m>T\ad</m> is compact.</li>
+                    <li> There is a sequence <m>T_n</m> of operators of finite rank such that <m>\norm{T_n - T} \to 0</m>.</li>
+                </ol>
+                </p>
             </theorem>
-    </introduction>
 
-    <subsection><title>Proof of the spectral theorem for compact self-adjoint operators</title>
-        <proposition xml:id="prop-normal-reducing">
-            <p>If <m>A</m> is a normal operator and <m>\la \in \mathbb{F}</m>, then <m>\ker(A - \la) = \ker(A - \la)\ad</m> and <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.
-            </p>
-        </proposition>
-        <proof>
-            <p>Since <m>A</m> is normal, it is easy to see that so must be <m>A - \la</m>. By <xref provisional="prop-normaladnorm"/>, we have that <m>\norm{(A - \la)h} = \norm{(A - \la)\ad h}</m> for all <m>h</m>. But then <m>h \in \ker(A - \ad)</m> if and only if <m>h \in \ker(A - \la)\ad</m>.</p>
-            <p>If <m>h \in \ker(A - \la)</m>, then <m>Ah = \la h \in \ker(A - \la)</m> and <m>A\ad h = \cc\la h \in \ker(A - \la)</m>. We conclude that <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.</p>
-        </proof>
+            <proof><p>First, note that <m>(3) \Rightarrow (1)</m> follows from <xref ref="prop-convcomp"/>.</p>
+            <p>We will show that <m>(1) \Rightarrow (3) \Rightarrow (2) \Rightarrow (1)</m>.</p>
 
-        <p>The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.</p>
+            <p><m>(1) \Rightarrow (3)</m>: We use the fact that since <m>T</m> is compact, the closure of <m>T(\ball \hilbert)</m> contains a countable dense subset (one can construct this set using the fact that the image of the ball under <m>T</m> is totally bounded). Then <m>\mathcal L = \cl \ran T</m> is a separable subspace of <m>\K</m>. Let <m>\{e_j\}</m> be a basis for <m>\mathcal L</m>, and let <m>P_n</m> be the projection of <m>\K</m> onto the closed linear span of the first <m>n</m> basis vectors; that is, <m>P_n</m> is the projection onto <m>\vee\{e_j: 1 \leq j \leq n\}</m>. Now set <m>T_n = P_n T</m>. Each <m>T_n</m> is a finite rank operator.</p>
 
-        <proposition xml:id="prop-ortho-eigenspace">
-            <p>If <m>A</m> is a normal operator and <m>\la, \mu</m> are distinct eigenvalues of <m>A</m> then <m>\ker(A - \la)\perp \ker(A - \mu)</m>.</p>
-        </proposition>
-        <proof>
-           <p> Let <m>h \in \ker(A - \la)</m> and <m>g \in \ker(A - \mu)</m>. By <xref ref="prop-normal-reducing"/>, we have that <m>A\ad g = \cc\mu g</m>. Then
-                       <md>
-                           <mrow>\la\ip{h}{g} \amp=\ip{A h}{g}</mrow>
-                           <mrow>\amp= \ip{h}{A\ad g}</mrow>
-                           <mrow>\amp= \ip{h}{\cc\mu g}</mrow>
-                           <mrow>\amp= \mu\ip{h}{g}.</mrow>
-                       </md>
-                       Thus, <m>(\la - \mu)\ip{h}{g} = 0</m>. Since <m>\la, \mu</m> are distinct, we must have <m>h\perp g</m> and thus that <m>\ker(A - \la) \perp \ker(A - \mu)</m>.</p>
-       </proof>
-
-       <p>As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.</p>
-
-       <proposition xml:id="prop-eigreal">
-        <p>If <m>A = A\ad</m> and <m>\la \in \sigma_p(A)</m> then <m>\la</m> is a real number.
-        </p>
-        </proposition>
-        <proof>
-            <p>If <m>A h = \la h</m> then <m>A h = A \ad h = \cc{\la}h</m> by <xref ref="prop-normal-reducing"/>. Equating the two expression for <m>Ah</m>, we get
+            <p>We will show that <m>\norm{T_n - T} \to 0</m> by establishing a uniform bound on <m>\norm{T_n h - T h}</m> for <m>\norm{h}\leq 1</m>. Choose <m>\eps > 0</m>. By compactness, we can find a finite collection of vectors <m>h_1, \ldots, h_m</m> so that 
             <me>
-                (\la - \cc\la)h = 0.
+                T(\ball \hilbert) \subset \bigcup_{j = 1}^m B(Th_j, \ep/3).
             </me>
-            Choosing a non-zero <m>h</m> requires that <m>\la - \cc\la = 0</m>, or <m>\la = \cc\la</m>.
-        </p></proof>
+            For <m>h \in \ball \hilbert</m>, choose <m>h_j</m> so that <m>\norm{Th - Th_j} \leq \eps/3</m>. Then for any <m>n \in \N</m>,
+            <md>
+                <mrow>\norm{T_n h - T h} \amp\leq \norm{T_n h - T_n h_j } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
+                <mrow>\amp \leq\norm{P_n(T h - T h_j) } + \norm{T_n h_j  - T h_j} + \norm{T h_j - T h} </mrow>
+                <mrow>\amp\leq 2\norm{T h_j - T h} + \norm{T_n h_j  - T h_j}</mrow>
+                <mrow>\amp\leq \frac{2\eps}{3} + \norm{T_n h_j  - T h_j}.</mrow>
+            </md>
+            Now, we show that we can find <m>n_0</m> so that <m>\norm{T_n h_j  - T h_j} \leq \eps/3</m>. Certainly <m>Th_j \in \mathcal{L}</m>, and so can be expanded as <m>Th_j = \sum_{k=1}^\infty \ip{Th_j}{ e_k} e_k</m>. On the other hand, 
+            <me>T_n h_j = P_n T h_j = \sum_{k=1}^n \ip{Th_j}{ e_k} e_k</me>
+            Together, this gives
+            <m>\norm{T_n h_j - T h_j} \to 0</m>, and so the desired <m>n_0</m> exists. Since <m>h</m> was an arbitrary vector with <m>\norm{h} \leq 1</m>, this bound is uniform, and so in the operator norm we have <m>\norm{T_n - T} \to 0</m>.
+              </p>
 
-        <p>The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.</p>
+            <p><m>3 \Rightarrow 2:</m> Suppose that <m>T_n</m> is a sequence in <m>\BOP_{00}(\hilbert, \K)</m> with <m>\norm{T_n - T} \to 0</m>. Then <m>\norm{T_n\ad - T\ad} = \norm{T_n - T} \to 0</m>. But <m>T_n\ad</m> is also in <m>\BOP_{00}(\hilbert, \K)</m> (Exercise). Since <m>3 \Rightarrow 1</m>, <m>T\ad</m> is compact.</p>
 
-        <lemma xml:id="lemma-compsa-norm-eig">
-            <p>If <m>T</m> is a compact self-adjoint operator, then <m>\norm{T}</m> or <m>-\norm{T}</m> is an eigenvalue of <m>T</m>.
-        </p></lemma>
-        <proof>
-            <p>If <m>T</m> is the zero operator, then we're done. If <m>T \neq 0</m>, there exists a sequence of unit vectors <m>h_n</m> so that
+            <p><m>2 \Rightarrow 1</m>: (Exercise)</p>
+
+            </proof>
+
+            <p>We used an important convergence theorem about finite rank projections in the proof above, so we record the following corollary of the proof.</p>
+
+            <proposition xml:id="prop-finrankzero">
+                <p>If <m>T \in \BOP_0(\hilbert, \K)</m>, then <m>\cl \ran T</m> is separable. If <m>\{e_j\}</m> is a basis for <m>\cl \ran T</m> and <m>P_n</m> is the projection of <m>\K</m> onto <m>\vee\{e_j:1 \leq j\leq n\}</m>, then
                 <me>
-                    \abs{\ip{T h_n}{h_n}} \to \norm{T}.
-                </me>
-                A limit point argument produces a subsequence <m>h_n</m> so that
-                <me>
-                    \ip{T h_n}{h_n} \to \la
-                </me>
-                where <m>\abs{\la} = \norm{T}</m>.</p>
+                    \norm{P_n T - T} \to 0.
+                </me></p>
+            </proposition>
 
-                <p>Since <m>\abs{\la} = \norm{T}</m>, we get
+            <p>This allows a method for constructing compact operators, at least in separable Hilbert spaces, in a manner suggestive of finite dimensional eigenvalues.</p>
+
+            <proposition>
+                <p>Let <m>\hilbert</m> be a separable Hilbert space with basis <m>\{e_j\}</m>. Let <m>\{\alpha_n\}</m> be a sequence in <m>\mathbb{F}</m> with <m>M = \sup_n\{\abs{\alpha_n}\} \lt \infty</m>. Define an operator <m>A</m> on the basis <m>\{e_j\}</m>by <m>A e_j = \alpha_j e_j</m> for all <m>j</m>. Then <m>A</m> extends by linearity to a bounded operator on <m>\hilbert</m> with <m>\norm{A} = M</m>. The operator <m>A</m> is compact if and only if <m>\alpha_n \to 0</m>.
+                </p>
+            </proposition>
+
+            <p>We are now ready to make explicit the apparent connection to eigenvalues of matrices acting on finite dimensional spaces.</p>
+
+            <definition xml:id="def-eigenthings">
+                <p>Suppose that <m>A \in \BH</m>. A scalar <m>\alpha \in \mathbb{F}</m> is called an <term>eigenvalue</term> of <m>A</m> if <m>\ker(A - \alpha) \neq \{0\}</m>. A nonzero vector <m>h</m> in <m>\ker(A - \alpha)</m> is called an <term>eigenvector</term> of <m>A</m>. We recover the usual relationship <m>Ah = \alpha h</m> for such a pair. Let <m>\sigma_p(A)</m> denote the set of eigenvalues of <m>A</m>. 
+                </p>
+            </definition>
+
+            <aside>
+                <p>The <m>p</m> in the notation <m>\sigma_p(A)</m> refers to the <term>point spectrum</term> of more general operators, which we'll talk about later.</p>
+            </aside>
+
+            <p>Unlike linear operators on finite dimensional spaces, compact operators need not possesses eigenvalues. The prototypical example is the <term>Volterra operator</term>.</p>
+
+            <proposition xml:id="prop-volterra">
+                <p>Let <m>\hilbert = L^2[0,1]</m>. For <m>t \in [0,1]</m>, let <m>V:L^2 \to L^2</m> be the operator
+                <me>
+                    V(f)(x) = \int_0^x f(y) \, dy.
+                </me>
+                The operator <m>V</m> is compact. However, <m>V</m> has no eigenvalues.
+                </p>
+            </proposition>
+
+            <p>The whole thrust of our conversation is diagonalization of operators in terms of eigen-like structures, and here we've identified a compact operator that cannot be. It's worth asking why. Note that <m>V\ad(f)(x) = \int_x^1 f(y) \, dy</m>; that is, <m>V</m> isn't self-adjoint (in fact, <m>V</m> is also not normal). Keep that in mind as we proceed.</p>
+
+            <p>If, however, a compact operator <emph>does</emph> have an eigenvalue, nice things happen.</p>
+
+            <proposition xml:id="prop-finiteeig">
+                <p>If <m>T \in \BOP_0(\hilbert)</m> and <m>\la \in \sigma_p(T)</m> with <m>\la \neq 0</m>, then the eigenspace <m>\ker(T - \la)</m> is finite-dimensional.</p>
+            </proposition>
+            <proof>
+                <p>Proceed by contradiction. Suppose that <m>\ker(T - \alpha)</m> is infinite-dimensional and so contains an infinite orthonormal sequence. Because <m>T</m> is compact, <m>Te_n</m> has a convergent subsequence <m>T_{e_{n_k}}</m>. Then as a sequence, <m>\{T e_{n_k}\}</m> is Cauchy. But for any <m>n_k \neq n_j</m>, 
+                <me>
+                    \norm{T e_{n_k} - T e_{n_j}}^2 = \norm{\la e_{n_k} - \la e_{n_j}}^2 = 2\abs{\la}^2 > 0.
+                </me>
+                This contradicts the Cauchyness of <m>\{T e_{n_k}\}</m>. We conclude that <m>\ker(T - \alpha)</m> is finite-dimensional.</p>
+            </proof>
+
+            <proposition xml:id="prop-compinf">
+                <p>If <m>T \in \BOP_0(\hilbert)</m>, <m>\la \neq 0</m>, and <m>\inf\{\norm{(T - \la)h}: \norm{h}=1\}=0</m> then <m>\la \in \sigma_p(T)</m>.
+                </p>
+            </proposition>
+            <proof>
+                <p>The hypotheses imply that there exists a sequence of unit vectors <m>h_n</m> so that <m>\norm{(T - \la)h_n} \to 0</m>. By compactness, this sequence has a subsequence <m>h_{n_k}</m> and a vector <m>f</m> so that <m>\norm{Th_{n_k} - f}\to 0</m>. Combining these two facts, we can use an algebra trick to get
                 <md>
-                    <mrow>0 \amp \leq \norm{(T - \la)h_n}^2</mrow>
-                     <mrow>\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2</mrow>
-                     <mrow>\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.</mrow>
+                    <mrow>h_{n_k} = \la\inv \la h_{n_k} \amp= \la\inv \la(h_{n_k}  - \la\inv T h_{n_k} + \la \inv T h_{n_k})</mrow>
+                    <mrow>\amp=\la\inv [(\la - T) h_{n_k}) + T h_{n_k}] </mrow>
+                    <mrow>\amp\to \la\inv[0 + f] = \la\inv f.</mrow>
                 </md>
-                But <m>\ip{Th_n}{h_n} \to \la</m>, so the computation above implies that <m>\norm{(T - \la)h_n} \to 0</m>. Applying <xref ref="prop-compinf"/>, we conclude that <m>\la \in \sigma_p(T)</m>.</p>
-        </proof>
+                Since the <m>h_n</m> are unit vectors, so is any limit point of the sequence, and so <m>1 = \norm{\la\inv f} = \abs{\la}\inv \norm{f}</m>, and so <m>\norm{f} \neq 0</m>. Furthermore, <m>T h_{n_k} \to \la\inv Tf</m>. Since we also have <m>T h_{n_k} \to f</m>, it must be that <m>f = \la\inv T f</m>, or rather that <m>T f = \la f</m>. That is, <m>f\neq 0</m>, <m>f \in \ker(T - \la)</m>, which gives that <m>\la \in \sigma_p(T)</m>.
+            </p></proof>
+        </section>
 
-        <p>We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use <xref ref="lemma-compsa-norm-eig"/> to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.</p>
+        <section><title>The spectral theorem for compact self-adjoint operators</title>
+            <introduction>
+                <p>Our first diagonalization result is a special case, but one that sheds light on the (quite a bit) more complicated general case. This is a good case to get to grips with the point of the theorem because it is so similar to the finite dimensional case (compare with the statement in <xref ref="eq-finite-spec"/>. </p>
 
-        <proof><title>Proof of <xref ref="thm-specsacomp"/>.</title>
-            <p>Suppose that <m>T</m> is a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>.</p>
+                    <theorem xml:id="thm-specsacomp">
+                        <p>Let <m>T</m> be a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>. Then <m>T</m> has only countable distinct eigenvalues. Enumerating the eigenvalues as <m>\{\la_1, \la_2, \ldots\}</m>, let <m>P_n</m> denote the projection of <m>\hilbert</m> onto <m>\ker(T - \la_n)</m>. Then <m>P_nP_m = P_m P_n = 0</m> when <m>n \neq m</m>, each <m>\la_n</m> is real, and
+                        <me>
+                            T = \sum_{n=1}^\infty \la_n P_n,
+                        </me>
+                        where the sum converges in the norm of <m>\BH</m>.</p>
+                    </theorem>
+            </introduction>
 
-            <p>By <xref ref="prop-eigreal"/> and <xref ref="lemma-compsa-norm-eig"/>, there exists a real number <m>\la_1</m> in <m>\sigma_p(T)</m> with <m>\abs{\la_1} = \norm{T}</m>. Let <m>E_1 = \ker(T - \la_1)</m> and <m>P_1:\hilbert \to E_1</m> be the projection onto <m>E_1</m>. Denote by <m>\hilbert_2</m> the orthogonal complement of <m>E_1</m> in <m>\hilbert</m>. By <xref ref="prop-normal-reducing"/>, <m>E_1</m> reduces <m>T</m>, and so <m>\hilbert_2</m> reduces <m>T</m>. Then define <m>T_2</m> to be the restriction of <m>T</m> to <m>\hilbert_2</m>; that is <m>T_2 = T\vert_{\hilbert_2} = T P_1</m>. Using block operator representation of <m>T</m> on <m>\hilbert = E_1 \oplus \hilbert_2</m>, it is easy to see that <m>T_2</m> is a compact self-adjoint operator on <m>\hilbert_2</m>. </p>
-        </proof>
+            <subsection><title>Proof of the spectral theorem for compact self-adjoint operators</title>
+                <proposition xml:id="prop-normal-reducing">
+                    <p>If <m>A</m> is a normal operator and <m>\la \in \mathbb{F}</m>, then <m>\ker(A - \la) = \ker(A - \la)\ad</m> and <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.
+                    </p>
+                </proposition>
+                <proof>
+                    <p>Since <m>A</m> is normal, it is easy to see that so must be <m>A - \la</m>. By <xref provisional="prop-normaladnorm"/>, we have that <m>\norm{(A - \la)h} = \norm{(A - \la)\ad h}</m> for all <m>h</m>. But then <m>h \in \ker(A - \ad)</m> if and only if <m>h \in \ker(A - \la)\ad</m>.</p>
+                    <p>If <m>h \in \ker(A - \la)</m>, then <m>Ah = \la h \in \ker(A - \la)</m> and <m>A\ad h = \cc\la h \in \ker(A - \la)</m>. We conclude that <m>\ker(A - \la)</m> is a reducing subspace for <m>A</m>.</p>
+                </proof>
+
+                <p>The next result is similar to the finite dimensional fact that eigenspaces of distinct eigenvalues are orthogonal.</p>
+
+                <proposition xml:id="prop-ortho-eigenspace">
+                    <p>If <m>A</m> is a normal operator and <m>\la, \mu</m> are distinct eigenvalues of <m>A</m> then <m>\ker(A - \la)\perp \ker(A - \mu)</m>.</p>
+                </proposition>
+                <proof>
+                   <p> Let <m>h \in \ker(A - \la)</m> and <m>g \in \ker(A - \mu)</m>. By <xref ref="prop-normal-reducing"/>, we have that <m>A\ad g = \cc\mu g</m>. Then
+                               <md>
+                                   <mrow>\la\ip{h}{g} \amp=\ip{A h}{g}</mrow>
+                                   <mrow>\amp= \ip{h}{A\ad g}</mrow>
+                                   <mrow>\amp= \ip{h}{\cc\mu g}</mrow>
+                                   <mrow>\amp= \mu\ip{h}{g}.</mrow>
+                               </md>
+                               Thus, <m>(\la - \mu)\ip{h}{g} = 0</m>. Since <m>\la, \mu</m> are distinct, we must have <m>h\perp g</m> and thus that <m>\ker(A - \la) \perp \ker(A - \mu)</m>.</p>
+               </proof>
+
+               <p>As with hermitian matrices, the eigenvalues of self-adjoint operators must be real.</p>
+
+               <proposition xml:id="prop-eigreal">
+                <p>If <m>A = A\ad</m> and <m>\la \in \sigma_p(A)</m> then <m>\la</m> is a real number.
+                </p>
+                </proposition>
+                <proof>
+                    <p>If <m>A h = \la h</m> then <m>A h = A \ad h = \cc{\la}h</m> by <xref ref="prop-normal-reducing"/>. Equating the two expression for <m>Ah</m>, we get
+                    <me>
+                        (\la - \cc\la)h = 0.
+                    </me>
+                    Choosing a non-zero <m>h</m> requires that <m>\la - \cc\la = 0</m>, or <m>\la = \cc\la</m>.
+                </p></proof>
+
+                <p>The final ingredient we need is to demonstrate that the spectrum of a compact self-adjoint operator contains non-zero elements. In the case of a finite dimensional diagonalizable matrix, we have that the norm of the map induced by the matrix is equal to the magnitude of the largest eigenvalue. The same result holds in the compact self-adjoint case.</p>
+
+                <lemma xml:id="lemma-compsa-norm-eig">
+                    <p>If <m>T</m> is a compact self-adjoint operator, then <m>\norm{T}</m> or <m>-\norm{T}</m> is an eigenvalue of <m>T</m>.
+                </p></lemma>
+                <proof>
+                    <p>If <m>T</m> is the zero operator, then we're done. If <m>T \neq 0</m>, there exists a sequence of unit vectors <m>h_n</m> so that
+                        <me>
+                            \abs{\ip{T h_n}{h_n}} \to \norm{T}.
+                        </me>
+                        A limit point argument produces a subsequence <m>h_n</m> so that
+                        <me>
+                            \ip{T h_n}{h_n} \to \la
+                        </me>
+                        where <m>\abs{\la} = \norm{T}</m>.</p>
+
+                        <p>Since <m>\abs{\la} = \norm{T}</m>, we get
+                        <md>
+                            <mrow>0 \amp \leq \norm{(T - \la)h_n}^2</mrow>
+                             <mrow>\amp= \norm{Th}^2 - 2\la\ip{Th_n}{h_n} + \la^2</mrow>
+                             <mrow>\amp= 2\la^2 - 2 \la\ip{Th_n}{h_n}.</mrow>
+                        </md>
+                        But <m>\ip{Th_n}{h_n} \to \la</m>, so the computation above implies that <m>\norm{(T - \la)h_n} \to 0</m>. Applying <xref ref="prop-compinf"/>, we conclude that <m>\la \in \sigma_p(T)</m>.</p>
+                </proof>
+
+                <p>We are now prepared to prove the spectral theorem for compact self-adjoint operators. Essentially, we're going to use <xref ref="lemma-compsa-norm-eig"/> to find an eigenvalue, construct a projection onto its eigenspace, and then restrict the operator to the remaining orthogonal complement. Proceeding inductively will give the result.</p>
+
+                <proof><title>Proof of <xref ref="thm-specsacomp"/>.</title>
+                    <p>Suppose that <m>T</m> is a compact self-adjoint operator on a Hilbert space <m>\hilbert</m>.</p>
+
+                    <p>By <xref ref="prop-eigreal"/> and <xref ref="lemma-compsa-norm-eig"/>, there exists a real number <m>\la_1</m> in <m>\sigma_p(T)</m> with <m>\abs{\la_1} = \norm{T}</m>. Let <m>E_1 = \ker(T - \la_1)</m> and <m>P_1:\hilbert \to E_1</m> be the projection onto <m>E_1</m>. Denote by <m>\hilbert_2</m> the orthogonal complement of <m>E_1</m> in <m>\hilbert</m>. By <xref ref="prop-normal-reducing"/>, <m>E_1</m> reduces <m>T</m>, and so <m>\hilbert_2</m> reduces <m>T</m>. Then define <m>T_2</m> to be the restriction of <m>T</m> to <m>\hilbert_2</m>; that is <m>T_2 = T\vert_{\hilbert_2} = T P_1</m>. Using block operator representation of <m>T</m> on <m>\hilbert = E_1 \oplus \hilbert_2</m>, it is easy to see that <m>T_2</m> is a compact self-adjoint operator on <m>\hilbert_2</m>. </p>
+
+                    <p> If <m>T_2 = 0</m>, we're done. If not, we can repeat the process to produce an eigenvalue <m>\la_2</m> and associated eigenspace <m>E_2</m>. Continiuing, we either terminate with some <m>T_n = 0</m>, or we proceed by induction to produce an infinite sequence <m>\la_n</m>. In either case, we end up with a sequence of eigenvalues ordered by magnitude and pairwise orthogonal eigenspaces.</p>
+
+                    <p>The last piece to be shown is that the accumulation point of the eigenvalues is precisely 0. The monotone bounded sequence theorem gives a real number <m>\alpha</m> so that <m>\abs{\la_n} \to \alpha.</m> We will argue that <m>\alpha = 0</m>.</p>
+
+                    <p>Let <m>e_n</m> be a unit vector in <m>E_n</m>. Since <m>T</m> is compact, the sequence <m>Te_n</m> must have a convergent subsequence, say converging to <m>h \in \hilbert</m>, so that <m>\norm{T e_{n_j} - h} \to 0</m>. But </p>
+                </proof>
 
 
-    </subsection>
+            </subsection>
 
-    </section>
+        </section>
 
     </chapter>
     <chapter><title>Topology</title>
